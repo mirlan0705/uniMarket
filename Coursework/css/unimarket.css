@@ -1,0 +1,48 @@
+header{
+    margin-top: 10em;
+    background-color: cc88cc;
+}
+h1{
+    text-align: center;
+    font-size: 60;
+}
+h2{
+    text-align: center;
+    font-size: 20;
+}
+body{
+    margin-left: 14em;
+    margin-right: 14em;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#001489;
+}
+footer{
+    color: white;
+    text-align: left; 
+    Margin-top: 10em;
+}
+main{
+    background-color: white;
+}
+img{
+    background-color:transparent;
+}
+.item{
+    border-style: solid;
+    display: inline-block;
+    margin-left: 2em;
+    margin-bottom:2em;
+    text-align: center;
+}
+.item2{
+    text-align: center;
+    display: inline-block;
+    margin-left:2em;
+    border-style: solid;
+}
+.item3{
+    text-align: center;
+    display: inline-block;
+    margin-left:2em;
+    border-style: solid;
+}
