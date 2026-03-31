@@ -15,32 +15,40 @@
     <header class="topbar">
     <!-- Left Action Buttons -->
     <div class="left-buttons">
-        <button onclick="toggleMenu()">☰</button>
-        <a href="/wishlist">Wishlist</a>
-        <a href="/basket">Basket</a>
+        <button onclick="toggleMenu()" class="menu-icon">
+         <img src="images/menuicon.png" alt="Open Menu">
+        </button>
+        <a href="/wishlist" class="protected-link">
+        <img src="images/wishlist.png" alt="Wishlist">
+        </a>
+        <a href="/cart" class="protected-link">
+        <img src="images/shoppingcart.png" alt="ShoppingCart">
+        </a>      
     </div>
      <!-- Right Action Buttons -->
     <div class="right-buttons">
-        <a href="/loginregister">Log in/Register</a>
-        <a href="/sellnow">Sell Now</a>
+        <a href="loginregister.html">Log in / Register</a>
+        <a href="sellnow.html" class="protected-link">Sell Now</a>
     </div>
     </header>
 
     <!-- Sidebar -->
     <nav id="sidebar" class="sidebar">
         <div class="sidebar-header">
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-        <span class="menu-text">MENU</span>
+        <button onclick="toggleMenu()" class="menu-btn">
+         <img src="images/menuicon.png" alt="Menu">
+         <span class="menu-text">MENU</span>
+        </button>
         </div>
-        <span class="category-text">CATEGORIES</span>
+
      <!-- Categories -->
      <ul class="menu">
-
+        <span class="category-text">CATEGORIES</span>
         <li class="category">
             <div class="category-title" onclick="toggleCategory(this)">
-                <span>Study & Tech</span>
+                <span>Computing & Technology</span>
                 <img class="arrow-icon" src="images/arrowdown.png">
-                </div>
+            </div>
             <ul class="subcategory">
                <li><a href="#">Laptops/Computing</a></li>
                <li><a href="#">Audio</a></li>
@@ -51,11 +59,13 @@
 
         <li class="category">
             <div class="category-title" onclick="toggleCategory(this)">
-                <span>Course Materials</span>
+                <span>Study & Course Materials</span>
             <img class="arrow-icon" src="images/arrowdown.png">
             </div>
             <ul class="subcategory">
-                <li><a href="#">Books</a></li>
+                <li><a href="#">Textbooks</a></li>
+                <li><a href="#">Stationery</a></li>
+                <li><a href="#">Special Equipment</a></li>
             </ul>
         </li>
 
@@ -65,7 +75,11 @@
             <img class="arrow-icon" src="images/arrowdown.png">
             </div>
             <ul class="subcategory">
-                <li><a href="#">Hoodies</a></li>
+                <li><a href="#">Everyday Wear</a></li>
+                <li><a href="#">Outerwear & Jackets</a></li>
+                <li><a href="#">Formal& Event Wear</a></li>
+                <li><a href="#">Uni Merch & Sports</a></li>
+                <li><a href="#">Accessories</a></li>
             </ul>
         </li>
 
@@ -76,9 +90,25 @@
             </div>
             <ul class="subcategory">
                 <li><a href="#">Kitchen</a></li>
+                <li><a href="#">Bedroom</a></li>
+                <li><a href="#">Lighting/Decor</a></li>
+                <li><a href="#">Bathroom</a></li>
+                <li><a href="#">Cleaning Supplies</a></li>
             </ul>
         </li>
-    </ul>
+
+        <li class="category">
+            <div class="category-title" onclick="toggleCategory(this)">
+                <span>Entertainment & Leisure</span>
+            <img class="arrow-icon" src="images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+                <li><a href="#">Gaming</a></li>
+                <li><a href="#">Board Games & Puzzles</a></li>
+                <li><a href="#">Musical Instruments</a></li>
+            </ul>
+        </li>
+     </ul>
         </nav>
 
         <main>
@@ -89,12 +119,16 @@
 
              <!-- Search Bar -->
              <div class="search-container">
-                <form>
-                   <button class="all-btn" type="button">▼ All</button>
-                   <input type="text" placeholder="Search for items...">
+                <form action="/search">
+                   <button class="all-btn" type="button">
+                   <span>All</span>
+                   <img src="images/arrowdown.png" alt="dropdown" class="allbtn-icon">
+                   </button>
+                   <input id="search" type="text" placeholder="Search for items...">     
                    <button class="search-btn" type="submit">Search</button>
                 </form>
              </div>
+
         </main>
 
     <footer>
