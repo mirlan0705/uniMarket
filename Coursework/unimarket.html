@@ -1,4 +1,5 @@
-<html lang="eng">
+<!DOCTYPE html>
+<html lang="en">
 
     <head>
     <meta charset="utf-8">
@@ -10,30 +11,83 @@
 
     <body class="page-container">
         
-   <div class="topbar">
-
+    <!-- Header -->
+    <header class="topbar">
     <!-- Left Action Buttons -->
     <div class="left-buttons">
-        <button>Menu</button>
-        <button>Whishlist</button>
-        <button>Basket</button>
+        <button onclick="toggleMenu()">☰</button>
+        <a href="/wishlist">Wishlist</a>
+        <a href="/basket">Basket</a>
     </div>
-
-    <!-- Right Action Buttons -->
+     <!-- Right Action Buttons -->
     <div class="right-buttons">
-        <button>Log in/Register</button>
-        <button>Sell Now</button>
+        <a href="/loginregister">Log in/Register</a>
+        <a href="/sellnow">Sell Now</a>
     </div>
+    </header>
 
-</div>
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <span class="menu-text">MENU</span>
+        </div>
+        <span class="category-text">CATEGORIES</span>
+     <!-- Categories -->
+     <ul class="menu">
 
-    <!-- Logo -->
-    <div class="logo">
-        <h1>UniMarket</h1>
-    </div>
+        <li class="category">
+            <div class="category-title" onclick="toggleCategory(this)">
+                <span>Study & Tech</span>
+                <img class="arrow-icon" src="images/arrowdown.png">
+                </div>
+            <ul class="subcategory">
+               <li><a href="#">Laptops/Computing</a></li>
+               <li><a href="#">Audio</a></li>
+               <li><a href="#">Accessories</a></li>
+               <li><a href="#">Chargers</a></li>
+            </ul>
+        </li>
+
+        <li class="category">
+            <div class="category-title" onclick="toggleCategory(this)">
+                <span>Course Materials</span>
+            <img class="arrow-icon" src="images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+                <li><a href="#">Books</a></li>
+            </ul>
+        </li>
+
+        <li class="category">
+            <div class="category-title" onclick="toggleCategory(this)">
+             <span>Uni Style & Clothes</span>
+            <img class="arrow-icon" src="images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+                <li><a href="#">Hoodies</a></li>
+            </ul>
+        </li>
+
+        <li class="category">
+            <div class="category-title" onclick="toggleCategory(this)">
+                <span>Home & Halls</span>
+            <img class="arrow-icon" src="images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+                <li><a href="#">Kitchen</a></li>
+            </ul>
+        </li>
+    </ul>
+        </nav>
 
         <main>
-            <!-- Search Bar -->
+             <!-- Logo -->
+             <div class="logo">
+               <h1>UniMarket</h1>
+             </div>
+
+             <!-- Search Bar -->
              <div class="search-container">
                 <form>
                    <button class="all-btn" type="button">▼ All</button>
@@ -41,18 +95,12 @@
                    <button class="search-btn" type="submit">Search</button>
                 </form>
              </div>
-             <div class="nav-buttons">
-                <button>▼ Study & Tech</button>
-                <button>▼ Course Materials</button>
-                <button>▼ Uni Style & Clothes</button>
-                <button>▼ Home & Halls</button>
-              </div>
         </main>
-    </body>
 
     <footer>
-        <p>Contact Us</p>
-        <p>Terms And Conditions</p>
+        <p><a href="#">Contact Us</a></p>
+        <p><a href="#">Terms and Conditions</a></p>
     </footer>
-
+    
+    </body>
 </html>
