@@ -8,14 +8,15 @@ app.use(express.static('Coursework'));
 app.get('/', (req, res) => res.sendFile(__dirname + '/Coursework/html/unimarket.html'));
 
 app.get('/listings', (req, res) => {
-    const listings = db.prepare('SELECT * FROM listings').all();
+    const listings = db.get('listings').value();
     res.json(listings);
 });
 
 app.post('/listings', (req, res) => {
     const { title, price, description, category, image } = req.body;
-    const result = db.prepare('INSERT INTO listings (title, price, description, category, image) VALUES (?, ?, ?, ?, ?)').run(title, price, description, category, image);
-    res.json({ id: result.lastInsertRowid });
+    const newItem = { id: Date.now(), title, price, description, category, image };
+    db.get('listings').push(newItem).write();
+    res.json({ id: newItem.id });
 });
 
 app.listen(3000, () => console.log('Running on http://localhost:3000'));

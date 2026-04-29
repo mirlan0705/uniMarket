@@ -1,16 +1,9 @@
-const Database = require('better-sqlite3');
-const db = new Database('unimarket.db');
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
 
-db.exec(`
-    CREATE TABLE IF NOT EXISTS listings (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        price REAL NOT NULL,
-        description TEXT,
-        category TEXT,
-        image TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-`);
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+
+db.defaults({ listings: [] }).write();
 
 module.exports = db;
