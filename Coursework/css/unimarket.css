@@ -275,12 +275,11 @@ body{
 
 footer{
     color: white;
-    padding:20px;
+    padding-bottom: 5px;
     text-align: center; 
-    margin-top: 10em;
     display: flex;   
     justify-content: center;
-    gap: 30px;   
+    gap: 30px;    
 }
 
 footer a {
