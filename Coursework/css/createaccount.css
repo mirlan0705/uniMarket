@@ -1,0 +1,194 @@
+.page-container{
+    max-width:1600px;
+    margin:auto;
+}
+
+/* logo header */
+.loginheader a {
+    text-decoration: none;
+    padding-top: 0;      
+    margin-top: 0;
+}
+
+.logo {
+    text-decoration: none; 
+    color: white;
+}
+
+a:hover .logo{
+    text-decoration: none;
+    opacity: 0.8;           
+}
+
+/* card */
+.logincard {
+    max-width: 400px;
+    padding: 20px 20px;
+    border-radius: 12px;
+    background: white;
+    text-align: center;
+}
+
+/* form inputs */
+.formrow{
+    display:flex;
+    gap:10px;
+}
+
+.forminput {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.loginform input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box; 
+}
+
+.loginform input:focus {
+    border-color: #000;
+}
+
+/* links and text */
+.formlinks {
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.formlinks a {
+    color: #000;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.formlinks p {
+    margin-top: 5px;
+}
+
+h1{
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Futura', sans-serif;
+    font-size: 90px;
+    margin-top: 10px;   
+    margin-bottom: 5px
+}
+
+h2{
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    margin-top: 5px;   
+    margin-bottom: 5px
+}
+
+/* buttons */
+.btncreate {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+/* divider line */
+.divider {
+    position: relative;
+    margin: 20px 0;
+    border-top: 1px solid #eee;
+}
+
+.divider span {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #999;
+}
+
+/* social buttons */
+.socialicons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btnsocial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.btnsocial:hover {
+    background: #f9f9f9;
+}
+
+.fa-apple { color: #000; }
+.fa-google {color: #bc0404;}
+.fa-facebook-f { color: #4267B2; }
+
+.centerwrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height:100vh;
+    font-family: 'Inter', sans-serif;
+    background-color:#1a2148;
+}
+
+footer{
+    color: white;
+    padding:20px;
+    text-align: center; 
+    display: flex;   
+    justify-content: center;
+    gap: 30px;   
+}
+
+footer a {
+    text-decoration: none;  
+    color: white;        
+}
+
+footer a:hover {
+    text-decoration: none;
+    opacity: 0.7;           
+}
+
+main {
+    flex: 1; 
+}
+
+img{
+    background-color:transparent;
+}
