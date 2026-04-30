@@ -242,6 +242,7 @@ h2{
     font-size: 20px;
     letter-spacing: 4px;
     text-transform: uppercase; 
+    font-weight: normal;
 }
 
 h3{
