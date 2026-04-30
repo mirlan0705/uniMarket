@@ -76,7 +76,7 @@ function toggleMenu() {
     const overlay = document.getElementById("overlay");
 
     if (sidebar.style.left === "0px") {
-        sidebar.style.left = "-322px";
+        sidebar.style.left = "-280px";
         overlay.classList.remove('active');
     } else {
         sidebar.style.left = "0px";
@@ -102,3 +102,7 @@ function toggleCategory(element) {
 fetch('navbar.html')
   .then(res => res.text())
   .then(html => document.getElementById('navbar').innerHTML = html);
+
+// For sell now page
+// Photo upload
+
