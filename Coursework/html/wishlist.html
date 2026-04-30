@@ -23,7 +23,7 @@
                 <form action="/search">
                    <button class="allbtn" type="button">
                    <span>All</span>
-                   <img src="../images/arrowdown.png" alt="dropdown" class="allbtnicon">
+                   <img src="images/arrowdown.png" alt="dropdown" class="allbtnicon">
                    </button>
                    <input id="search" type="text" placeholder="Search for items...">     
                    <button class="searchbtn" type="submit">Search</button>
@@ -38,9 +38,9 @@
        <!-- Right Icons -->
        <div class="iconbuttons">
           <a href="wishlistpage.html" class="protected-link">
-            <img src="../images/wishlist.png" alt="Wishlist"></a>
+            <img src="images/wishlist.png" alt="Wishlist"></a>
           <a href="cart.html" class="protected-link">
-            <img src="../images/shoppingcart.png" alt="ShoppingCart"></a> 
+            <img src="images/shoppingcart.png" alt="ShoppingCart"></a> 
        </div>
      </div>
 
@@ -50,7 +50,7 @@
                 <li class="category">
                   <div class="categorytitle" onclick="toggleCategory(this)">
                       <span>Computing & Technology</span>
-                      <img class="arrowicon" src="../images/arrowdown.png">
+                      <img class="arrowicon" src="images/arrowdown.png">
                   </div>
                      <ul class="subcategory">
                         <li><a href="#">Laptops/Computing</a></li>
@@ -63,7 +63,7 @@
                 <li class="category">
                   <div class="categorytitle" onclick="toggleCategory(this)">
                       <span>Study & Course Materials</span>
-                      <img class="arrowicon" src="../images/arrowdown.png">
+                      <img class="arrowicon" src="images/arrowdown.png">
                   </div>
                      <ul class="subcategory">
                        <li><a href="#">Textbooks</a></li>
@@ -75,7 +75,7 @@
                 <li class="category">
                   <div class="categorytitle" onclick="toggleCategory(this)">
                       <span>Uni Style & Clothes</span>
-                      <img class="arrowicon" src="../images/arrowdown.png">
+                      <img class="arrowicon" src="images/arrowdown.png">
                   </div>
                      <ul class="subcategory">
                          <li><a href="#">Everyday Wear</a></li>
@@ -89,7 +89,7 @@
                 <li class="category">
                   <div class="categorytitle" onclick="toggleCategory(this)">
                       <span>Home & Halls</span>
-                      <img class="arrowicon" src="../images/arrowdown.png">
+                      <img class="arrowicon" src="images/arrowdown.png">
                   </div>
                      <ul class="subcategory">
                          <li><a href="#">Kitchen</a></li>
@@ -103,7 +103,7 @@
                 <li class="category">
                   <div class="categorytitle" onclick="toggleCategory(this)">
                       <span>Entertainment & Leisure</span>
-                      <img class="arrowicon" src="../images/arrowdown.png">
+                      <img class="arrowicon" src="images/arrowdown.png">
                   </div>
                      <ul class="subcategory">
                          <li><a href="#">Gaming</a></li>
@@ -115,107 +115,26 @@
         </nav>
     </header>
       
-    <!-- Wishlist Items Section -->
+    <!-- Empty Item Section -->
         <main>
-            
+
         <!-- Title Section -->
           <div class="titlesection">
            <h2 class="title">Wishlist Items</h2></a>
           </div>
-        <!-- Tool Filter Bar -->
-          <div class="toolbar">
-            <!-- Search bar -->
-             <div class="searchwishlist">
-                <form action="/search">
-                   <input id="search" type="text" placeholder="Search your wishlist...">     
-                   <button class="searchbtn2" type="submit">Search</button>
-                </form>
-             </div>  
 
-            <div class="sortselector">
-                <label>Sort by: </label>
-                <select>
-                    <option> Most Recently Added</option>
-                    <option> Alphabetical Order</option>
-                    <option> Price: Low to High</option>
-                    <option> Price: High to Low</option>
-                </select>
-            </div>
-        </div>
-
-        <section class="productgrid">
-            <div class="productcard">
-                <div class="imagecard">
-                    <img src="../images/macbookpro.jpg" alt="Product">
-                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
-                </div>
-                <div class="productinfo">
-                    <h3>Macbook Pro 14 inch M5 pro chip, 1 TB SSD - Space Black</h3>
-                    <p class="price">Price: £ 2,199</p>
-                    <p class="condition">Condition: New</p>
-                </div>
-            </div>
-
-            <div class="productcard">
-                <div class="imagecard">
-                    <img src="../images/macbookair.jpeg" alt="Product">
-                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
-                </div>
-                <div class="productinfo">
-                    <h3>Macbook Air 15 inch M5 chip, 256 GB SSD - Starlight</h3>
-                    <p class="price">Price: £ 1,299</p>
-                    <p class="condition">Condition: New</p>
-                </div>
-            </div>
-
-             <div class="productcard">
-                <div class="imagecard">
-                    <img alt="Product Image">
-                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
-                </div>
-                <div class="productinfo">
-                    <h3>Product Name</h3>
-                    <p class="price">Price: £ </p>
-                    <p class="condition">Condition: </p>
-                </div>
-            </div>
-
-             <div class="productcard">
-                <div class="imagecard">
-                    <img alt="Product Image">
-                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
-                </div>
-                <div class="productinfo">
-                    <h3>Product Name</h3>
-                    <p class="price">Price: £ </p>
-                    <p class="condition">Condition: </p>
-                </div>
-            </div>
-
-             <div class="productcard">
-                <div class="imagecard">
-                    <img alt="Product Image">
-                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
-                </div>
-                <div class="productinfo">
-                    <h3>Product Name</h3>
-                    <p class="price">Price: £ </p>
-                    <p class="condition">Condition: </p>
-                </div>
-            </div>
-
-             <div class="productcard">
-                <div class="imagecard">
-                    <img alt="Product Image">
-                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
-                </div>
-                <div class="productinfo">
-                    <h3>Product Name</h3>
-                    <p class="price">Price: £ </p>
-                    <p class="condition">Condition: </p>
-                </div>
-            </div>
-        </section>
+         <!-- Card -->
+            <section class="cardgrid">
+               <div class="card">
+                <!-- Heart Icon -->
+                  <i class="fa-regular fa-heart hearticon"></i>
+                  <h3>You have no items in you wishlist</h3>
+                  <h4>Tap the heart icon on items you love to save them for later</h4>
+                    <!-- Continue shippping button-->
+                  <a href="unimarket.html" class="continuebtn">Go Shopping</a>
+               </div>
+            </section>
+           
         </main>
 
     <!-- Footer -->
