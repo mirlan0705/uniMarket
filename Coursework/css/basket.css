@@ -242,7 +242,6 @@ h2{
     font-size: 20px;
     letter-spacing: 4px;
     text-transform: uppercase; 
-    font-weight: normal;
 }
 
 h3{
@@ -253,6 +252,7 @@ h3{
     letter-spacing: 4px;
     text-transform: uppercase; 
     font-weight: normal;
+    margin-bottom: 2px;
 }
 
 .title {
@@ -287,14 +287,43 @@ h3{
     height: 200px;        
     width: 600px;        
     display: flex;
+    flex-direction: column;
     justify-content: center; 
     align-items: center;     
     background: #ffffff;
     border-radius: 15px;
 }
 
-.card:hover {
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+.basketicon {
+    font-size: 50px; 
+    color: rgba(34, 34, 34, 0.5); 
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card:hover .basketicon {
+    transform: scale(1.1); 
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* Button Styling */
+.continuebtn {
+    display: inline-block;
+    font-family: 'Futura', sans-serif;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3e0e65;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.continuebtn:hover {
+    background-color: #260045;
 }
  
 body{
@@ -318,7 +347,9 @@ main{
     padding: 20px;
     overflow-y: auto;
     min-height: 0;
-    background-color: #3e0e65;
+    background: #1a2148;
+    background: linear-gradient(180deg, #3e0e65 0%, #1a2148 100%);
+    background-attachment: fixed; 
 }
 
 footer{
