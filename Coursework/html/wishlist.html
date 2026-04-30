@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="css/wishlist.css" rel="stylesheet" type="text/css">
+    <script src="js/wishlist.js"></script>
+    <title>UniMarket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body class="pagecontainer">
+        
+    <!-- Header -->
+    <header>
+     <div class="topbar">
+       <div class="logocontainer">
+         <a href="unimarket.html"><h1 class="logo">UniMarket</h1></a>
+       </div>
+        <!-- Search bar -->
+             <div class="searchcontainer">
+                <form action="/search">
+                   <button class="allbtn" type="button">
+                   <span>All</span>
+                   <img src="images/arrowdown.png" alt="dropdown" class="allbtnicon">
+                   </button>
+                   <input id="search" type="text" placeholder="Search for items...">     
+                   <button class="searchbtn" type="submit">Search</button>
+                </form>
+             </div>  
+       <!-- Right Buttons -->
+       <div class="rightbuttons">
+          <a href="loginregister.html">Log in / Register</a>
+          <a href="sellnow.html" class="protected-link">Sell Now</a>
+       </div>
+
+       <!-- Right Icons -->
+       <div class="iconbuttons">
+          <a href="wishlistpage.html" class="protected-link">
+            <img src="images/wishlist.png" alt="Wishlist"></a>
+          <a href="cart.html" class="protected-link">
+            <img src="images/shoppingcart.png" alt="ShoppingCart"></a> 
+       </div>
+     </div>
+
+       <!-- Category Bar -->
+        <nav class="categories">
+             <ul>
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Computing & Technology</span>
+                      <img class="arrowicon" src="images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                        <li><a href="#">Laptops/Computing</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Chargers</a></li>
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Study & Course Materials</span>
+                      <img class="arrowicon" src="images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                       <li><a href="#">Textbooks</a></li>
+                       <li><a href="#">Stationery</a></li>
+                       <li><a href="#">Special Equipment</a></li> 
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Uni Style & Clothes</span>
+                      <img class="arrowicon" src="images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                         <li><a href="#">Everyday Wear</a></li>
+                         <li><a href="#">Outerwear & Jackets</a></li>
+                         <li><a href="#">Formal & Event Wear</a></li>
+                         <li><a href="#">Uni Merch & Sports</a></li>
+                         <li><a href="#">Accessories</a></li>
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Home & Halls</span>
+                      <img class="arrowicon" src="images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                         <li><a href="#">Kitchen</a></li>
+                         <li><a href="#">Bedroom</a></li>
+                         <li><a href="#">Lighting/Decor</a></li>
+                         <li><a href="#">Bathroom</a></li>
+                         <li><a href="#">Cleaning Supplies</a></li>
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Entertainment & Leisure</span>
+                      <img class="arrowicon" src="images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                         <li><a href="#">Gaming</a></li>
+                         <li><a href="#">Board Games & Puzzles</a></li>
+                         <li><a href="#">Musical Instruments</a></li>
+                     </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+      
+    <!-- Wishlist Items Section -->
+        <main>
+            
+        <!-- Title Section -->
+          <div class="titlesection">
+           <h2 class="title">Wishlist Items</h2></a>
+          </div>
+        <!-- Tool Filter Bar -->
+          <div class="toolbar">
+            <!-- Search bar -->
+             <div class="searchwishlist">
+                <form action="/search">
+                   <input id="search" type="text" placeholder="Search your wishlist...">     
+                   <button class="searchbtn2" type="submit">Search</button>
+                </form>
+             </div>  
+
+            <div class="sortselector">
+                <label>Sort by: </label>
+                <select>
+                    <option> Most Recently Added</option>
+                    <option> Alphabetical Order</option>
+                    <option> Price: Low to High</option>
+                    <option> Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <section class="productgrid">
+            <div class="productcard">
+                <div class="imagecard">
+                    <img src="images/macbookpro.jpg" alt="Product">
+                    <i class="fa-regular fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h3>Macbook Pro 14 inch M5 pro chip, 1 TB SSD - Space Black</h3>
+                    <p class="price">Price: £ 2,199</p>
+                    <p class="condition">Condition: New</p>
+                </div>
+            </div>
+
+            <div class="productcard">
+                <div class="imagecard">
+                    <img src="images/macbookair.jpeg" alt="Product">
+                    <i class="fa-regular fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h3>Macbook Air 15 inch M5 chip, 256 GB SSD - Starlight</h3>
+                    <p class="price">Price: £ 1,299</p>
+                    <p class="condition">Condition: New</p>
+                </div>
+            </div>
+
+             <div class="productcard">
+                <div class="imagecard">
+                    <img alt="Product Image">
+                    <i class="fa-regular fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h3>Product Name</h3>
+                    <p class="price">Price: £ </p>
+                    <p class="condition">Condition: </p>
+                </div>
+            </div>
+
+             <div class="productcard">
+                <div class="imagecard">
+                    <img alt="Product Image">
+                    <i class="fa-regular fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h3>Product Name</h3>
+                    <p class="price">Price: £ </p>
+                    <p class="condition">Condition: </p>
+                </div>
+            </div>
+
+             <div class="productcard">
+                <div class="imagecard">
+                    <img alt="Product Image">
+                    <i class="fa-regular fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h3>Product Name</h3>
+                    <p class="price">Price: £ </p>
+                    <p class="condition">Condition: </p>
+                </div>
+            </div>
+
+             <div class="productcard">
+                <div class="imagecard">
+                    <img alt="Product Image">
+                    <i class="fa-regular fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h3>Product Name</h3>
+                    <p class="price">Price: £ </p>
+                    <p class="condition">Condition: </p>
+                </div>
+            </div>
+        </section>
+        </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><a href="#">Contact Us</a></p>
+        <p><a href="#">Terms and Conditions</a></p>
+    </footer>
+    
+    </body>
+</html>
