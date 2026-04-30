@@ -78,6 +78,8 @@ h1{
     font-size: 90px;
     margin-top: 10px;   
     margin-bottom: 5px
+    text-shadow: 0 0 40px rgba(100, 150, 255, 0.6);
+    letter-spacing: 4px;
 }
 
 h2{
