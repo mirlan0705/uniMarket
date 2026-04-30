@@ -43,3 +43,4 @@ indow.onload = function() {
     }
 
     animate();
+    };
