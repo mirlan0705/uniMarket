@@ -187,3 +187,10 @@ main {
 img{
     background-color:transparent;
 }
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+}
