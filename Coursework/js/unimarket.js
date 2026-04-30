@@ -76,7 +76,7 @@ function toggleMenu() {
     const overlay = document.getElementById("overlay");
 
     if (sidebar.style.left === "0px") {
-        sidebar.style.left = "-280px";
+        sidebar.style.left = "-322px";
         overlay.classList.remove('active');
     } else {
         sidebar.style.left = "0px";
