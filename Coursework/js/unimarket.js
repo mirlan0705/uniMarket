@@ -73,11 +73,14 @@ window.onload = function() {
 // open/close the sidebar menu
 function toggleMenu() {
     const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
 
     if (sidebar.style.left === "0px") {
         sidebar.style.left = "-280px";
+        overlay.classList.remove('active');
     } else {
         sidebar.style.left = "0px";
+        overlay.classList.add('active');
     }
 }
 
@@ -89,8 +92,13 @@ function toggleCategory(element) {
     const arrow = category.querySelector(".arrow-icon");
 
     if (category.classList.contains("active")) {
-        arrow.src = "images/arrowup.png";
+        arrow.src = "../images/arrowup.png";
     } else {
-        arrow.src = "images/arrowdown.png";
+        arrow.src = "../images/arrowdown.png";
     }
 }
+
+// nabar is loaded dynamically to allow for easier reuse across pages
+fetch('navbar.html')
+  .then(res => res.text())
+  .then(html => document.getElementById('navbar').innerHTML = html);
