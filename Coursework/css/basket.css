@@ -1,0 +1,346 @@
+.pagecontainer{
+    max-width:1600px;
+    padding: 5px 0px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*top bar*/
+.topbar{
+    display:flex;
+    align-items:center;
+    gap: 30px;
+}
+
+.logocontainer {
+    text-decoration: none; 
+    color: white;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.logocontainer a {
+    text-decoration: none; 
+} 
+
+.logo {
+    text-decoration: none; 
+    color: white;
+}
+
+a:hover .logo{
+    text-decoration: none;
+    opacity: 0.8;           
+}
+
+/* search container */
+.searchcontainer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin: 5px 0;
+}
+
+.searchcontainer form {
+    display: flex;
+    align-items: center;
+    background-color: white; 
+    border-radius: 25px;    
+    overflow: hidden;       
+    border: 1px solid #ccc; 
+    padding: 1px;           
+}
+
+.searchcontainer input {
+    height: 30px;          
+    width: 520px;
+    border: none;           
+    padding: 0 15px;
+    outline: none;          
+    font-size: 16px;
+}
+
+/* search button */
+.searchbtn{
+    height: 35px;
+    border: none;     
+    border-radius: 0 20px 20px 0;      
+    background-color: #f0f0f0; 
+    padding: 0 20px;
+    cursor: pointer;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    transition: background 0.2s;
+}
+
+/* Search glow when clicked */
+.searchcontainer form:focus-within {
+    box-shadow: 0 0 18px rgba(100, 150, 255, 0.5);
+    border-color: rgba(100, 150, 255, 0.5);
+}
+.searchbtn:hover {
+    background-color: #1a2148;
+    color: white;
+}
+
+/* right side buttons */
+.rightbuttons a{
+    font-size: 16px;
+    cursor:pointer;
+    text-decoration: none;  
+    color: white;         
+    margin: 0 10px;         
+    font-weight: normal;
+    align-items: center;
+
+    /* button styling */
+    border: 2px solid #ffffff;    
+    border-radius: 25px;          
+    padding: 8px 20px;           
+    background-color: transparent; 
+    transition: all 0.3s ease;    
+    display: inline-block;
+}
+
+.rightbuttons a:hover {
+    text-decoration: none;
+    background-color: white;
+    color: #1a2148;
+    opacity: 1;
+}
+
+.iconbuttons a{ 
+    color: white;         
+    margin: 0 10px;       
+    font-weight: normal;
+    align-items: center;
+}
+
+.iconbuttons a img {
+    width: 30px;   
+    height: 30px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.iconbuttons a:hover {
+    text-decoration: none;            
+    opacity: 0.7;
+}
+
+.category {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.arrowicon{
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.categories {
+    overflow-x: hidden;
+    overflow-y: visible; 
+}
+
+.categories ul {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    font-size: 18px;
+}
+
+.categorytitle {
+    display: inline-flex; 
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: white;
+    user-select: none; 
+}
+
+.subcategory {
+    display: none; 
+    position: absolute; 
+    top: 100%;                 
+    background-color: #1a2148; 
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 10px;
+    flex-direction: column; 
+    gap: 12px;              
+    min-width: 160px;     
+    z-index: 10000;
+}
+
+.subcategory li a {
+    text-decoration: none;
+    color: #ffffff; 
+    font-size: 16px; 
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+}
+
+.subcategory li a:hover {
+    color: #6f6f6f; 
+    opacity: 1; 
+}
+
+.subcategory.active {
+    display: flex ;
+}
+
+.category.active .subcategory{
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* All (Filter) Button */
+.allbtn{
+    height: 35px;
+    border: none;          
+    border-radius: 20px 0 0 20px; 
+    background-color: #f0f0f0; 
+    padding: 0 20px;
+    cursor: pointer;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    transition: background 0.2s;
+    cursor:pointer;
+}
+
+.allbtnicon {
+    width: 12px;  
+    height: 12px;
+    object-fit: contain;
+}
+
+h1{
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Futura', sans-serif;
+    font-size: 44px;
+    margin-bottom:15px;
+    text-shadow: 0 0 40px rgba(100, 150, 255, 0.6);
+    letter-spacing: 2px;
+}
+
+h2{
+    text-align: center;
+    font-family: 'Futura', sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase; 
+    font-weight: normal;
+}
+
+h3{
+    text-align: center;
+    font-family: 'Futura', sans-serif;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase; 
+    font-weight: normal;
+}
+
+.title {
+   margin: 0%;
+}
+
+.toolbar {
+    color: #ffffff;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items:center;
+    margin-bottom: 15px; 
+    gap: 799px;
+}
+
+/* search wishlist container */
+.searchwishlist{
+    display:flex;
+    align-items:center;
+    margin: 5px 100px 5px 0px;
+}
+
+
+.cardgrid {
+    display: grid;
+    place-items: center; 
+    flex-grow: 1;
+    height: 100%;
+}
+
+.card {
+    height: 200px;        
+    width: 600px;        
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    background: #ffffff;
+    border-radius: 15px;
+}
+
+.card:hover {
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+ 
+body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height:100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color:#1a2148;
+}
+
+header {
+    flex-shrink: 0;
+    border-bottom: 2px solid white;
+}
+
+main{
+    height: 400px;
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    min-height: 0;
+    background-color: #3e0e65;
+}
+
+footer{
+    flex-shrink: 0;
+    border-top: 2px solid white;
+    color: white;
+    text-align: center; 
+    display: flex;   
+    justify-content: center;
+    gap: 30px;   
+}
+
+footer a {
+    text-decoration: none;  
+    color: white;        
+}
+
+footer a:hover {
+    text-decoration: none;
+    opacity: 0.7;           
+}
+
+img{
+    background-color:transparent;
+}
