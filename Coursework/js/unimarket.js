@@ -102,7 +102,3 @@ function toggleCategory(element) {
 fetch('navbar.html')
   .then(res => res.text())
   .then(html => document.getElementById('navbar').innerHTML = html);
-
-// For sell now page
-// Photo upload
-
