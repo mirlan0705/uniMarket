@@ -29,6 +29,10 @@ a:hover .logo{
     text-align: center;
 }
 
+.logincard:hover {
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
 /* form inputs */
 .formrow{
     display:flex;
@@ -52,6 +56,25 @@ a:hover .logo{
 
 .loginform input:focus {
     border-color: #000;
+}
+
+input {
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+input:not(:placeholder-shown):invalid {
+  border: 2px solid #ff4d4d;
+}
+
+input:not(:placeholder-shown):valid {
+  border: 2px solid #4CAF50;
+}
+
+#errorMsg {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 /* links and text */
@@ -83,21 +106,25 @@ h1{
 
 h2{
     text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 30px;
-    margin-top: 5px;   
-    margin-bottom: 5px
+    font-family: 'Futura', sans-serif;
+    color: #000000;
+    font-size: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase; 
+    font-weight: normal;
 }
 
 /* buttons */
 .btncreate {
+    font-family: 'Futura', sans-serif;
+    font-weight: normal;
+    font-size: 15px;
     width: 100%;
     background: #000;
     color: #fff;
     padding: 12px;
     border: none;
     border-radius: 4px;
-    font-weight: bold;
     cursor: pointer;
     letter-spacing: 1px;
 }
@@ -147,9 +174,7 @@ h2{
     background: #f9f9f9;
 }
 
-.fa-apple { color: #000; }
 .fa-google {color: #bc0404;}
-.fa-facebook-f { color: #4267B2; }
 
 .centerwrapper {
     flex: 1;
@@ -163,8 +188,11 @@ body{
     flex-direction: column;
     margin: 0;
     min-height:100vh;
-    font-family: 'Inter', sans-serif;
-    background-color:#1a2148;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: #1a2148;
+    background: linear-gradient(180deg, #3e0e65 0%, #1a2148 100%);
+    background-attachment: fixed; 
+
 }
 
 footer{
@@ -192,4 +220,11 @@ main {
 
 img{
     background-color:transparent;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; 
 }
