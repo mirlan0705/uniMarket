@@ -1,3 +1,4 @@
+// added by bea
 // expand/collapse a category section and change the arrow icon direction (auto closes category)
 function toggleCategory(element) {
     const currentCategory = element.parentElement;
@@ -24,6 +25,8 @@ function toggleCategory(element) {
         currentArrow.src = "../images/arrowdown.png";
     }
 }
+
+// added by bea
 //set the heart as filled, toggle functonality
 function toggleWishlist(element) {
     element.classList.toggle('fa-solid');
