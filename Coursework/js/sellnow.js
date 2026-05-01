@@ -1,5 +1,5 @@
 
-
+// added by bea
 // stores all categories and their related subcategories (Items detail section)
 const subcategories = {
   "Computing & Technology": [
@@ -34,6 +34,7 @@ const subcategories = {
   ]
 };
 
+// added by bea
 // Handles subcategory dropdown based on selected category
 const categorySelect = document.getElementById("item-category");
 const subcategorySelect = document.getElementById("item-sub-category");
@@ -67,6 +68,7 @@ categorySelect.addEventListener("change", function () {
   }
 });
 
+// added by bea
 // expand/collapse a category section and change the arrow icon direction (auto closes category)
 function toggleCategory(element) {
     const currentCategory = element.parentElement;
