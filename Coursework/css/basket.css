@@ -137,10 +137,6 @@ a:hover .logo{
     position: relative;
 }
 
-.categories ul {
-    display: flex;
-}
-
 .arrowicon{
     width: 14px;
     height: 14px;
