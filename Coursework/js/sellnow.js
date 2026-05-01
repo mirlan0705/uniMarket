@@ -177,14 +177,11 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
     if (!category)                        return showToast('Please select a category.');
     if (!price || parseFloat(price) <= 0) return showToast('Please enter a valid price.');
 
-    //sending only the first picture for now 
-    const imageData = uploadedFiles.length > 0 ? await toBase64(uploadedFiles[0]) : '';
-
     try {
-        const res = await fetch('/listings', {
+        const res = await fetch('/api/listings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, price: parseFloat(price), description, category, image: imageData })
+            body: JSON.stringify({ title, price: parseFloat(price), description, category_id: parseInt(category) })
         });
  
         if (!res.ok) throw new Error('Server error');
@@ -200,40 +197,8 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
 
 });
 
-function toBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload  = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-    });
-}
 
-// Save draft
-document.getElementById('draft-btn').addEventListener('click', () => {
-    const draft = {
-        title:       document.getElementById('item-name').value,
-        description: document.getElementById('item-description').value,
-        category:    document.getElementById('item-category').value,
-        price:       document.getElementById('item-price').value
-    };
-    localStorage.setItem('sellnow_draft', JSON.stringify(draft));
-    showToast('Draft saved.', 'success');
+// Cancel form
+document.getElementById('cancel-btn').addEventListener('click', () => {
+    window.location.href = 'unimarket.html';
 });
-// Resotors draft 
-function restoreDraft() {
-    const saved = localStorage.getItem('sellnow_draft');
-    if (!saved) return;
-    try {
-        const draft = JSON.parse(saved);
-        if (draft.title)       document.getElementById('item-name').value        = draft.title;
-        if (draft.description) document.getElementById('item-description').value = draft.description;
-        if (draft.category)    document.getElementById('item-category').value    = draft.category;
-        if (draft.price)       document.getElementById('item-price').value       = draft.price;
-        showToast('Draft restored.', 'success');
-    } catch (e) {
-        console.warn('Could not restore draft:', e);
-    }
-}
- 
-document.addEventListener('DOMContentLoaded', restoreDraft);

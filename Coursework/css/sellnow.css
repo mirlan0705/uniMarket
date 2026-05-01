@@ -535,25 +535,20 @@ h4{
 }
  
 .upload-btn {
-    background: #1a2148;
+    background: transparent;
     color: white;
     border: 2px solid #ffffff99;
     order: 2;
 }
  
-.upload-btn:hover {
-    background: white;
-    color:#1a2148
-}
- 
-.draft-btn {
+.cancel-btn {
     background: transparent;
     color: white;
     transition: all 0.25s ease;
     border: 2px solid #ffffff99;
     order: 1;
 }
- 
+
 .upload-btn:hover, .cancel-btn:hover {  
     background: white;
     color: #1a2148;
