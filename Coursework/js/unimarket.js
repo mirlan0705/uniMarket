@@ -92,7 +92,7 @@ window.onload = function() {
             listings.forEach(item => {
                 grid.innerHTML += `
                     <div class="card">
-                        <img src="${item.image || '../images/asuslaptop.jpg'}" alt="${item.title}">
+                        <img src="${item.image || '/images/asuslaptop.jpg'}" alt="${item.title}">
                         <div class="card-info">
                             <div class="card-title">${item.title}</div>
                             <div class="card-price">£${item.price}</div>
@@ -126,9 +126,9 @@ function toggleCategory(element) {
     const arrow = category.querySelector(".arrow-icon");
 
     if (category.classList.contains("active")) {
-        arrow.src = "../images/arrowup.png";
+        arrow.src = "/images/arrowup.png";
     } else {
-        arrow.src = "../images/arrowdown.png";
+        arrow.src = "/images/arrowdown.png";
     }
 }
 
@@ -136,3 +136,8 @@ function toggleCategory(element) {
 fetch('navbar.html')
   .then(res => res.text())
   .then(html => document.getElementById('navbar').innerHTML = html);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 5ecc002 (connected the sellnow form to the listing)
