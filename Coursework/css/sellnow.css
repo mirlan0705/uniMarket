@@ -11,7 +11,7 @@
 .topbar{
     display:flex;
     align-items:center;
-    gap: 30px;
+    gap: 20px;
 }
 
 .logocontainer {
@@ -131,6 +131,7 @@ a:hover .logo{
 }
 
 .category {
+    text-align: center;
     flex-direction: column;
     align-items: center;
     position: relative;
@@ -144,11 +145,6 @@ a:hover .logo{
     filter: brightness(0) invert(1);
 }
 
-.categories {
-    overflow-x: hidden;
-    overflow-y: visible; 
-}
-
 .categories ul {
     color: #ffffff;
     display: flex;
@@ -159,26 +155,31 @@ a:hover .logo{
 }
 
 .categorytitle {
-    display: inline-flex; 
+    display: flex; 
     align-items: center;
     gap: 10px;
     cursor: pointer;
     color: white;
     user-select: none; 
+    transition: all 0.2s ease;
 }
 
 .subcategory {
-    display: none; 
-    position: absolute; 
-    top: 100%;                 
-    background-color: #1a2148; 
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;        
+    background-color: #1a2148;
     border-radius: 5px;
-    padding: 15px;
-    margin-top: 10px;
-    flex-direction: column; 
-    gap: 12px;              
-    min-width: 160px;     
-    z-index: 10000;
+    padding: 15px 0px 15px 0px;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    pointer-events: none;
 }
 
 .subcategory li a {
@@ -199,10 +200,16 @@ a:hover .logo{
 }
 
 .category.active .subcategory{
-    display: block;
+    display: flex;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+.category.active .categorytitle {
+    background-color: rgba(255, 255, 255, 0.1);  /* subtle highlight */
+    border-radius: 6px;
+    padding: 5px 10px;
 }
 
 /* All (Filter) Button */
@@ -290,6 +297,7 @@ h4{
     align-items: start;
 }
 
+
 .left-section,
 .right-section {
     display: flex;
@@ -302,6 +310,7 @@ h4{
     font-size: 18px;
     font-weight: 700;
     margin: 0 0 10px 0;
+    font-weight: normal;
 }
 
 .sell-card {
@@ -354,11 +363,12 @@ h4{
     flex-direction: column;
     gap: 14px;
     align-items: center;
+    height: 285px;
 }
  
 .photo-preview {
     width: 100%;
-    min-height: 160px;
+    min-height: 245px;
     border: 2px dashed #ccc;
     border-radius: 10px;
     padding: 10px;
@@ -456,44 +466,35 @@ h4{
 }
 
 /*Bottom Buttons*/
-.sell-actions {
+.sell-action {
     display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 32px;
+    align-items: center;     
+    justify-content: center; /* This centers them horizontally */
+    gap: 20px;
+    margin-top: 20px;        /* Added more space from the grid above */
+    width: 100%;             /* Ensures the container spans the full width*/
 }
-
-.upload-btn, .draft-btn {
-    padding: 12px 40px;
+ 
+.upload-btn, .cancel-btn {
+    padding: 10px 30px;
     border-radius: 25px;
     font-size: 15px;
     font-family: 'Gill Sans', Calibri, sans-serif;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-}
- 
-.upload-btn {
-    background: #1a2148;
-    color: white;
-    border: 2px solid #1a2148;
-    order: 2;
-}
- 
-.upload-btn:hover { opacity: 0.85; }
- 
-.draft-btn {
+    border: 2px solid #ffffff;
     background: transparent;
     color: white;
-    border: 2px solid rgba(255,255,255,0.6);
-    order: 1;
+    transition: all 0.25s ease;
 }
  
-.draft-btn:hover {
+.upload-btn:hover, .cancel-btn:hover {  
     background: white;
     color: #1a2148;
     border-color: white;
+    opacity: 0.85;
 }
+ 
 
 /* Button Styling */
 .continuebtn {
