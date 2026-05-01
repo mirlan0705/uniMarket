@@ -1,3 +1,4 @@
+// edited by mrln
 window.onload = function() {
 
     const canvas = document.getElementById('bg');
@@ -11,41 +12,74 @@ window.onload = function() {
         canvas.height = window.innerHeight;
     };
 
+    function starColor(mass) {
+        const t = Math.min(mass / 4, 1);
+        return [
+            Math.round(255 * (1 - t * 0.5)),
+            Math.round(150 * t),
+            255
+        ];
+    }
+
     let particles = [];
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 100; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             dx: (Math.random() - 0.5) * 1.5,
             dy: (Math.random() - 0.5) * 1.5,
-            size: Math.random() * 2 + 1
+            mass: Math.random() * 3 + 1
         });
     }
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        particles.forEach(p => {
-            p.x += p.dx;
-            p.y += p.dy;
+        for (const star of particles) {
+            for (const other of particles) {
+                if (star === other) continue;
 
-            // bounce off edges 
-            if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+                const dx = other.x - star.x;
+                const dy = other.y - star.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const force = 0.5 * other.mass / (distance * distance + 50);
+                const ax = force * dx / distance;
+                const ay = force * dy / distance;
+
+                star.dx += ax;
+                star.dy += ay;
+            }
+
+            star.x += star.dx;
+            star.y += star.dy;
+
+            if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
+            if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
+
+            const [r, g, b] = starColor(star.mass);
 
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(100, 150, 255, 0.8)';
+            ctx.arc(star.x, star.y, Math.max(2, star.mass), 0, Math.PI * 2);
+            ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
             ctx.fill();
-        });
+        }
 
         requestAnimationFrame(animate);
     }
 
     animate();
 
-    // -- grab listings and show them as cards --
-    fetch('/listings')
+    // block protected pages if not logged in
+    document.querySelectorAll('.protected-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (!localStorage.getItem('user')) {
+                e.preventDefault();
+                window.location.href = '/html/loginregister.html';
+            }
+        });
+    });
+
+    fetch('/api/listings')
         .then(res => res.json())
         .then(listings => {
             const grid = document.getElementById('listings');

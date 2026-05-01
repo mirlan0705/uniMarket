@@ -1,22 +1,23 @@
+// edited by mrln
+const path = require('path');
 const express = require('express');
+const cors = require('cors');
+const listingsRouter = require('./routes/listings');
+const authRouter = require('./routes/auth');
+
 const app = express();
-const db = require('./database');
+const PORT = 3000;
 
+app.use(cors());
 app.use(express.json());
-
 app.use(express.static('Coursework'));
-app.get('/', (req, res) => res.sendFile(__dirname + '/Coursework/html/unimarket.html'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.get('/listings', (req, res) => {
-    const listings = db.get('listings').value();
-    res.json(listings);
+app.get('/', (req, res) => res.redirect('/html/unimarket.html'));
+
+app.use('/api/listings', listingsRouter);
+app.use('/api/auth', authRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
-
-app.post('/listings', (req, res) => {
-    const { title, price, description, category, image } = req.body;
-    const newItem = { id: Date.now(), title, price, description, category, image };
-    db.get('listings').push(newItem).write();
-    res.json({ id: newItem.id });
-});
-
-app.listen(3000, () => console.log('Running on http://localhost:3000'));

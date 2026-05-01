@@ -1,7 +1,16 @@
+// edited by mrln
+const path = require('path');
 const Database = require('better-sqlite3');
-const db = new Database('unimarket.db');
+const db = new Database(path.join(__dirname, '../unimarket.db'));
 
 db.exec(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+  );
+
   CREATE TABLE IF NOT EXISTS categories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL

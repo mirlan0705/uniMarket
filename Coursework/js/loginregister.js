@@ -1,3 +1,4 @@
+// edited by mrln
 window.onload = function() {
 
     const canvas = document.getElementById('bg');
@@ -43,4 +44,27 @@ window.onload = function() {
     }
 
     animate();
-    };
+
+    document.querySelector('.loginform').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+
+        try {
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await res.json();
+            if (data.success) {
+                localStorage.setItem('user', JSON.stringify(data));
+                window.location.href = '/html/unimarket.html';
+            } else {
+                alert(data.error);
+            }
+        } catch {
+            alert('Could not connect to server. Make sure it is running.');
+        }
+    });
+};
