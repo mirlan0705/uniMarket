@@ -1,5 +1,4 @@
-// For sell now page
-// Photo upload
+
 
 // stores all categories and their related subcategories (Items detail section)
 const subcategories = {

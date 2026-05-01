@@ -136,8 +136,4 @@ function toggleCategory(element) {
 fetch('navbar.html')
   .then(res => res.text())
   .then(html => document.getElementById('navbar').innerHTML = html);
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 5ecc002 (connected the sellnow form to the listing)
+  
