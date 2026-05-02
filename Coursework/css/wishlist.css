@@ -349,7 +349,7 @@ h5{
 .toolbar {
     color: #ffffff;
     display: inline-flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items:center;
     margin-bottom: 15px; 
     gap: 650px;
@@ -360,7 +360,7 @@ h5{
 .searchwishlist{
     display:flex;
     align-items:center;
-    margin: 5px 100px 5px 0px;
+    margin: 5px 125px 5px 0px;
 }
 
 .searchwishlist form {
@@ -369,17 +369,18 @@ h5{
     background: #ffffff14;
     border: 1.5px solid #ffffff33;
     border-radius: 25px;
-    padding: 4px 6px;          
+    padding: 1px 1px;  
+    padding-left: 5px;        
 }
 
 .searchwishlist input {
-    height: 30px;
     width: 200px;
     border: none;
     background: transparent;
-    color: white;
     outline: none;
     font-size: 14px;
+    padding-left: 10px;
+    color: #ffffff;
     font-family: 'Gill Sans', Calibri, sans-serif;
 }
 
@@ -424,7 +425,7 @@ h5{
 .showselector {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    margin: 0 5px;
     background: #ffffff14;
     border: 1.5px solid #ffffff33;
     border-radius: 25px;
