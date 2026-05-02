@@ -116,15 +116,14 @@
     </header>
       
     <!-- Empty Item Section -->
-        <main>
-
+        <main> 
         <!-- Title Section -->
           <div class="titlesection">
            <h2 class="title">Wishlist Items</h2></a>
           </div>
 
-         <!-- Card -->
-            <section class="cardgrid">
+             <!-- Empty Wishlist Card -->
+            <section id="emptywishlist" class="cardgrid">
                <div class="card">
                 <!-- Heart Icon -->
                   <i class="fa-regular fa-heart hearticon"></i>
@@ -134,7 +133,87 @@
                   <a href="unimarket.html" class="continuebtn">Go Shopping</a>
                </div>
             </section>
-           
+
+        <!-- Tool search/filter Bar (hidden when empty)-->
+          <div id="toolbar" class="toolbar">
+            <!-- Search bar -->
+             <div class="searchwishlist">
+                <form action="/search">
+                   <input id="search" type="text" placeholder="Search your wishlist...">     
+                   <button class="searchbtn2" type="submit">Search</button>
+                </form>
+             </div>  
+
+             <!-- Filter bar Selector -->
+             <div class="filterbar">
+             <!-- Show Selector -->
+             <div class="showselector">
+                <label>Show :</label>
+                <select>
+                    <option> In Stock</option>
+                    <option> Out of Stock</option>
+                    <option> Purchased</option>
+                    <option> Unpurchased</option>
+                </select>
+            </div>
+
+            <!-- Sort Selector -->
+            <div class="sortselector">
+                <label>Sort by :</label>
+                <select>
+                    <option> Alphabetical Order</option>
+                    <option> Price: Low to High</option>
+                    <option> Price: High to Low</option>
+                    <option> Recently Added</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item Wishlist Section -->
+         <section id="productgrid" class="productgrid">
+            <div id="productcard" class="productcard">
+                <div class="imagecard">
+                    <img src="/images/macbookpro.jpg" alt="Product">
+                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h5>Macbook Pro 14 inch M5 pro chip, 1 TB SSD - Space Black</h5>
+                    <p class="price">Price: £ 2,199</p>
+                    <p class="condition">Condition: New</p>
+                    <!-- Add to Basket Button -->
+                     <button class="addtobasketbtn" onclick="addToBasket(this)">Add to Basket</button>
+                </div>
+            </div>
+
+            <div id="productcard" class="productcard">
+                <div  class="imagecard">
+                    <img src="/images/macbookair.jpeg" alt="Product">
+                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h5>Macbook Air 15 inch M5 chip, 256 GB SSD - Starlight</h5>
+                    <p class="price">Price: £ 1,299</p>
+                    <p class="condition">Condition: New</p>
+                     <!-- Add to Basket Button -->
+                     <button class="addtobasketbtn" onclick="addToBasket(this)">Add to Basket</button>
+                </div>
+            </div>
+
+             <div id="productcard" class="productcard">
+                <div class="imagecard">
+                    <img alt="Product Image">
+                    <i class="fa-solid fa-heart favoriteicon" onclick="toggleWishlist(this)"></i>
+                </div>
+                <div class="productinfo">
+                    <h5>Product Name</h5>
+                    <p class="price">Price: £ </p>
+                    <p class="condition">Condition: </p>
+                     <!-- Add to Basket Button -->
+                     <button class="addtobasketbtn" onclick="addToBasket(this)">Add to Basket</button>
+                </div>
+            </div>
+            </section>
         </main>
 
     <!-- Footer -->
