@@ -89,8 +89,9 @@
     left: -322px;
     width: 320px;
     height: 100%;
-    background-color: #3e0e65;
-    border-right: 2px solid white;
+    background: linear-gradient(180deg, #3e0e65 0%, #1a2148 100%);
+    background-attachment: fixed; 
+    border-right: 1px solid white;
     text-align: left;
     transition: 0.3s;
     overflow-x: hidden;
