@@ -1,4 +1,4 @@
-// handles wishlist display between empty wishlist and product grid based on whether any wishlist items exist. added by bea
+// handles wishlist display between empty wishlist and product grid based on whether any wishlist items exist added by bea
 function checkWishlist() {
   const products = document.querySelectorAll(".productcard");
   const emptywishlist = document.getElementById("emptywishlist");
@@ -51,7 +51,7 @@ function toggleWishlist(element) {
     element.classList.toggle('fa-regular');
 }
 
-// add to basket change button state
+// add to basket change button state added by bea
 function addToBasket(button) {
     button.classList.toggle("added");
 
