@@ -271,26 +271,20 @@ h4{
     margin-bottom: 10px;
 }
 
+h5{
+    text-align: center;
+    font-family: 'Futura', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 1px; 
+    font-weight: normal;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
 .title {
    margin: 0%;
 }
-
-.toolbar {
-    color: #ffffff;
-    display: inline-flex;
-    justify-content: flex-end;
-    align-items:center;
-    margin-bottom: 15px; 
-    gap: 799px;
-}
-
-/* search wishlist container */
-.searchwishlist{
-    display:flex;
-    align-items:center;
-    margin: 5px 100px 5px 0px;
-}
-
 
 .cardgrid {
     display: grid;
@@ -343,6 +337,244 @@ h4{
 
 .continuebtn:hover {
     background-color: #260045;
+}
+
+#emptywishlist {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.toolbar {
+    color: #ffffff;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items:center;
+    margin-bottom: 15px; 
+    gap: 650px;
+    width: 100%;
+}
+
+/* search wishlist container */
+.searchwishlist{
+    display:flex;
+    align-items:center;
+    margin: 5px 100px 5px 0px;
+}
+
+.searchwishlist form {
+    display: flex;
+    align-items: center;
+    background: #ffffff14;
+    border: 1.5px solid #ffffff33;
+    border-radius: 25px;
+    padding: 4px 6px;          
+}
+
+.searchwishlist input {
+    height: 30px;
+    width: 200px;
+    border: none;
+    background: transparent;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+}
+
+.searchwishlist input::placeholder {
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px;
+}
+
+/* search button */
+.searchbtn2 {
+    height: 30px;
+    border: none;
+    border-radius: 0 20px 20px 0; 
+    background: #ffffff14;
+    color: #ffffff;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+    transition: all 0.2s ease;
+}
+
+/* Search glow when clicked */
+.searchwishlist form:focus-within {
+    box-shadow: 0 0 18px rgba(100, 150, 255, 0.5);
+    border-color: rgba(100, 150, 255, 0.5);
+}
+
+.searchbtn2:hover {
+    background-color: #2a015614;
+    color: white;
+}
+
+/* filter bar  */
+
+/* show selector */
+.showselector label {
+    color: #ffffff;
+}
+
+.showselector {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #ffffff14;
+    border: 1.5px solid #ffffff33;
+    border-radius: 25px;
+    padding: 5px 8px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+}
+
+.showselector select {
+     background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+    cursor: pointer;
+}
+
+/* sort selector */
+.sortselector label {
+    color: #ffffff;
+    max-height: max-content;
+}
+
+.sortselector {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #ffffff14;
+    border: 1.5px solid #ffffff33;
+    border-radius: 25px;
+    padding: 5px 12px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+}
+
+.sortselector select {
+     background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+    cursor: pointer;
+}
+
+.productgrid {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 20px;
+}
+
+.productcard {
+    height: 420px;
+    width: 350px;
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.productcard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.imagecard {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagecard img {
+   max-width: 100%;
+   max-height: 100%;
+   object-fit: contain;
+}
+
+.favoriteicon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.favoriteicon:hover {
+    transform: scale(1.1);
+    color: #e74c3c;
+}
+
+.favoriteicon.fa-solid {
+    color: #e74c3c;
+}
+
+.productinfo {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.productinfo h3 {
+    font-family: 'Futura', sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.price, .condition {
+    font-family: 'Futura', sans-serif;
+    font-size: 15px;
+    margin: 2px 0;
+}
+
+.addtobasketbtn {
+    background-color: white;
+    color: #1a2148;
+    border: 2px solid #1a2148; 
+    font-family: 'Futura', sans-serif;
+    font-size: 15px;
+    border-radius: 25px;  
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-top: auto; 
+}
+
+.addtobasketbtn:hover {
+    background-color: #1a2148;;
+    color: white;
+    border: 2px solid #1a2148;
+}
+
+/* Add to basket state */
+.addtobasketbtn.added {
+    background-color: #1a2148;
+    color: white;
+    border: 2px solid #1a2148;
 }
  
 body{
