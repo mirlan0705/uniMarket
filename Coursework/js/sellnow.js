@@ -96,7 +96,7 @@ function toggleCategory(element) {
     }
 }
 
-// added by serine 
+// added by Serine 
 // Upload Photo
 const uploadInput  = document.getElementById('upload-photo');
 const photoPreview = document.getElementById('photo-preview');
