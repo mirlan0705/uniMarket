@@ -330,6 +330,189 @@ h3{
     background-color: #260045;
 }
  
+.basketcontainer {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.itemslist {
+    flex: 2;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.sectionlabel {
+    text-align: left !important;
+    margin-bottom: 20px;
+    color: #1a2148;
+}
+
+
+.itemcard {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    gap: 20px;
+}
+
+.itemimage img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.itemdetails {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.itemdetails h4 {
+    font-family: 'Futura', sans-serif;
+    font-weight: normal;
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.condition {
+    font-family: 'Futura', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+
+.itemactions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.actionbtn {
+    background: none;
+    font-family: 'Futura', sans-serif;
+    border: 1px solid #3e0e65;
+    padding: 5px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.actionbtn:hover {
+    background: #b62b0c;
+    color: white;
+    border: 1px solid #b62b0c;
+}
+
+
+.qtydisplay {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.qtydisplay label {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.qtyinput {
+    width: 40px;
+    height: 25px;
+    padding: 0 5px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #333;
+    background-color: #fafafa;
+    transition: all 0.2s ease; 
+    outline: none;
+}
+
+.qtyinput:focus {
+    border-color: #007bff; 
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.qtyinput:hover {
+    border-color: #bbb;
+}
+
+
+.qtyinput::-webkit-inner-spin-button, 
+.qtyinput::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+
+}
+
+.price {
+    font-family: 'Futura', sans-serif;
+    font-weight: bold;
+    margin-left: auto;
+    color: #1a2148;
+}
+
+.ordersummary {
+    flex: 1;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    position: sticky;
+    top: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.ordersummary h3 {
+    font-family: 'Futura', sans-serif;
+    font-weight: normal;
+    text-align: left;
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.summarydetails p {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.checkoutbtn {
+    display: block;
+    font-family: 'Futura', sans-serif;
+    text-align: center;
+    background: #000;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: normal;
+    margin-top: 20px;
+    transition: transform 0.2s;
+}
+
+.checkoutbtn:hover {
+    transform: scale(1.02);
+    background: #222;
+}
+
 body{
     height: 100%;
     display: flex;
