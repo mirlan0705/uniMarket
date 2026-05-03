@@ -1,6 +1,7 @@
 
 // added by Serine
 
+// category srodown dropdown menu
 function toggleCategory(element) {
     const currentCategory = element.parentElement;
     const allCategories = document.querySelectorAll(".category");

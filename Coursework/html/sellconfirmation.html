@@ -1,19 +1,18 @@
-
-<!-- added by Serine -->
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link href="../css/results.css" rel="stylesheet" type="text/css">
-    <link href="../css/unimarket.css" rel="stylesheet" type="text/css">
-    <script src="../js/results.js" defer></script>
+    <link href="/css/sellconfirmation.css" rel="stylesheet" type="text/css">
+    <script src="/js/sellconfirmation.js"></script>
     <title>UniMarket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
 
-    <body class="page-container">
+    <body class="pagecontainer">
         
+    <!-- Header -->
     <header>
      <div class="topbar">
        <div class="logocontainer">
@@ -26,7 +25,7 @@
                    <span>All</span>
                    <img src="/images/arrowdown.png" alt="dropdown" class="allbtnicon">
                    </button>
-                   <input id="search" type="text" placeholder="Search for items...">     
+                   <input id="search" type="text" placeholder="Search for items.">     
                    <button class="searchbtn" type="submit">Search</button>
                 </form>
              </div>  
@@ -82,7 +81,7 @@
                          <li><a href="#">Everyday Wear</a></li>
                          <li><a href="#">Outerwear & Jackets</a></li>
                          <li><a href="#">Formal & Event Wear</a></li>
-                         <li><a href="#">Sports Wear</a></li>
+                         <li><a href="#">Uni Merch & Sports</a></li>
                          <li><a href="#">Accessories</a></li>
                      </ul>
                 </li>
@@ -117,23 +116,38 @@
     </header>
 
     <main>
-        <!-- Sorting options -->
-        <div class="results-topbar">
-            <div class="sorting-options">
-                <span>Sort by:</span>
-                <select id="sortby">
-                    <option value="alphabetical-order">Alphabetical order</option>
-                    <option value="price-low-high">Price: Low to High</option>
-                    <option value="price-high-low">Price: High to Low</option>
-                    <option value="newest">Recently added</option>
-                </select>
+
+        <div class="confirmation-container">
+
+            <div class="confirm-icon">
+                <img src="/images/checkmark.png" alt="Confirmation Icon">
             </div>
+
+            <h2 class="confirm-title">Your product has been listed!</h2>
+            <p class="confirm_subtitle">Summary</p>
+
+            <div class="confirm-summary">
+                 <div class="confirm-image-wrap">
+                    <div class="confirm-image-placeholder">Product Image</div>
+                </div>
+
+                <div class="confirm-details">
+                    <p class="confirm-item-title" id="confirm-title"></p>
+                    <p><span class="confirm-label">Condition:</span> <span id="confirm-condition"></span></p>
+                    <p><span class="confirm-label">Price:</span> £ <span id="confirm-price"></span></p>
+                    <p><span class="confirm-label">Category:</span> <span id="confirm-category"></span></p>
+                </div>
+            </div>
+
+            <div class="confirm-actions">
+                <a href="/html/unimarket.html" class="confirm-btn-home">GO BACK HOME</a>
+            </div>
+            <div class="confirm-actions-secondary">
+                <a href="/mylistings" class="confirm-btn-secondary">VIEW MY LISTINGS</a>
+                <a href="/html/sellnow.html" class="confirm-btn-secondary">ADD ANOTHER ITEM</a>
+            </div>
+
         </div>
-
-        <!-- Results grid -->
-        <div class="listing-grid" id="results-grid"></div>
-
-        
     </main>
 
     <footer>
@@ -141,5 +155,5 @@
         <p><a href="#">Terms and Conditions</a></p>
     </footer>
     
-</body>
+    </body>
 </html>
