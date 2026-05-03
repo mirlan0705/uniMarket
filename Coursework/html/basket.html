@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link href="/css/basket.css" rel="stylesheet" type="text/css">
-    <script src="/js/wishlist.js"></script>
+    <script src="/js/basket.js"></script>
     <title>UniMarket</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
@@ -29,6 +29,7 @@
                    <button class="searchbtn" type="submit">Search</button>
                 </form>
              </div>  
+
        <!-- Right Buttons -->
        <div class="rightbuttons">
           <a href="loginregister.html">Log in / Register</a>
@@ -117,21 +118,41 @@
       
     <!-- Empty Item Section -->
         <main>
-
         <!-- Title Section -->
           <div class="titlesection">
-           <h2 class="title">Shopping Basket</h2></a>
+           <h2 class="title">Shopping Basket</h2>
           </div>
 
-         <!-- Card -->
-            <section class="cardgrid">
+         <!-- Empty Basket Card -->
+            <section id="emptybasket" class="cardgrid">
                <div class="card">
+                <!-- Basket Icon -->
                   <i class="fa-regular fa-basket-shopping basketicon"></i>
                   <h3>Your basket is empty</h3>
-                   <!-- Added the button here -->
+                   <!-- Continue shippping button-->
                   <a href="unimarket.html" class="continuebtn">Continue Shopping</a>
                </div>
             </section>
+
+    <!-- Item Basket List -->
+    <div id="basketcontent" class="basketcontainer" style="display: none;">
+        
+        <!-- Left Side (Items List) -->
+        <section id="basketitems" class="itemslist">
+            <h3  class="sectionlabel">Your items</h3>
+            <!-- Template of the list from JS -->
+        </section>
+
+        <!-- Right Side (Order Summary) -->
+        <aside class="ordersummary">
+            <h3>Order summary</h3>
+            <div class="summarydetails">
+                <p>Items: <span id="totalqty">0</span></p>
+                <p>Subtotal: <span id="subtotalprice">£ 0</span></p>
+            </div>
+            <a href="/html/checkout.html" class="checkoutbtn">Go to Checkout</a>
+        </aside>
+    </div>
            
         </main>
 
