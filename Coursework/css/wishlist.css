@@ -476,13 +476,14 @@ h5{
 
 .productgrid {
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    grid-auto-rows: auto;
 }
 
 .productcard {
     height: 420px;
-    width: 350px;
+    width: 100%;
     background: #ffffff;
     border: 1px solid #e1e1e1;
     border-radius: 10px;
@@ -576,6 +577,13 @@ h5{
     background-color: #1a2148;
     color: white;
     border: 2px solid #1a2148;
+}
+
+.pagination {
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+    align-items: center;
 }
  
 body{
