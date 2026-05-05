@@ -1,4 +1,4 @@
-// Added by Bea
+// added by bea
 // expand/collapse a category section and change the arrow icon direction (auto closes category)
 function toggleCategory(element) {
     const currentCategory = element.parentElement;
@@ -25,18 +25,10 @@ function toggleCategory(element) {
         currentArrow.src = "../images/arrowdown.png";
     }
 }
-// Added by Bea
-// List of items (Local Data for testing only)
-const basketData = [
-    {
-        id: 1,
-        name: "Macbook Pro 14 inch M5",
-        price: 2199,
-        img: "/images/macbookpro.jpg",
-        condition: "Brand New",
-        qty: 1
-    }
-]; 
+
+// List of items added by bea
+let basketData = JSON.parse(localStorage.getItem("basket")) || [];
+
 
 function renderBasket() {
     const emptyUI = document.getElementById('emptybasket');
@@ -95,7 +87,7 @@ function renderBasket() {
     subtotalLabel.innerText = "£ " + subtotal.toLocaleString();
 }
 
-// update quantity when user types in the input box & automatically recalculates subtotal and item count
+//update quantity when user types in the input box & automatically recalculates subtotal and item count
 function updateQty(id, newQty) {
     const item = basketData.find(i => i.id === id);
    if (item) {
@@ -116,7 +108,7 @@ function updateSummary() {
         runningSubtotal += (item.price * currentQty);
     });
 
-    // update the labels on the right
+    // Directly update the labels on the right
     const totalQtyLabel = document.getElementById('totalqty');
     const subtotalLabel = document.getElementById('subtotalprice');
     
@@ -127,10 +119,9 @@ function updateSummary() {
 // remove an item (switch to empty basket if last item is removed)
 function removeItem(id) {
     const index = basketData.findIndex(item => item.id === id);
-    // remove from array
     if (index !== -1) {
         basketData.splice(index, 1);
-        // refresh the UI so the item disappears and shows empty basket
+        localStorage.setItem("basket", JSON.stringify(basketData));
         renderBasket();
     }
 }
