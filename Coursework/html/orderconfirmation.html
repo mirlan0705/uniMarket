@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="/css/orderconfirmation.css" rel="stylesheet" type="text/css">
+    <script src="/js/orderconfirmation.js"></script>
+    <title>UniMarket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+
+    <body class="pagecontainer">
+        
+    <!-- Header -->
+    <header>
+     <div class="topbar">
+       <div class="logocontainer">
+         <a href="unimarket.html"><h1 class="logo">UniMarket</h1></a>
+       </div>
+        <!-- Search bar -->
+             <div class="searchcontainer">
+                <form action="/search">
+                   <button class="allbtn" type="button">
+                   <span>All</span>
+                   <img src="/images/arrowdown.png" alt="dropdown" class="allbtnicon">
+                   </button>
+                   <input id="search" type="text" placeholder="Search for items.">     
+                   <button class="searchbtn" type="submit">Search</button>
+                </form>
+             </div>  
+       <!-- Right Buttons -->
+       <div class="rightbuttons">
+          <a href="loginregister.html">Log in / Register</a>
+          <a href="sellnow.html" class="protected-link">Sell Now</a>
+       </div>
+
+       <!-- Right Icons -->
+       <div class="iconbuttons">
+          <a href="wishlist.html" class="protected-link">
+            <img src="/images/wishlist.png" alt="Wishlist"></a>
+          <a href="basket.html" class="protected-link">
+            <img src="/images/shoppingcart.png" alt="ShoppingCart"></a> 
+       </div>
+     </div>
+
+       <!-- Category Bar -->
+        <nav class="categories">
+             <ul>
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Computing & Technology</span>
+                      <img class="arrowicon" src="/images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                        <li><a href="#">Laptops/Computing</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Chargers</a></li>
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Study & Course Materials</span>
+                      <img class="arrowicon" src="/images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                       <li><a href="#">Textbooks</a></li>
+                       <li><a href="#">Stationery</a></li>
+                       <li><a href="#">Special Equipment</a></li> 
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Uni Style & Clothes</span>
+                      <img class="arrowicon" src="/images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                         <li><a href="#">Everyday Wear</a></li>
+                         <li><a href="#">Outerwear & Jackets</a></li>
+                         <li><a href="#">Formal & Event Wear</a></li>
+                         <li><a href="#">Uni Merch & Sports</a></li>
+                         <li><a href="#">Accessories</a></li>
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Home & Halls</span>
+                      <img class="arrowicon" src="/images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                         <li><a href="#">Kitchen</a></li>
+                         <li><a href="#">Bedroom</a></li>
+                         <li><a href="#">Lighting/Decor</a></li>
+                         <li><a href="#">Bathroom</a></li>
+                         <li><a href="#">Cleaning Supplies</a></li>
+                     </ul>
+                </li>
+
+                <li class="category">
+                  <div class="categorytitle" onclick="toggleCategory(this)">
+                      <span>Entertainment & Leisure</span>
+                      <img class="arrowicon" src="/images/arrowdown.png">
+                  </div>
+                     <ul class="subcategory">
+                         <li><a href="#">Gaming</a></li>
+                         <li><a href="#">Board Games & Puzzles</a></li>
+                         <li><a href="#">Musical Instruments</a></li>
+                     </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="confirmation-container">
+
+            <div class="confirm-icon">
+                <img src="/images/checkmark.png" alt="Confirmation Icon">
+            </div>
+
+            <h2 class="confirm-title">Thank you for your purchase!</h2>
+            <p id="shipping-info" class="confirm_shipping_info">Your order will ship in ... business days.</p>
+            <p class="confirm_subtitle">Summary</p>
+
+            <!-- Container for multiple items -->
+             <div id="purchase-items-list" class="purchase-items-list">
+        
+            </div>
+
+            <div class="confirm-total-section">
+            <p><strong>Total: £ <span id="confirm-total">0</span></strong></p>
+            </div>
+
+            <div class="confirm-actions">
+                <a href="/mylistings" class="confirm-btn-orders">VIEW MY ORDERS</a>
+                <a href="/html/unimarket.html" class="confirm-btn-home">GO BACK HOME</a>
+            </div>
+               
+            </div>
+    </main>
+
+    <footer>
+        <p><a href="#">Contact Us</a></p>
+        <p><a href="#">Terms and Conditions</a></p>
+    </footer>
+    </body>
+</html>
