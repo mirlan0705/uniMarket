@@ -27,7 +27,7 @@ function toggleCategory(element) {
 }
 
 // added by Bea
-// List of items 
+// List of items (Local Data for testing only)
 const wishlistData = [
     {
         id: 101,
@@ -79,8 +79,8 @@ function renderWishlist() {
         gridUI.innerHTML += itemHTML;
     });
 }
-
-    // Function to remove item when heart is toggled off added by bea
+    // Added by Bea
+    // Function to remove item when heart is toggled off 
     function removeFromWishlist(id) {
     //find the item in database (the array)
     const index = wishlistData.findIndex(item => item.id === id);
@@ -90,7 +90,6 @@ function renderWishlist() {
         const cardElement = document.getElementById(`item-${id}`);
         
         if (cardElement) {
-            // Apply the "Bea-added" fade-out style
             cardElement.style.opacity = '0';
             cardElement.style.transform = 'scale(0.9)';
             cardElement.style.transition = 'all 0.3s ease';
@@ -106,7 +105,7 @@ function renderWishlist() {
     }
 }
 
-// added by Bea
+// Added by Bea
 // add to basket change button state with undo functionality 
 function addToBasket(button) {
     const isAdded = button.classList.toggle("added");
@@ -120,7 +119,7 @@ function addToBasket(button) {
     }
 }
 
-// added by Bea
+// Added by Bea
 // toast message function
 function showToast(message, type = 'success') {
 
