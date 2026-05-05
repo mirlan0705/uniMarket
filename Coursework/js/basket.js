@@ -1,4 +1,4 @@
-// added by bea
+// Added by Bea
 // expand/collapse a category section and change the arrow icon direction (auto closes category)
 function toggleCategory(element) {
     const currentCategory = element.parentElement;
@@ -25,8 +25,8 @@ function toggleCategory(element) {
         currentArrow.src = "../images/arrowdown.png";
     }
 }
-
-// List of items added by bea
+// Added by Bea
+// List of items (Local Data for testing only)
 const basketData = [
     {
         id: 1,
@@ -95,7 +95,7 @@ function renderBasket() {
     subtotalLabel.innerText = "£ " + subtotal.toLocaleString();
 }
 
-//update quantity when user types in the input box & automatically recalculates subtotal and item count
+// update quantity when user types in the input box & automatically recalculates subtotal and item count
 function updateQty(id, newQty) {
     const item = basketData.find(i => i.id === id);
    if (item) {
@@ -116,7 +116,7 @@ function updateSummary() {
         runningSubtotal += (item.price * currentQty);
     });
 
-    // Directly update the labels on the right
+    // update the labels on the right
     const totalQtyLabel = document.getElementById('totalqty');
     const subtotalLabel = document.getElementById('subtotalprice');
     
@@ -126,7 +126,6 @@ function updateSummary() {
 
 // remove an item (switch to empty basket if last item is removed)
 function removeItem(id) {
-    // Find the position of the item with the matching ID
     const index = basketData.findIndex(item => item.id === id);
     // remove from array
     if (index !== -1) {
