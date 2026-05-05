@@ -175,11 +175,11 @@ function showToast(message, type = 'error') {
 
 // Uplaod 
 document.getElementById('upload-btn').addEventListener('click', async() => {
-    const title       = document.getElementById('item-name').value.trim();
-    const description = document.getElementById('item-description').value.trim();
-    const category    = document.getElementById('item-category').value;
-    const condition   = document.getElementById('item-condition').value;
-    const price       = document.getElementById('item-price').value;
+    const title          = document.getElementById('item-name').value.trim();
+    const description    = document.getElementById('item-description').value.trim();
+    const category       = document.getElementById('item-category').value;
+    const condition      = document.getElementById('item-condition').value;
+    const price          = document.getElementById('item-price').value;
 
     if (!title)                           return showToast('Please enter a name for your item.');
     if (!description)                     return showToast('Please add a description.');
@@ -192,14 +192,14 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
         const res = await fetch('/api/listings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, price: parseFloat(price), description, condition, category_id })
+            body: JSON.stringify({ title, price: parseFloat(price), description, condition, category_id: null }) // category_id is not handled in backend yet
         });
  
         if (!res.ok) throw new Error('Server error');
 
         const data = await res.json();
 
-        window.location.href = `/html/sellconfirm.html?id=${data.id}`;
+        window.location.href = `/html/sellconfirmation.html?id=${data.id}`;
  
     } catch (err) {
         console.error(err);

@@ -27,7 +27,7 @@ function toggleCategory(element) {
 
 // added by Serine
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async() => {
     const id = new URLSearchParams(window.location.search).get('id');
 
     const res      = await fetch('/api/listings');

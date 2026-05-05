@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link href="../css/results.css" rel="stylesheet" type="text/css">
-    <link href="../css/unimarket.css" rel="stylesheet" type="text/css">
     <script src="../js/results.js" defer></script>
     <title>UniMarket</title>
     </head>
@@ -21,12 +20,12 @@
        </div>
         <!-- Search bar -->
              <div class="searchcontainer">
-                <form action="/search">
+                <form action="results.html?q=">
                    <button class="allbtn" type="button">
                    <span>All</span>
                    <img src="/images/arrowdown.png" alt="dropdown" class="allbtnicon">
                    </button>
-                   <input id="search" type="text" placeholder="Search for items...">     
+                   <input id="search" type="text" name="q" placeholder="Search for items...">     
                    <button class="searchbtn" type="submit">Search</button>
                 </form>
              </div>  
