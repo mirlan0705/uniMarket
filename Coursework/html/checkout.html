@@ -19,10 +19,6 @@
         <!-- Search bar -->
              <div class="searchcontainer">
                 <form action="/search">
-                   <button class="allbtn" type="button">
-                   <span>All</span>
-                   <img src="/images/arrowdown.png" alt="dropdown" class="allbtnicon">
-                   </button>
                    <input id="search" type="text" placeholder="Search for items.">     
                    <button class="searchbtn" type="submit">Search</button>
                 </form>
@@ -115,7 +111,7 @@
 
     <main class="checkoutcontainer">
         <!-- Title Section -->
-           <h2 class="checkouttitle">Checkout</h2></a>
+           <h2 class="checkouttitle">Checkout</h2>
            <div class="checkoutgrid">
             <!-- Left Section -->
             <div class="checkoutleft">
@@ -127,36 +123,36 @@
                         <div class="inputgrid">
                             <div class="inputgroup">
                                 <label>First name:</label>
-                                <input type="text">
+                                <input id="firstname" type="text">
                             </div>
                             <div class="inputgroup">
                                 <label>Surname:</label>
-                                <input type="text">
+                                <input id="surname" type="text">
                             </div>
                             <div class="inputgroup">
                                 <label>Address Line:</label>
-                                <input type="text">
+                                <input id="addressline" type="text">
                             </div>
                             <div class="inputgroup">
                                 <label>Phone Number:</label>
-                                <input type="text">
+                                <input id="phone" type="tel" inputmode="tel" placeholder="+44 7123 456789 or 07123 456789"> 
                             </div>
                             <div class="inputgroup">
                                 <label>Postcode:</label>
-                                <input type="text">
+                                <input id="postcode" type="text">
                             </div>
                             <div class="inputgroup">
                                 <label>Country/Region:</label>
-                                <input type="text">
+                                <input id="country" type="text">
                             </div>
                             <div class="inputgroup">
                                 <label>Town/City:</label>
-                                <input type="text">
+                                <input id="city" type="text">
                             </div>
                         </div>
                         <div class="addressactions">
-                            <button class="btnprimary disabled">Add Address</button>
-                            <button class="btnsecondary disabled">Cancel</button>
+                            <button class="btnsecondary disabled" onclick="saveAddress()">Save Address</button>
+                            <button class="btntertiary clearaddressbtn disabled" onclick="clearSavedAddress()">Clear</button>
                         </div>
                     </div>
 
@@ -164,7 +160,7 @@
                         <p>Select your delivery options:</p>
                         <div class="deliverygrid">
                             <label class="deliverycard">
-                                <input type="radio" name="ship" checked>
+                                <input type="radio" name="ship" value="4.5" checked>
                                 <div class="deliveryinfo">
                                     <strong>Premium Shipping</strong>
                                     <span>+ £4.50 fee charge</span>
@@ -172,7 +168,7 @@
                                 </div>
                             </label>
                             <label class="deliverycard">
-                                <input type="radio" name="ship">
+                                <input type="radio" name="ship" value="0">
                                 <div class="deliveryinfo">
                                     <strong>Free Shipping</strong>
                                     <span>+ £0.00 free of charge</span>
@@ -186,15 +182,10 @@
                 <!-- Review -->
                 <section class="contentbox">
                     <h3 class="boxheader">Review your Items</h3>
-                    <div class="itemcard">
-                        <div class="itemimgbox">Product Image</div>
-                        <div class="itemdetails">
-                            <p>Product Name/Title</p>
-                            <p>Condition:</p>
-                            <p>Price: £</p>
-                        </div>
-                        <button class="deletebtn">🗑️</button>
-                    </div>
+                    <div class="reviewscroll">
+                     <div id="reviewitems"></div>
+                      <!--Review items card template from JS-->
+                     </div>
                 </section>
             </div>
 
@@ -205,23 +196,27 @@
                     <h3 class="boxheader">Payment Methods</h3>
                     <div class="paymentlist">
                         <label class="paymentrow">
-                            <input type="radio" name="pay"> Credit Card 
+                            <input type="radio" name="pay" value="Credit/Debit Card"> Credit/Debit Card 
                             <img src="/images/visa.png" alt="cards" class="paylogo">
                             <img src="/images/mastercard.png" alt="mastercard" class="paylogo">
                         </label>
                         <label class="paymentrow">
-                            <input type="radio" name="pay"> PayPal
+                            <input type="radio" name="pay" value="PayPal"> PayPal
                             <img src="/images/paypal.png" alt="paypal" class="paylogo">
                         </label>
                         <label class="paymentrow">
-                            <input type="radio" name="pay"> Apple Pay
+                            <input type="radio" name="pay" value="Apple Pay"> Apple Pay
                             <img src="/images/applepay.png" alt="apple" class="paylogo">
                         </label>
                         <label class="paymentrow">
-                            <input type="radio" name="pay"> Google Pay
+                            <input type="radio" name="pay" value="Google Pay"> Google Pay
                             <img src="/images/googlepay.png" alt="google" class="paylogo">
                         </label>
-                        <button class="btnsecondary savebtn disabled">Save</button>
+
+                        <div class="addressactions">
+                        <button class="btnsecondary savecardbtn disabled" onclick="saveCard()">Save Card</button>
+                        <button class="btntertiary clearcardbtn disabled" onclick="clearSavedCard()">Clear</button>
+                        </div>
                     </div>
                 </section>
 
@@ -229,22 +224,21 @@
                 <section class="contentbox">
                     <h3 class="boxheader">Order summary</h3>
                     <div class="summarydetails">
-                        <p>Items:</p>
-                        <p>Shipping fee:</p>
+                        <p>Items: <span id="summaryitems">0</span></p>
+                        <p>Shipping fee: £ <span id="summaryshipping">0.00</span></p>
                         <div class="totalline">
-                            <strong>Order Total:</strong>
+                            <strong>Order Total: £ <span id="summarytotal">0.00</span></strong>
                         </div>
-                        <button class="confirmbtn">Confirm and Pay</button>
+                        <button class="confirmbtn" onclick="validateCheckout()">Confirm and Pay</button>
                     </div>
                 </section>
             </div>
         </div>
-     </div>
     </main>
-
     <footer>
         <p><a href="#">Contact Us</a></p>
         <p><a href="#">Terms and Conditions</a></p>
     </footer>
+    <div id="toast" class="toast"></div>
 </body>
 </html>
