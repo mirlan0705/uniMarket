@@ -28,45 +28,33 @@ function toggleCategory(element) {
 
 // added by Bea
 // List of items purchased
-const purchasedItems = [
-    {
-        id: 1,
-        name: "Macbook Pro 14 inch M5",
-        price: 2199,
-        img: "/images/macbookpro.jpg",
-        condition: "Brand New",
-        category: "Computing & Technology"
-    },
-    {
-        id: 2,
-        name: "Wireless Headphones",
-        price: 420,
-        img: "/images/airpodsmax.jpg",
-        condition: "Used - Good",
-        category: "Computing & Technology"
-    }
-];
-
 function renderPurchaseConfirmation() {
     const container = document.getElementById("purchase-items-list");
+    const shippingOption = localStorage.getItem("shippingOption");
+    const shippingText = document.getElementById("shippinginfo");
     const totalLabel = document.getElementById("confirm-total");
 
-    container.innerHTML = ""; 
+    const purchasedItems =
+        JSON.parse(localStorage.getItem("orderItems")) || [];
+
+    container.innerHTML = "";
 
     let total = 0;
 
     purchasedItems.forEach(item => {
-        total += item.price;
+        const qty = item.qty || 1;
+        total += item.price * qty;
 
         const template = `
             <div class="confirm-summary">
                 <div class="confirm-image-wrap">
-                   <img src="${item.img}" alt="${item.name}">
+                    <img src="${item.img}" alt="${item.name}">
                 </div>
 
                 <div class="confirm-details">
                     <p class="confirm-item-title">${item.name}</p>
                     <p><span class="confirm-label">Condition:</span> ${item.condition}</p>
+                    <p><span class="confirm-label">Quantity:</span> ${qty}</p>
                     <p><span class="confirm-label">Price:</span> £ ${item.price}</p>
                     <p><span class="confirm-label">Category:</span> ${item.category}</p>
                 </div>
@@ -76,7 +64,15 @@ function renderPurchaseConfirmation() {
         container.innerHTML += template;
     });
 
-    totalLabel.innerText = total.toLocaleString();
+    if (shippingText) {
+        if (shippingOption === "4.5") {
+            shippingText.textContent = "Your order will ship in 1–2 business days.";
+        } else {
+            shippingText.textContent = "Your order will ship in 3–5 business days.";
+        }
+    }
+
+    totalLabel.innerText = total.toFixed(2);
 }
 
-window.onload = renderPurchaseConfirmation;
+window.addEventListener("DOMContentLoaded", renderPurchaseConfirmation);

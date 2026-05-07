@@ -35,6 +35,7 @@ let wishlistData = [
         price: 2199,
         img: "/images/macbookpro.jpg",
         condition: "New",
+        category: "Computing & Technology",
         createdAt: new Date("2026-05-01")
     },
     {
@@ -43,6 +44,7 @@ let wishlistData = [
         price: 1299,
         img: "/images/macbookair.jpeg",
         condition: "New",
+        category: "Computing & Technology",
         createdAt: new Date("2026-05-03")
     },
     {
@@ -51,6 +53,7 @@ let wishlistData = [
         price: 499,
         img: "/images/airpodsmax.jpg",
         condition: "New",
+        category: "Computing & Technology",
         createdAt: new Date("2026-05-05")
     }
 ];

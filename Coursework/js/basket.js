@@ -90,30 +90,33 @@ function renderBasket() {
 //update quantity when user types in the input box & automatically recalculates subtotal and item count
 function updateQty(id, newQty) {
     const item = basketData.find(i => i.id === id);
-   if (item) {
+
+    if (item) {
         let val = parseInt(newQty);
-        item.qty = (isNaN(val) || val <= 0) ? 1 : val; 
-        // update summary labels only
-        updateSummary();
+
+        item.qty = (isNaN(val) || val <= 0) ? 1 : val;
+
+        localStorage.setItem("basket", JSON.stringify(basketData));
+
+        updateBasketSummary();
     }
 }
 
-function updateSummary() {
-    let runningSubtotal = 0;
-    let totalPhysicalCount = 0;
+function updateBasketSummary() {
+    let subtotal = 0;
+    let totalQty = 0;
 
-    basketData.forEach((item) => {
-        const currentQty = item.qty || 0;
-        totalPhysicalCount += currentQty;
-        runningSubtotal += (item.price * currentQty);
+    basketData.forEach(item => {
+        const qty = item.qty || 1;
+        subtotal += item.price * qty;
+        totalQty += qty;
     });
 
-    // Directly update the labels on the right
     const totalQtyLabel = document.getElementById('totalqty');
     const subtotalLabel = document.getElementById('subtotalprice');
-    
-    if (totalQtyLabel) totalQtyLabel.innerText = totalPhysicalCount;
-    if (subtotalLabel) subtotalLabel.innerText = "£ " + runningSubtotal.toLocaleString();
+
+    if (totalQtyLabel) totalQtyLabel.innerText = totalQty;
+    if (subtotalLabel) subtotalLabel.innerText = "£ " + subtotal.toLocaleString();
 }
 
 // remove an item (switch to empty basket if last item is removed)
