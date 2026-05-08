@@ -1,5 +1,7 @@
+let allListings = [];
+
 // edited by mrln
-window.onload = function() {
+window.onload = function () {
 
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
@@ -7,7 +9,7 @@ window.onload = function() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    window.onresize = function() {
+    window.onresize = function () {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     };
@@ -79,30 +81,146 @@ window.onload = function() {
         });
     });
 
-    fetch('/api/listings')
-        .then(res => res.json())
-        .then(listings => {
-            const grid = document.getElementById('listings');
+    // search bar
+    const searchForm = document.querySelector('.searchcontainer form');
 
-            if (listings.length === 0) {
-                grid.innerHTML = '<p style="color:rgba(255,255,255,0.4); padding:10px;">Nothing listed yet.</p>';
-                return;
-            }
+    if (searchForm) {
 
-            listings.forEach(item => {
-                grid.innerHTML += `
-                    <div class="card">
-                        <img src="${item.image || '/images/asuslaptop.jpg'}" alt="${item.title}">
-                        <div class="card-info">
-                            <div class="card-title">${item.title}</div>
-                            <div class="card-price">£${item.price}</div>
-                            <div class="card-category">${item.category || 'General'}</div>
-                        </div>
-                    </div>
-                `;
-            });
+        searchForm.addEventListener('submit', (e) => {
+
+            e.preventDefault();
+
+            const q = (document.getElementById('search').value || '').trim();
+
+            window.location.href = `/html/results.html?q=${encodeURIComponent(q)}`;
         });
+    }
+
+    // render listings
+    function renderListings() {
+
+        const grid = document.getElementById('listings');
+
+        if (!grid) return;
+
+        if (allListings.length === 0) {
+
+            grid.innerHTML = `
+                <p style="color:rgba(255,255,255,0.4); padding:10px;">
+                    Nothing listed yet.
+                </p>
+            `;
+
+            return;
+        }
+
+        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        const basket = JSON.parse(localStorage.getItem('basket')) || [];
+
+        grid.innerHTML = allListings.map(item => {
+
+            const inWishlist = wishlist.includes(item.id);
+
+            const inBasket = basket.some(b => b.id === item.id);
+
+            return `
+                <div class="card">
+
+                    <div class="card-image">
+                        <img src="${item.image || '/images/no-image.jpg'}" alt="${item.title}">
+                        <button 
+                            class="heart-btn ${inWishlist ? 'saved' : ''}"
+                            onclick="event.stopPropagation(); toggleWishlist(${item.id})">
+                            ${inWishlist ? '&#9829;' : '&#9825;'}
+                        </button>
+                    </div>
+
+                    <div class="card-info">
+                        <div class="card-title">${item.title}</div>
+                        <div class="card-price">£${item.price}</div>
+                        <div class="card-category">
+                            ${item.category || 'General'}
+                        </div>
+                        <button 
+                            class="add-basket-btn ${inBasket ? 'added' : ''}"
+                            onclick="event.stopPropagation(); toggleBasket(${item.id})"
+                        >
+                            ${inBasket ? 'Added to Basket' : 'Add to Basket'}
+                        </button>
+                    </div>
+
+                </div>
+            `;
+        }).join('');
+    }
+
+    // fetch listings
+    function fetchAndRender() {
+
+        fetch('/api/listings')
+            .then(res => res.json())
+            .then(listings => {
+
+                allListings = listings;
+
+                renderListings();
+            })
+            .catch(err => {
+                console.error('Error loading listings:', err);
+            });
+    }
+
+    // make render function global
+    window.renderListings = renderListings;
+
+    fetchAndRender();
 };
+
+// toggle wishlist
+function toggleWishlist(id) {
+
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    const index = wishlist.indexOf(id);
+
+    if (index === -1) {
+        wishlist.push(id);
+    } else {
+        wishlist.splice(index, 1);
+    }
+
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+    renderListings();
+}
+
+// toggle basket
+function toggleBasket(id) {
+
+    const item = allListings.find(item => item.id === id);
+
+    if (!item) return;
+
+    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+
+    const index = basket.findIndex(b => b.id === id);
+
+    if (index === -1) {
+        basket.push({
+            id: item.id,
+            name: item.title,
+            price: item.price,
+            condition: item.condition,
+            img: item.image || '/images/no-image.jpg',
+            qty: 1
+        });
+    } else {
+        basket.splice(index, 1);
+    }
+    localStorage.setItem('basket', JSON.stringify(basket));
+
+    renderListings();
+}
 
 // open/close the sidebar menu
 function toggleMenu() {
@@ -132,8 +250,7 @@ function toggleCategory(element) {
     }
 }
 
-// nabar is loaded dynamically to allow for easier reuse across pages
+// navbar
 fetch('navbar.html')
-  .then(res => res.text())
-  .then(html => document.getElementById('navbar').innerHTML = html);
-  
+    .then(res => res.text())
+    .then(html => {document.getElementById('navbar').innerHTML = html;});

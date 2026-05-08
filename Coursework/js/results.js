@@ -28,25 +28,9 @@ function toggleCategory(element) {
     }
 }
 
-// TO DO:
-// add a function to GET wishlist "function getWishlist()" and to save wishlist "function saveWishlist(list)" to localStorage. 
-// add event listener to the heart icon to add/remove item from wishlist and update the localStorage accordingly.
-// Toggle heat icon. 
-
-// FETCH lisitngs from /api/lisitngs and store in a global variable "listings" to be used for sorting and filtering.
-
-// Read search query from URL (..?q=..)/ handle search form submission (prevent reload, update URL, re-render results). 
-
-// FILTER litings based on search query. keywords/mathch with title, description, and category. 
-
-// sorting functionality based on dropdown selection: alphabetical (title), price , most recent (id??) => re-render based on teh results.
-
-// each resulted card redirect to item details page with item id in URL (?id=...). 
-
-//ERROR HANDLING: if fetch fails, show error message. if no results, show "no results found".
-
 let allListings = [];
 
+// Fetch all listings once and store in memory, then render results from that without needing to re-fetch.
 async function fetchAndRender() {
     const grid = document.getElementById('results-grid');
     const query = new URLSearchParams(window.location.search).get('q') || '';
@@ -65,10 +49,12 @@ async function fetchAndRender() {
     renderResults(query);
 }
 
+// Filter and sort the already fetched listings, then render them to the page. 
 function renderResults(query) {
     const grid = document.getElementById('results-grid');
     let filtered = [...allListings];
 
+    // Basic search filter - checks if query is a substring of title, description, or category_id (case-insensitive)
     if (query) {
         const q=query.toLowerCase();
         filtered = filtered.filter(item =>
@@ -78,6 +64,7 @@ function renderResults(query) {
         );
     }
 
+    // Sorting 
     const sort = document.getElementById('sortby').value;
     if (sort === 'alphabetical-order') filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
     if (sort === 'price-low-high')     filtered.sort((a, b) => a.price - b.price);
@@ -90,26 +77,33 @@ function renderResults(query) {
         return;
     }
 
+    // Get wishlist and basket from localStorage to determine button states for eaach item. 
     const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const basket = JSON.parse(localStorage.getItem('basket')) || [];
 
+    // Render each listing as a card in the results grid. Buttons have event handlers to toggle wishlist/basket status without navigating away from the page. Clicking the card itself navigates to the item details page.
     grid.innerHTML = filtered.map(item => {
-        const saved = wishlist.some(w => w.id === item.id);
-        const fallbackImg = '/images/no-image.jpg';
+        const inWhishlist = wishlist.some(w => w.id === item.id);
+        const inBasket = basket.some(b => b.id === item.id);
         return `
-            <div class="result-card" onclick="window.location.href='/html/results.html?id=${item.id}'">
+            <div class="result-card" id="item-${item.id}" onclick="window.location.href='/html/results.html?id=${item.id}'">
                 <div class="result-card-img">
-                    <img src="${item.image || fallbackImg}" alt="${item.title}">
-                    <button class="heart-btn ${saved ? 'saved' : ''}"
+                    <img src="${item.image || '/images/no-image.jpg'}" alt="${item.title}">
+                    <button class="heart-btn ${inWhishlist ? 'saved' : ''}"
                         onclick="event.stopPropagation(); toggleWishlist(${item.id})"
-                        title="${saved ? 'Remove from wishlist' : 'Save to wishlist'}">
-                        ${saved ? '&#9829;' : '&#9825;'}
+                        title="${inWhishlist ? 'Remove from wishlist' : 'Save to wishlist'}">
+                        ${inWhishlist ? '&#9829;' : '&#9825;'}
                     </button>
                 </div>
                 <div class="result-card-info">
                     <div class="result-card-title">${item.title}</div>
                     <div class="result-card-price">£${Number(item.price).toLocaleString()}</div>
                     ${item.condition ? `<div class="result-card-ccategory">${item.condition}</div>` : ''}
-                    ${item.category_id ? `<div class="result-card-ccategory">${item.category_id}</div>` : ''}
+                    <button class="basket-btn ${inBasket ? 'added' : ''}"
+                        onclick="event.stopPropagation(); toggleBasket(${item.id})"
+                        title="${inBasket ? 'Remove from basket' : 'Add to basket'}">
+                        ${inBasket ? 'In Basket' : 'Add to Basket'}
+                    </button>
                 </div>
             </div>
         `;
@@ -133,6 +127,23 @@ function toggleWishlist(id) {
     renderResults(new URLSearchParams(window.location.search).get('q') || '');
 }
 
+function toggleBasket(id) {
+    const item = allListings.find(l => l.id === id);
+    if (!item) return;
+
+    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    const idx = basket.findIndex(b => b.id === id);
+
+    if (idx === -1) {
+        basket.push(item);
+    } else {
+        basket.splice(idx, 1);
+    }
+
+    localStorage.setItem('basket', JSON.stringify(basket));
+    renderResults(new URLSearchParams(window.location.search).get('q') || '');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchAndRender();
 
@@ -150,40 +161,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-
-
-// function renderResults(listings) {
-//     const container = document.getElementById('results-container');
-//     if (listings.length === 0) {
-//         container.innerHTML = '<p class="no-results">No results found.</p>';
-//         return;
-//     }
-
-//     container.innerHTML = listings.map(listing => `
-//         <div class="result-card">
-//             <img src="${listing.image}" alt="${listing.title}">
-//             <h3>${listing.title}</h3>
-//             <p>${listing.description}</p>
-//             <p>£${listing.price}</p>
-//         </div>
-//     `).join('');
-// }
-
-// function toggleWishlist(element, itemId) {
-//     element.classList.toggle('fa-solid');
-//     element.classList.toggle('fa-regular');
-
-//     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-//     const index = wishlist.indexOf(itemId);
-
-//     if (index > -1) {
-//         // already in wishlist — remove it
-//         wishlist.splice(index, 1);
-//     } else {
-//         // not in wishlist — add it
-//         wishlist.push(itemId);
-//     }
-
-//     localStorage.setItem('wishlist', JSON.stringify(wishlist));
-// }
