@@ -367,7 +367,7 @@ function clearSavedCard() {
         saveCardBtn.classList.remove("enabled");
     }
 
-    updateAddressButtons();
+    updateClearButtons(); 
     showToast("Saved card removed.");
 }
 
