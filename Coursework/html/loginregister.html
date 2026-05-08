@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link href="/css/loginregister.css" rel="stylesheet" type="text/css">
-    <script src="/js/loginregister.js"></script>
+    <script src="/js/loginregister.js" defer></script>
     <title>UniMarket</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
@@ -22,12 +22,13 @@
         <div class="centerwrapper">
         <main class="logincard">
             <h2>Welcome back,</h2>
-            <form action="#" class="loginform">
+            <form action="#" class="loginform" novalidate>
                 <div class="forminput">
                     <input type="email" placeholder="Email" required>
                 </div>
                 <div class="forminput">
                     <input type="password" placeholder="Password" required>
+                    <i id="togglePassword" class="fa fa-eye"></i>
                 </div>
                 
                 <div class="formlinks">
@@ -52,6 +53,6 @@
         <p><a href="#">Contact Us</a></p>
         <p><a href="#">Terms and Conditions</a></p>
     </footer>
-    
+        <div id="toastcontainer"></div>
     </body>
 </html>
