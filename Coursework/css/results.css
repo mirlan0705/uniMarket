@@ -11,7 +11,9 @@
 .topbar{
     display:flex;
     align-items:center;
+    justify-content: space-between;
     gap: 20px;
+    padding: 10px 20px 0 20px; 
 }
 
 .logocontainer {
@@ -37,6 +39,7 @@ a:hover .logo{
 
 /* search container */
 .searchcontainer{
+    flex: 1;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -61,6 +64,15 @@ a:hover .logo{
     outline: none;          
     font-size: 16px;
 }
+
+.navbottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -8px;
+    padding: 0 20px 8px 20px;
+}
+.nav-spacer{ width: 90px; }
 
 /* search button */
 .searchbtn{
@@ -111,11 +123,18 @@ a:hover .logo{
     opacity: 1;
 }
 
+/* icon buttons */
+.iconbuttons {
+    width: 90px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 18px;
+}
 .iconbuttons a{ 
     color: white;         
     margin: 0 10px;       
     font-weight: normal;
-    align-items: center;
 }
 
 .iconbuttons a img {
@@ -128,6 +147,12 @@ a:hover .logo{
 .iconbuttons a:hover {
     text-decoration: none;            
     opacity: 0.7;
+}
+
+.categories {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .category {
@@ -148,10 +173,12 @@ a:hover .logo{
 .categories ul {
     color: #ffffff;
     display: flex;
-    justify-content: center;
+    align-items: center;
     list-style: none;
     gap: 20px;
     font-size: 18px;
+    margin: 0;
+    padding: 0;
 }
 
 .categorytitle {
@@ -306,9 +333,10 @@ h3{
     color: white;
 }
 
-.listings-grid {
+/* results grid styles */
+.listing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 20px;
     padding: 20px;
 }
@@ -321,11 +349,14 @@ h3{
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
+    width : 100%;
+    max-width: 260px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .result-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.25);
 }
  
 .result-card-img {
@@ -360,7 +391,7 @@ h3{
     margin-bottom: 3px;
 }
  
-.result-card-ccategory {
+.result-card-category {
     font-size: 12px;
     color: #888;
     margin-top: 4px;
@@ -373,7 +404,7 @@ h3{
 }
 
 /* Add to Basket button */
-.add-basket-btn {
+.basket-btn {
     width: 100%;
     padding: 8px 0;
     margin-top: 4px;
@@ -388,8 +419,8 @@ h3{
     transition: all 0.2s;
 }
 
-.add-basket-btn:hover { background: #1a2148; color: white; }
-.add-basket-btn.added { background: #1a2148; color: white; }
+.basket-btn:hover { background: #1a2148; color: white; }
+.basket-btn.added { background: #1a2148; color: white; }
 
 /* Heart button */
 .heart-btn {
@@ -410,7 +441,10 @@ h3{
     font-size: 16px;
     color: #aaa;
     z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
+.result-card:hover .heart-btn { opacity: 1; }
  
 .heart-btn:hover {
     transform: scale(1.15);
