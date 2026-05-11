@@ -40,6 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSummary();
     updateAddressButtons();
     updateClearButtons();
+
+    // header search (redirect to results page)
+    const searchForm = document.querySelector(".searchcontainer form");
+
+    if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const q = (document.getElementById("search").value || "").trim();
+
+            window.location.href = `/html/results.html?q=${encodeURIComponent(q)}`;
+        });
+    }
+    
 });
 
 // render basket items
