@@ -10,10 +10,10 @@ router.get('/', (req, res) => {
 
 // POST a new listing
 router.post('/', (req, res) => {
-  const { title, description, price, condition, category_id } = req.body;
+  const { title, description, price, condition, image_url, category_id, subcategory_id } = req.body;
   const result = db.prepare(
-    'INSERT INTO listings (title, description, price, condition, category_id) VALUES (?, ?, ?, ?, ?)'
-  ).run(title, description, price, condition, category_id);
+    'INSERT INTO listings (title, description, price, condition, image_url, category_id, subcategory_id) VALUES (?, ?, ?, ?, ?, ?, ?)'
+  ).run(title, description, price, condition, image_url, category_id, subcategory_id);
   res.json({ id: result.lastInsertRowid });
 });
 
