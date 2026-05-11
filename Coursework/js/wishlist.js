@@ -257,6 +257,19 @@ function showToast(message, type = "success") {
     }, 3000);
 }
 
+// header search (redirect to results page)
 document.addEventListener("DOMContentLoaded", () => {
     applyFilters();
+
+    const searchForm = document.querySelector(".searchcontainer form");
+
+    if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const q = (document.getElementById("search").value || "").trim();
+
+            window.location.href = `/html/results.html?q=${encodeURIComponent(q)}`;
+        });
+    }
 });
