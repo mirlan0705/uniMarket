@@ -16,6 +16,12 @@ db.exec(`
     name TEXT NOT NULL
   );
 
+  CREATE TABLE IF NOT EXISTS subcategories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    category_id INTEGER REFERENCES categories(id)
+  );
+
   CREATE TABLE IF NOT EXISTS listings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
@@ -23,6 +29,7 @@ db.exec(`
     price REAL NOT NULL,
     condition TEXT,
     category_id INTEGER REFERENCES categories(id),
+    subcategory_id INTEGER REFERENCES subcategories(id),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 `);
