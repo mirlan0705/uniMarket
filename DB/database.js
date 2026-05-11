@@ -28,6 +28,7 @@ db.exec(`
     description TEXT,
     price REAL NOT NULL,
     condition TEXT,
+    image_url TEXT,
     category_id INTEGER REFERENCES categories(id),
     subcategory_id INTEGER REFERENCES subcategories(id),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
