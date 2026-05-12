@@ -85,6 +85,7 @@ function renderReviewItems() {
                     <p>Condition: ${item.condition}</p>
                     <p>Quantity: ${qty}</p>
                     <p>Price: £${item.price}</p>
+                    <p>Category: ${item.category_name}</p>
                 </div>
 
                 <button class="deletebtn" onclick="event.stopPropagation(); removeItem(${item.id})">
