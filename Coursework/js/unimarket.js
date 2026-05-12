@@ -4,6 +4,7 @@ let allListings = [];
 window.onload = function () {
 
     const canvas = document.getElementById('bg');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
     canvas.width = window.innerWidth;
@@ -23,6 +24,8 @@ window.onload = function () {
         ];
     }
 
+    let gradientAngle = 0;
+
     let particles = [];
     for (let i = 0; i < 100; i++) {
         particles.push({
@@ -30,40 +33,59 @@ window.onload = function () {
             y: Math.random() * canvas.height,
             dx: (Math.random() - 0.5) * 1.5,
             dy: (Math.random() - 0.5) * 1.5,
-            mass: Math.random() * 3 + 1
+            mass: Math.random() * 3 + 1,
+            twinkle: Math.random() * Math.PI * 2,
+            twinkleSpeed: 0.02 + Math.random() * 0.03
         });
     }
 
     function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        gradientAngle += 0.003;
+        const cx = canvas.width / 2 + Math.cos(gradientAngle) * canvas.width * 0.3;
+        const cy = canvas.height / 2 + Math.sin(gradientAngle) * canvas.height * 0.3;
+        const grad = ctx.createRadialGradient(cx, cy, 0, canvas.width / 2, canvas.height / 2, canvas.width * 0.9);
+        grad.addColorStop(0, '#0d0630');
+        grad.addColorStop(0.5, '#0a0a2e');
+        grad.addColorStop(1, '#000000');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+        // connection lines with pulse flash
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < 120) {
+                    const proximity = 1 - dist / 120;
+                    const flash = proximity > 0.85 ? 1 : proximity;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(150, 150, 255, ${1 - dist / 120})`;
+                    ctx.lineWidth = proximity > 0.85 ? 2 : 1;
+                    ctx.strokeStyle = `rgba(180, 160, 255, ${flash})`;
                     ctx.stroke();
+                    ctx.lineWidth = 1;
                 }
             }
         }
 
+        // particles with twinkle
         for (const star of particles) {
             star.x += star.dx;
             star.y += star.dy;
+            star.twinkle += star.twinkleSpeed;
 
             if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
             if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
 
+            const opacity = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(star.twinkle));
+            const radius = Math.max(2, star.mass) * (0.85 + 0.15 * Math.sin(star.twinkle));
             const [r, g, b] = starColor(star.mass);
 
             ctx.beginPath();
-            ctx.arc(star.x, star.y, Math.max(2, star.mass), 0, Math.PI * 2);
-            ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+            ctx.arc(star.x, star.y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
             ctx.fill();
         }
 
@@ -71,6 +93,17 @@ window.onload = function () {
     }
 
     animate();
+
+    // fade in listings section when scrolled into view
+    const listingsSection = document.querySelector('.listings-section');
+    if (listingsSection) {
+        new IntersectionObserver((entries, obs) => {
+            if (entries[0].isIntersecting) {
+                listingsSection.classList.add('visible');
+                obs.disconnect();
+            }
+        }, { threshold: 0.1 }).observe(listingsSection);
+    }
 
     // block protected pages if not logged in
     document.querySelectorAll('.protected-link').forEach(link => {

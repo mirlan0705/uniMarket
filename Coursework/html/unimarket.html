@@ -113,25 +113,28 @@
      </ul>
         </nav>
 
-        <main>
-             <!-- Logo -->
-             <div class="logo">
-               <h1>UniMarket</h1>
-             </div>
-
-             <!-- Search Bar -->
-             <div class="search-container">
-                <form action="results.html?q=">
-                   <input id="search" type="text" name="q" placeholder="Search for items.">     
-                   <button class="search-btn" type="submit">Search</button>
-                </form>
-             </div>
-
+        <main class="hero">
+            <div class="hero-content">
+                <h1>UniMarket</h1>
+                <p class="tagline">Buy things here</p>
+                <div class="search-container">
+                    <form action="results.html?q=">
+                        <input id="search" type="text" name="q" placeholder="Search for items.">
+                        <button class="search-btn" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll to browse</span>
+                <div class="scroll-arrow">&#8595;</div>
+            </div>
         </main>
 
     <!-- Listings -->
-    <p class="section-label">Browse Listings</p>
-    <div class="listings-grid" id="listings"></div>
+    <section class="listings-section">
+        <p class="section-label">Browse Listings</p>
+        <div class="listings-grid" id="listings"></div>
+    </section>
 
     <footer>
         <p><a href="#">Contact Us</a></p>
