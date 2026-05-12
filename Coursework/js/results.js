@@ -33,7 +33,10 @@ let allListings = [];
 // Fetch all listings once and store in memory, then render results from that without needing to re-fetch.
 async function fetchAndRender() {
     const grid = document.getElementById('results-grid');
-    const query = new URLSearchParams(window.location.search).get('q') || '';
+    //edited by Bea
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q') || '';
+    const sub = params.get('sub') || '';  
 
     const searchinput = document.getElementById('search');
     if (searchinput) searchinput.value = query;
@@ -46,13 +49,23 @@ async function fetchAndRender() {
         grid.innerHTML = '<p style="color:#ffffff99;padding:20px;grid-column:1/-1;">Could not load listings. Make sure the server is running.</p>';
         return;
     }
-    renderResults(query);
+    renderResults(query, sub);
 }
 
 // Filter and sort the already fetched listings, then render them to the page. 
-function renderResults(query) {
+function renderResults(query, sub) {
     const grid = document.getElementById('results-grid');
     let filtered = [...allListings];
+
+    if (sub) {
+    const s = sub.toLowerCase();
+
+    filtered = filtered.filter(item =>
+        (item.category_name || '').toLowerCase().includes(s) ||
+        (item.subcategory_name || '').toLowerCase().includes(s) ||
+        String(item.subcategory_id || '').includes(s)
+    );
+}
 
     // Basic search filter - checks if query is a substring of title, description, or category_id (case-insensitive)
     if (query) {
@@ -60,7 +73,8 @@ function renderResults(query) {
         filtered = filtered.filter(item =>
             (item.title || '').toLowerCase().includes(q) ||
             (item.description || '').toLowerCase().includes(q) ||
-            String(item.category_id || '').toLowerCase().includes(q)
+            (item.category_name || '').toLowerCase().includes(q) ||
+            (item.subcategory_name || '').toLowerCase().includes(q)
         );
     }
 
