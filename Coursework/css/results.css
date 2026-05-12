@@ -366,6 +366,7 @@ h3{
     align-items: center;
     overflow: hidden;
     background: #ffffff;
+    border-radius: 14px 14px 0 0; 
 }
 
 .result-card-img img {
