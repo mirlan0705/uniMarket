@@ -37,21 +37,22 @@ window.onload = function () {
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        for (const star of particles) {
-            for (const other of particles) {
-                if (star === other) continue;
-
-                const dx = other.x - star.x;
-                const dy = other.y - star.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const force = 0.5 * other.mass / (distance * distance + 50);
-                const ax = force * dx / distance;
-                const ay = force * dy / distance;
-
-                star.dx += ax;
-                star.dy += ay;
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(150, 150, 255, ${1 - dist / 120})`;
+                    ctx.stroke();
+                }
             }
+        }
 
+        for (const star of particles) {
             star.x += star.dx;
             star.y += star.dy;
 
