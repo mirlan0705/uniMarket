@@ -1,8 +1,7 @@
 
-// data for testing purposes only, not used in actual app
+// dummy data for testing purposes only
 const db = require('./DB/database.js');
 
-// Seed categories
 const listings = [
   { title: 'MacBook Pro 2021', description: 'Great condition, barely used', price: 800, condition: 'Used - Like New', image_url: '/images/macbookpro.jpg', category_id: 1, subcategory_id: 7 },
   { title: 'iPhone 13', description: 'Cracked screen but works fine', price: 250, condition: 'Used - Good', image_url: '/images/iphone-13.jpg', category_id: 1, subcategory_id: 7 },
