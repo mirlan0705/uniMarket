@@ -10,7 +10,7 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('Coursework'));
+app.use(express.static(__dirname)); 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/', (req, res) => res.redirect('/html/unimarket.html'));
