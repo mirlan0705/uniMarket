@@ -124,10 +124,10 @@ window.onload = function () {
             const inBasket = basket.some(b => b.id === item.id);
 
             return `
-                <div class="card">
+                <div class="card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
 
                     <div class="card-image">
-                        <img src="${item.image || '/images/no-image.jpg'}" alt="${item.title}">
+                        <img src="${item.image_url || '/images/no-image.jpg'}" alt="${item.title}">
                         <button 
                             class="heart-btn ${inWishlist ? 'saved' : ''}"
                             onclick="event.stopPropagation(); toggleWishlist(${item.id})">
@@ -211,7 +211,7 @@ function toggleBasket(id) {
             name: item.title,
             price: item.price,
             condition: item.condition,
-            img: item.image || '/images/no-image.jpg',
+            img: item.image_url || '/images/no-image.jpg',
             qty: 1
         });
     } else {

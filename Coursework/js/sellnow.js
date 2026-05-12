@@ -177,13 +177,16 @@ function showToast(message, type = 'error') {
 document.getElementById('upload-btn').addEventListener('click', async() => {
     const title          = document.getElementById('item-name').value.trim();
     const description    = document.getElementById('item-description').value.trim();
-    const category       = document.getElementById('item-category').value;
+    const category_id    = document.getElementById('item-category').value;
+    const subcategory_id = document.getElementById('item-sub-category').value;
+    const image_url      = uploadedFiles.length > 0 ? URL.createObjectURL(uploadedFiles[0]) : null; 
     const condition      = document.getElementById('item-condition').value;
     const price          = document.getElementById('item-price').value;
 
     if (!title)                           return showToast('Please enter a name for your item.');
     if (!description)                     return showToast('Please add a description.');
-    if (!category)                        return showToast('Please select a category.');
+    if (!category_id)                    return showToast('Please select a category.');
+    if (!subcategory_id)                 return showToast('Please select a subcategory.');
     if (!condition)                       return showToast('Please select a condition.');
     if (!price || parseFloat(price) <= 0) return showToast('Please enter a valid price.');
 
@@ -192,7 +195,7 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
         const res = await fetch('/api/listings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, price: parseFloat(price), description, condition, category_id: null }) // category_id is not handled in backend yet
+            body: JSON.stringify({ title, price: parseFloat(price), description, condition, category_id, subcategory_id, image_url })
         });
  
         if (!res.ok) throw new Error('Server error');

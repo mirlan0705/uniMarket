@@ -86,9 +86,9 @@ function renderResults(query) {
         const inWhishlist = wishlist.some(w => w.id === item.id);
         const inBasket = basket.some(b => b.id === item.id);
         return `
-            <div class="result-card" id="item-${item.id}" onclick="window.location.href='/html/results.html?id=${item.id}'">
+            <div class="result-card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
                 <div class="result-card-img">
-                    <img src="${item.image || '/images/no-image.jpg'}" alt="${item.title}">
+                    <img src="${item.image_url || '/images/no-image.jpg'}" alt="${item.title}">
                     <button class="heart-btn ${inWhishlist ? 'saved' : ''}"
                         onclick="event.stopPropagation(); toggleWishlist(${item.id})"
                         title="${inWhishlist ? 'Remove from wishlist' : 'Save to wishlist'}">
@@ -98,7 +98,7 @@ function renderResults(query) {
                 <div class="result-card-info">
                     <div class="result-card-title">${item.title}</div>
                     <div class="result-card-price">£${Number(item.price).toLocaleString()}</div>
-                    ${item.condition ? `<div class="result-card-ccategory">${item.condition}</div>` : ''}
+                    ${item.condition ? `<div class="result-card-condition">${item.condition}</div>` : ''}
                     <button class="basket-btn ${inBasket ? 'added' : ''}"
                         onclick="event.stopPropagation(); toggleBasket(${item.id})"
                         title="${inBasket ? 'Remove from basket' : 'Add to basket'}">
@@ -135,7 +135,14 @@ function toggleBasket(id) {
     const idx = basket.findIndex(b => b.id === id);
 
     if (idx === -1) {
-        basket.push(item);
+        basket.push({
+            id:        item.id,
+            name:      item.title,
+            price:     item.price,
+            condition: item.condition,
+            img:       item.image_url || '/images/no-image.jpg',
+            qty:       1
+        });
     } else {
         basket.splice(idx, 1);
     }
