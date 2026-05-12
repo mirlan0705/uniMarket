@@ -279,6 +279,12 @@ h3{
     margin: 5px 100px 5px 0px;
 }
 
+#emptybasket {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
 
 .cardgrid {
     display: grid;
