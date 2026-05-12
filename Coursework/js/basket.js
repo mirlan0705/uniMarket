@@ -61,16 +61,17 @@ function renderBasket() {
         
         // html template for every item in the list
         const template = `
-            <div class="itemcard">
+            <div class="itemcard" onclick="goToProduct(${item.id})">
                 <div class="itemimage"><img src="${item.image_url}"></div>
                 <div class="itemdetails">
                     <h4>${item.title}</h4>
                     <p class="condition">Condition: ${item.condition}</p>
                     <div class="itemactions">
-                        <button class="actionbtn" onclick="removeItem(${item.id})">Remove Item</button>
+                        <button class="actionbtn" onclick="event.stopPropagation(); removeItem(${item.id})">Remove Item</button>
                          <div class="qtydisplay">
                            <label>Quantity:</label>
                               <input type="number" class="qtyinput" value="${currentQty}" min="1" 
+                               onclick="event.stopPropagation()" 
                                oninput="updateQty(${item.id}, this.value)"
                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                          </div>
@@ -127,6 +128,11 @@ function removeItem(id) {
         localStorage.setItem("basket", JSON.stringify(basketData));
         renderBasket();
     }
+}
+
+// redirects the product page for the specific item
+function goToProduct(id) {
+    window.location.href = `/html/product.html?id=${id}`;
 }
 
 // header search (redirect to results page)
