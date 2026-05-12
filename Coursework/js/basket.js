@@ -62,9 +62,9 @@ function renderBasket() {
         // html template for every item in the list
         const template = `
             <div class="itemcard">
-                <div class="itemimage"><img src="${item.img}"></div>
+                <div class="itemimage"><img src="${item.image_url}"></div>
                 <div class="itemdetails">
-                    <h4>${item.name}</h4>
+                    <h4>${item.title}</h4>
                     <p class="condition">Condition: ${item.condition}</p>
                     <div class="itemactions">
                         <button class="actionbtn" onclick="removeItem(${item.id})">Remove Item</button>
