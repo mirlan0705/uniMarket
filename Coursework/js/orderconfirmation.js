@@ -48,15 +48,15 @@ function renderPurchaseConfirmation() {
         const template = `
             <div class="confirm-summary">
                 <div class="confirm-image-wrap">
-                    <img src="${item.img}" alt="${item.name}">
+                    <img src="${item.image_url}" alt="${item.title}">
                 </div>
 
                 <div class="confirm-details">
-                    <p class="confirm-item-title">${item.name}</p>
+                    <p class="confirm-item-title">${item.title}</p>
                     <p><span class="confirm-label">Condition:</span> ${item.condition}</p>
                     <p><span class="confirm-label">Quantity:</span> ${qty}</p>
                     <p><span class="confirm-label">Price:</span> £ ${item.price}</p>
-                    <p><span class="confirm-label">Category:</span> ${item.category}</p>
+                    <p><span class="confirm-label">Category:</span> ${item.category_name}</p>
                 </div>
             </div>
         `;
