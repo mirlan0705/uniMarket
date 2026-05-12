@@ -27,36 +27,7 @@ function toggleCategory(element) {
 }
 
 // added by Bea
-// List of items (Local data for testing only)
-let wishlistData = [
-    {
-        id: 101,
-        name: "Macbook Pro 14 inch M5 pro chip, 1 TB SSD - Space Black",
-        price: 2199,
-        img: "/images/macbookpro.jpg",
-        condition: "New",
-        category: "Computing & Technology",
-        createdAt: new Date("2026-05-01")
-    },
-    {
-        id: 102,
-        name: "Macbook Air 15 inch M5 chip, 256 GB SSD - Starlight",
-        price: 1299,
-        img: "/images/macbookair.jpeg",
-        condition: "New",
-        category: "Computing & Technology",
-        createdAt: new Date("2026-05-03")
-    },
-    {
-        id: 103,
-        name: "Airpods Max 2 - Space Grey",
-        price: 499,
-        img: "/images/airpodsmax.jpg",
-        condition: "New",
-        category: "Computing & Technology",
-        createdAt: new Date("2026-05-05")
-    }
-];
+let wishlistData = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 let currentSearch = "";
 let currentSort = "Recently Added";
@@ -99,14 +70,14 @@ function renderWishlist(data) {
         gridUI.innerHTML += `
             <div class="productcard" id="item-${item.id}">
                 <div class="imagecard">
-                    <img src="${item.img}" alt="${item.name}">
+                    <img src="${item.image_url}" alt="${item.title}">
                     <i class="fa-solid fa-heart favoriteicon"
                        onclick="event.stopPropagation(); removeFromWishlist(${item.id})">
                     </i>
                 </div>
 
                 <div class="productinfo">
-                    <h5>${item.name}</h5>
+                    <h5>${item.title}</h5>
                     <p class="price">Price: £ ${Number(item.price).toLocaleString()}</p>
                     <p class="condition">Condition: ${item.condition}</p>
 
@@ -147,10 +118,12 @@ function applyFilters() {
     let filtered = [...wishlistData];
 
     if (currentSearch) {
-        filtered = filtered.filter(item =>
-            item.name.toLowerCase().includes(currentSearch)
-        );
-    }
+    filtered = filtered.filter(item =>
+        (item.title || item.name || "")
+            .toLowerCase()
+            .includes(currentSearch)
+    );
+}
 
     if (currentSort === "Recently Added") {
         filtered.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
@@ -165,7 +138,7 @@ function applyFilters() {
     }
 
     if (currentSort === "Alphabetical Order") {
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
+    filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
     }
 
     renderWishlist(filtered);
