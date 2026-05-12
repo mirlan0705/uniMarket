@@ -360,6 +360,7 @@ h3{
     padding: 15px;
     margin-bottom: 15px;
     gap: 20px;
+    cursor: pointer;
 }
 
 .itemimage img {
