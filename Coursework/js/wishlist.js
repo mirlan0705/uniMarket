@@ -68,24 +68,27 @@ function renderWishlist(data) {
 
     data.forEach(item => {
         gridUI.innerHTML += `
-            <div class="productcard" id="item-${item.id}">
-                <div class="imagecard">
-                    <img src="${item.image_url}" alt="${item.title}">
-                    <i class="fa-solid fa-heart favoriteicon"
-                       onclick="event.stopPropagation(); removeFromWishlist(${item.id})">
-                    </i>
-                </div>
+             <div class="productcard" id="item-${item.id}"
+         onclick="goToProduct(${item.id})">
 
-                <div class="productinfo">
-                    <h5>${item.title}</h5>
-                    <p class="price">Price: £ ${Number(item.price).toLocaleString()}</p>
-                    <p class="condition">Condition: ${item.condition}</p>
+        <div class="imagecard">
+            <img src="${item.image_url}" alt="${item.title}">
+            <i class="fa-solid fa-heart favoriteicon"
+               onclick="event.stopPropagation(); removeFromWishlist(${item.id})">
+            </i>
+        </div>
 
-                    <button class="addtobasketbtn" onclick="addToBasket(this)">
-                        Add to Basket
-                    </button>
-                </div>
-            </div>
+        <div class="productinfo">
+            <h5>${item.title}</h5>
+            <p class="price">Price: £ ${Number(item.price).toLocaleString()}</p>
+            <p class="condition">Condition: ${item.condition}</p>
+
+            <button class="addtobasketbtn"
+                onclick="event.stopPropagation(); addToBasket(this)">
+                Add to Basket
+            </button>
+        </div>
+    </div>
         `;
     });
   syncBasketButtons();
@@ -210,6 +213,12 @@ function addToBasket(button) {
     localStorage.setItem("basket", JSON.stringify(basket));
 
     syncBasketButtons();
+}
+
+// added by Bea
+// redirects the product page for the specific item
+function goToProduct(id) {
+    window.location.href = `/html/product.html?id=${id}`;
 }
 
 // added by Bea
