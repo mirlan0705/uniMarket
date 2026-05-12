@@ -127,7 +127,7 @@ window.onload = function () {
                 <div class="card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
 
                     <div class="card-image">
-                        <img src="${item.image_url || '/images/no-image.jpg'}" alt="${item.title}">
+                        <img src="${item.image_url || '/images/no-image.png'}" alt="${item.title}">
                         <button 
                             class="heart-btn ${inWishlist ? 'saved' : ''}"
                             onclick="event.stopPropagation(); toggleWishlist(${item.id})">
@@ -181,10 +181,16 @@ function toggleWishlist(id) {
 
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    const index = wishlist.indexOf(id);
+    const index = wishlist.findIndex(w => w.id === id);
 
     if (index === -1) {
-        wishlist.push(id);
+        wishlist.push({
+            id:        item.id,
+            title:     item.title,
+            price:     item.price,
+            condition: item.condition,
+            image_url: item.image_url || '/images/no-image.png'
+        });
     } else {
         wishlist.splice(index, 1);
     }
@@ -207,11 +213,11 @@ function toggleBasket(id) {
 
     if (index === -1) {
         basket.push({
-            id: item.id,
-            name: item.title,
-            price: item.price,
-            condition: item.condition,
-            img: item.image_url || '/images/no-image.jpg',
+            id:         item.id,
+            title:      item.title,
+            price:      item.price,
+            condition:  item.condition,
+            image_url:  item.image_url || '/images/no-image.png',
             qty: 1
         });
     } else {

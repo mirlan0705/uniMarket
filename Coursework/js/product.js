@@ -135,10 +135,10 @@ async function loadProduct() {
             if (idx === -1) {
                 list.push({
                     id:        item.id,
-                    name:      item.title,
+                    title:     item.title,
                     price:     item.price,
                     condition: item.condition,
-                    img:       item.image_url || '/images/no-image.jpg',
+                    image_url: item.image_url || '/images/no-image.png',
                     qty:       1
                 });
             } else {
