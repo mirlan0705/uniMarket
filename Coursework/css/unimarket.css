@@ -95,6 +95,7 @@
     text-align: left;
     transition: 0.3s;
     overflow-x: hidden;
+    z-index: 1000;
 }
 
 /* sidebar menu header*/
@@ -347,7 +348,6 @@ img{
     font-size: 20px;
     padding: 20px 30px 0;
     max-width: 1400px;
-    
     margin: auto;
     letter-spacing: 2px;
     text-transform: uppercase;
