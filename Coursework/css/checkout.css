@@ -518,6 +518,7 @@ h4{
     color: black;
     position: relative;
     border: 2px solid #ccc;
+    cursor: pointer;
 }
 
 .reviewscroll {
