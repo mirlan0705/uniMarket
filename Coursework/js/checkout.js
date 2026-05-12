@@ -28,7 +28,7 @@ function toggleCategory(element) {
 
 // added by Bea
 // load data items from basket page 
-const basketData = JSON.parse(localStorage.getItem("basket")) || [];
+let basketData = JSON.parse(localStorage.getItem("basket")) || [];
 
 document.addEventListener("DOMContentLoaded", () => {
     loadSavedAddress();
@@ -75,7 +75,7 @@ function renderReviewItems() {
         const qty = item.qty || 1;
 
         const html = `
-            <div class="itemcard">
+            <div class="itemcard" onclick="goToProduct(${item.id})">
                 <div class="itemimgbox">
                     <img src="${item.image_url}" alt="${item.title}" />
                 </div>
@@ -87,7 +87,7 @@ function renderReviewItems() {
                     <p>Price: £${item.price}</p>
                 </div>
 
-                <button class="deletebtn" onclick="removeItem(${item.id})">
+                <button class="deletebtn" onclick="event.stopPropagation(); removeItem(${item.id})">
                 <img src="/images/bin.png" alt="delete">
                 </button>
             </div>
@@ -155,6 +155,9 @@ function removeItem(id) {
     if (index !== -1) {
         basketData.splice(index, 1);
         localStorage.setItem("basket", JSON.stringify(basketData));
+
+        // sync with storage
+        basketData = JSON.parse(localStorage.getItem("basket")) || [];
 
         // if empty after removal → redirect
         if (basketData.length === 0) {
@@ -412,6 +415,11 @@ function updateClearButtons() {
             clearCardBtn.classList.remove("enabled");
         }
     }
+}
+
+// redirects the product page for the specific item
+function goToProduct(id) {
+    window.location.href = `/html/product.html?id=${id}`;
 }
 
 //toast function
