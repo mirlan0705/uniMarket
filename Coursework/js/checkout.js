@@ -77,11 +77,11 @@ function renderReviewItems() {
         const html = `
             <div class="itemcard">
                 <div class="itemimgbox">
-                    <img src="${item.img}" alt="${item.name}" />
+                    <img src="${item.image_url}" alt="${item.title}" />
                 </div>
 
                 <div class="itemdetails">
-                    <p><strong>${item.name}</strong></p>
+                    <p><strong>${item.title}</strong></p>
                     <p>Condition: ${item.condition}</p>
                     <p>Quantity: ${qty}</p>
                     <p>Price: £${item.price}</p>
