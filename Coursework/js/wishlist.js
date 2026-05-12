@@ -162,10 +162,15 @@ document.addEventListener("change", (e) => {
 
 // added by Bea
 // function to remove item when heart is toggled off 
-    function removeFromWishlist(id) {
+function removeFromWishlist(id) {
 
-    const index = wishlistData.findIndex(item => item.id === id);
-    if (index === -1) return;
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    wishlist = wishlist.filter(item => item.id !== id);
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+    wishlistData = wishlist; // update memory state too
 
     const card = document.getElementById(`item-${id}`);
 
@@ -176,10 +181,9 @@ document.addEventListener("change", (e) => {
     }
 
     setTimeout(() => {
-        wishlistData.splice(index, 1);
-        applyFilters(); // ONLY THIS
+        applyFilters();
     }, 300);
-}  
+}
 
 // added by Bea
 // add to basket change button state with undo functionality 
