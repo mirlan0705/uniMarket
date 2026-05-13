@@ -97,6 +97,7 @@ async function loadProduct() {
         });
         document.getElementById('product-condition').textContent    = item.condition || '—';
         document.getElementById('product-description').textContent  = item.description || 'No description provided.';
+        document.getElementById('product-category').textContent  = item.category_name || 'Undefined.';
         document.title = `${item.title} — UniMarket`;
 
         // Build image gallery (single image for now )
