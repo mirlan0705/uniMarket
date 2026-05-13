@@ -97,16 +97,16 @@ function renderResults(query, sub) {
 
     // Render each listing as a card in the results grid. Buttons have event handlers to toggle wishlist/basket status without navigating away from the page. Clicking the card itself navigates to the item details page.
     grid.innerHTML = filtered.map(item => {
-        const inWhishlist = wishlist.some(w => w.id === item.id);
+        const inWishlist = wishlist.some(w => w.id === item.id);
         const inBasket = basket.some(b => b.id === item.id);
         return `
             <div class="result-card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
                 <div class="result-card-img">
                     <img src="${item.image_url || '/images/no-image.png'}" alt="${item.title}">
-                    <button class="heart-btn ${inWhishlist ? 'saved' : ''}"
+                    <button class="heart-btn ${inWishlist ? 'saved' : ''}"
                         onclick="event.stopPropagation(); toggleWishlist(${item.id})"
-                        title="${inWhishlist ? 'Remove from wishlist' : 'Save to wishlist'}">
-                        ${inWhishlist ? '&#9829;' : '&#9825;'}
+                        title="${inWishlist ? 'Remove from wishlist' : 'Save to wishlist'}">
+                        ${inWishlist ? '&#9829;' : '&#9825;'}
                     </button>
                 </div>
                 <div class="result-card-info">
@@ -138,8 +138,14 @@ function toggleWishlist(id) {
     }
 
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    renderResults(new URLSearchParams(window.location.search).get('q') || '');
+    const params = new URLSearchParams(window.location.search);
+
+    renderResults(
+    params.get('q') || '',
+    params.get('sub') || ''
+    );
 }
+
 
 function toggleBasket(id) {
     const item = allListings.find(l => l.id === id);
@@ -162,14 +168,25 @@ function toggleBasket(id) {
     }
 
     localStorage.setItem('basket', JSON.stringify(basket));
-    renderResults(new URLSearchParams(window.location.search).get('q') || '');
+    const params = new URLSearchParams(window.location.search);
+
+    renderResults(
+    params.get('q') || '',
+    params.get('sub') || ''
+    );
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchAndRender();
 
     document.getElementById('sortby').addEventListener('change', () => {
-        renderResults(new URLSearchParams(window.location.search).get('q') || '');
+        const params = new URLSearchParams(window.location.search);
+
+        renderResults(
+        params.get('q') || '',
+        params.get('sub') || ''
+       );
     });
 
     // Intercept header search form so it navigates to results page with query

@@ -21,10 +21,6 @@
         <!-- Search bar -->
              <div class="searchcontainer">
                 <form action="results.html?q=">
-                   <button class="allbtn" type="button">
-                   <span>All</span>
-                   <img src="/images/arrowdown.png" alt="dropdown" class="allbtnicon">
-                   </button>
                    <input id="search" type="text" name="q" placeholder="Search for items...">     
                    <button class="searchbtn" type="submit">Search</button>
                 </form>
@@ -49,10 +45,10 @@
                         <img class="arrowicon" src="/images/arrowdown.png">
                     </div>
                         <ul class="subcategory">
-                            <li><a href="#">Laptops/Computing</a></li>
-                            <li><a href="#">Audio</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Chargers</a></li>
+                        <li><a href="/html/results.html?sub=Laptops/Computing">Laptops/Computing</a></li>
+                        <li><a href="/html/results.html?sub=Audio">Audio</a></li>
+                        <li><a href="/html/results.html?sub=9">Accessories</a></li>
+                        <li><a href="/html/results.html?sub=Chargers">Chargers</a></li>
                         </ul>
                     </li>
 
@@ -62,9 +58,9 @@
                         <img class="arrowicon" src="/images/arrowdown.png">
                     </div>
                         <ul class="subcategory">
-                        <li><a href="#">Textbooks</a></li>
-                        <li><a href="#">Stationery</a></li>
-                        <li><a href="#">Special Equipment</a></li> 
+                       <li><a href="/html/results.html?sub=Textbooks">Textbooks</a></li>
+                       <li><a href="/html/results.html?sub=Stationery">Stationery</a></li>
+                       <li><a href="/html/results.html?sub=Special Equipment">Special Equipment</a></li> 
                         </ul>
                     </li>
 
@@ -74,11 +70,11 @@
                         <img class="arrowicon" src="/images/arrowdown.png">
                     </div>
                         <ul class="subcategory">
-                            <li><a href="#">Everyday Wear</a></li>
-                            <li><a href="#">Outerwear & Jackets</a></li>
-                            <li><a href="#">Formal & Event Wear</a></li>
-                            <li><a href="#">Sports Wear</a></li>
-                            <li><a href="#">Accessories</a></li>
+                         <li><a href="/html/results.html?sub=Everyday Wear">Everyday Wear</a></li>
+                         <li><a href="/html/results.html?sub=Outerwear & Jackets">Outerwear & Jackets</a></li>
+                         <li><a href="/html/results.html?sub=Formal & Event Wear">Formal & Event Wear</a></li>
+                         <li><a href="/html/results.html?sub=Uni Merch & Sports">Uni Merch & Sports</a></li>
+                         <li><a href="/html/results.html?sub=18">Accessories</a></li>
                         </ul>
                     </li>
 
@@ -88,11 +84,11 @@
                         <img class="arrowicon" src="/images/arrowdown.png">
                     </div>
                         <ul class="subcategory">
-                            <li><a href="#">Kitchen</a></li>
-                            <li><a href="#">Bedroom</a></li>
-                            <li><a href="#">Lighting/Decor</a></li>
-                            <li><a href="#">Bathroom</a></li>
-                            <li><a href="#">Cleaning Supplies</a></li>
+                         <li><a href="/html/results.html?sub=Kitchen">Kitchen</a></li>
+                         <li><a href="/html/results.html?sub=Bedroom">Bedroom</a></li>
+                         <li><a href="/html/results.html?sub=Lighting/Decor">Lighting/Decor</a></li>
+                         <li><a href="/html/results.html?sub=Bathroom">Bathroom</a></li>
+                         <li><a href="/html/results.html?sub=Cleaning Supplies">Cleaning Supplies</a></li>
                         </ul>
                     </li>
 
@@ -102,9 +98,9 @@
                         <img class="arrowicon" src="/images/arrowdown.png">
                     </div>
                         <ul class="subcategory">
-                            <li><a href="#">Gaming</a></li>
-                            <li><a href="#">Board Games & Puzzles</a></li>
-                            <li><a href="#">Musical Instruments</a></li>
+                         <li><a href="/html/results.html?sub=Gaming">Gaming</a></li>
+                         <li><a href="/html/results.html?sub=Board Games & Puzzles">Board Games & Puzzles</a></li>
+                         <li><a href="/html/results.html?sub=Musical Instruments">Musical Instruments</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -121,8 +117,12 @@
 
 
     <main>
+         <div class="titlesection">
+           <h2 class="title">Product Details</h2></a>
+          </div>
+
         <div class="product-layout">
-            
+            <div class="product-main">
             <div class="gallery">
                 <div class="main-image-wrap">
                     <img id="main-image" src="/images/macbookpro.jpg" alt="Product Image">
@@ -144,12 +144,14 @@
 
             <div class="details">
                 <h2 class="product-title" id="product-title">loading...</h2>
-                <p class="product-price"><strong>Price:</strong>£<span id="product-price"></span></p>
+                <p class="product-price"><strong>Price: </strong>£<span id="product-price"></span></p>
                 <p class="product-condition"><strong>Condition:</strong> <span id="product-condition"></span></p>
+                <p class="product-category"><strong>Category:</strong> <span id="product-category"></span></p>
                 <div class="product-desc-section">
                     <h3 class="desc-heading">Description</h3>
                     <p class="product-desc" id="product-description"></p>
                 </div>
+            </div>
             </div>
 
             <div class="purchase">

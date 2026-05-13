@@ -171,7 +171,7 @@ window.onload = function () {
 
         grid.innerHTML = allListings.map(item => {
 
-            const inWishlist = wishlist.includes(item.id);
+            const inWishlist = wishlist.some(w => w.id === item.id);
 
             const inBasket = basket.some(b => b.id === item.id);
 
@@ -191,7 +191,7 @@ window.onload = function () {
                         <div class="card-title">${item.title}</div>
                         <div class="card-price">£${item.price}</div>
                         <div class="card-category">
-                            ${item.category || 'General'}
+                            ${item.category_name || 'General'}
                         </div>
                         <button 
                             class="add-basket-btn ${inBasket ? 'added' : ''}"
@@ -229,7 +229,10 @@ window.onload = function () {
 };
 
 // toggle wishlist
-function toggleWishlist(id) {
+ function toggleWishlist(id) {
+
+    const item = allListings.find(item => item.id === id);
+    if (!item) return;
 
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
@@ -237,9 +240,9 @@ function toggleWishlist(id) {
 
     if (index === -1) {
         wishlist.push({
-            id:        item.id,
-            title:     item.title,
-            price:     item.price,
+            id: item.id,
+            title: item.title,
+            price: item.price,
             condition: item.condition,
             image_url: item.image_url || '/images/no-image.png'
         });

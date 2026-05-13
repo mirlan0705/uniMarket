@@ -191,7 +191,7 @@ a:hover .logo{
 }
 
 .subcategory li a:hover {
-    color: #6f6f6f; 
+    color: rgba(191, 210, 253, 0.6);
     opacity: 1; 
 }
 
@@ -283,7 +283,7 @@ h5{
 }
 
 h6{
-text-align: center;
+    text-align: center;
     font-family: 'Futura', sans-serif;
     color: #ffffff;
     font-size: 20px;
