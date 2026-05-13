@@ -1,7 +1,7 @@
 .pagecontainer{
     max-width:1600px;
     padding: 5px 0px;
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -532,23 +532,18 @@ body{
 
 header {
     flex-shrink: 0;
-    border-bottom: 2px solid white;
 }
 
 main{
-    height: 400px;
     flex-grow: 1;
     padding: 20px;
-    overflow-y: auto;
-    min-height: 0;
     background: #1a2148;
     background: linear-gradient(180deg, #3e0e65 0%, #1a2148 100%);
-    background-attachment: fixed; 
+    background-attachment: fixed;
 }
 
 footer{
     flex-shrink: 0;
-    border-top: 2px solid white;
     color: white;
     text-align: center; 
     display: flex;   

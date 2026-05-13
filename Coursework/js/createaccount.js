@@ -21,7 +21,7 @@ document.getElementById('createform').addEventListener('submit', async (e) => {
 
         const data = await res.json();
         if (data.success) {
-            window.location.href = '../html/loginregister.html';
+            window.location.href = '/html/loginregister.html';
         } else {
             document.getElementById('errorMsg').textContent = data.error;
         }
