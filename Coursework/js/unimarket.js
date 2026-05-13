@@ -173,7 +173,7 @@ window.onload = function () {
                         <div class="card-title">${item.title}</div>
                         <div class="card-price">£${item.price}</div>
                         <div class="card-category">
-                            ${item.category || 'General'}
+                            ${item.category_name || 'General'}
                         </div>
                         <button 
                             class="add-basket-btn ${inBasket ? 'added' : ''}"
