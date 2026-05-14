@@ -1,19 +1,25 @@
 .pagecontainer{
     max-width:1600px;
     padding: 5px 0px;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+body {
+    scrollbar-width: none;
+}
+
+
 /*top bar*/
 .topbar{
     display:flex;
     align-items:center;
-    justify-content: space-between;
     gap: 20px;
-    padding: 10px 20px 0 20px; 
 }
 
 .logocontainer {
@@ -39,8 +45,6 @@ a:hover .logo{
 
 /* search container */
 .searchcontainer{
-    min-width: 0;
-    flex: 1;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -66,15 +70,6 @@ a:hover .logo{
     font-size: 16px;
 }
 
-.navbottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: -8px;
-    padding: 0 20px 8px 20px;
-}
-.nav-spacer{ width: 90px; }
-
 /* search button */
 .searchbtn{
     height: 35px;
@@ -99,11 +94,6 @@ a:hover .logo{
 }
 
 /* right side buttons */
-.rightbuttons{
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
 .rightbuttons a{
     font-size: 16px;
     cursor:pointer;
@@ -129,18 +119,11 @@ a:hover .logo{
     opacity: 1;
 }
 
-/* icon buttons */
-.iconbuttons {
-    width: 90px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 18px;
-}
 .iconbuttons a{ 
     color: white;         
     margin: 0 10px;       
     font-weight: normal;
+    align-items: center;
 }
 
 .iconbuttons a img {
@@ -153,12 +136,6 @@ a:hover .logo{
 .iconbuttons a:hover {
     text-decoration: none;            
     opacity: 0.7;
-}
-
-.categories {
-    flex: 1;
-    display: flex;
-    justify-content: center;
 }
 
 .category {
@@ -179,11 +156,10 @@ a:hover .logo{
 .categories ul {
     color: #ffffff;
     display: flex;
-    align-items: center;
+    justify-content: center;
     list-style: none;
     gap: 20px;
     font-size: 18px;
-    margin: 0;
 }
 
 .categorytitle {
@@ -223,7 +199,7 @@ a:hover .logo{
 }
 
 .subcategory li a:hover {
-    color: rgba(191, 210, 253, 0.6);
+    color: #6f6f6f; 
     opacity: 1; 
 }
 
@@ -567,14 +543,11 @@ header {
 }
 
 main{
-    height: 400px;
     flex-grow: 1;
     padding: 20px;
-    overflow-y: auto;
-    min-height: 0;
     background: #1a2148;
     background: linear-gradient(180deg, #3e0e65 0%, #1a2148 100%);
-    background-attachment: fixed; 
+    background-attachment: fixed;
 }
 
 footer{
