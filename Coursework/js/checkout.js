@@ -27,8 +27,11 @@ function toggleCategory(element) {
 }
 
 // added by Bea
-// load data items from basket page 
-let basketData = JSON.parse(localStorage.getItem("basket")) || [];
+// load data items from basket page
+const isBuyNow = new URLSearchParams(window.location.search).get('buynow') === 'true';
+let basketData = isBuyNow
+    ? (JSON.parse(localStorage.getItem('buynow')) || [])
+    : (JSON.parse(localStorage.getItem('basket')) || []);
 
 document.addEventListener("DOMContentLoaded", () => {
     loadSavedAddress();
@@ -64,12 +67,12 @@ function renderReviewItems() {
 
     container.innerHTML = "";
 
-   if (basketData.length === 0) {
-    setTimeout(() => {
-        window.location.href = "/html/basket.html";
-    }, 300);
-    return;
-}
+    if (basketData.length === 0) {
+        setTimeout(() => {
+            window.location.href = isBuyNow ? "/html/unimarket.html" : "/html/basket.html";
+        }, 300);
+        return;
+    }
 
     basketData.forEach(item => {
         const qty = item.qty || 1;
@@ -444,8 +447,12 @@ function showToast(message) {
     setTimeout(() => {
         toast.classList.remove("show");
         if (message === "Order confirmed.") {
-            localStorage.removeItem("basket"); 
-            window.location.href = "/html/orderconfirmation.html"; 
+            if (isBuyNow) {
+                localStorage.removeItem("buynow");
+            } else {
+                localStorage.removeItem("basket");
+            }
+            window.location.href = "/html/orderconfirmation.html";
         }
     }, 2500);
 }
