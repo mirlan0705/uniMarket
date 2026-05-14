@@ -646,6 +646,7 @@ header {
 }
 
 main{
+    height: 400px;
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
@@ -654,6 +655,7 @@ main{
     background: linear-gradient(180deg, #3e0e65 0%, #1a2148 100%);
     background-attachment: fixed; 
 }
+
 
 footer{
     flex-shrink: 0;
