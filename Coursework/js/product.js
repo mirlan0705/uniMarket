@@ -134,6 +134,20 @@ async function loadProduct() {
             updateWishlistUI(idx === -1);
         });
 
+        // Buy It Now
+        document.querySelector('.buy-btn').addEventListener('click', () => {
+            const qty = parseInt(document.getElementById('qty-input')?.value) || 1;
+            localStorage.setItem('buynow', JSON.stringify([{
+                id:        item.id,
+                title:     item.title,
+                price:     item.price,
+                condition: item.condition,
+                image_url: images[0] || '/images/no-image.png',
+                qty
+            }]));
+            window.location.href = '/html/checkout.html?buynow=true';
+        });
+
         // Basket toggle
         document.getElementById('basket-btn').addEventListener('click', () => {
             let list = getBasket();

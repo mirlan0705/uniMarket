@@ -421,7 +421,6 @@ body{
 
 header {
     flex-shrink: 0;
-    border-bottom: 2px solid white;
 }
 
 main{
@@ -440,7 +439,6 @@ main{
 
 footer{
     flex-shrink: 0;
-    border-top: 2px solid white;
     color: white;
     text-align: center; 
     display: flex;   
