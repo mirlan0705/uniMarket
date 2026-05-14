@@ -20,6 +20,23 @@ router.get('/', (req, res) => {
   res.json(listings);
 });
 
+// GET all categories
+router.get('/categories', (req, res) => {
+  const categories = db.prepare('SELECT * FROM categories').all();
+  res.json(categories);
+});
+
+// GET subcategories by category
+router.get('/subcategories', (req, res) => {
+  const { category_id } = req.query;
+
+  const subcategories = db.prepare(
+    'SELECT * FROM subcategories WHERE category_id = ?'
+  ).all(category_id);
+
+  res.json(subcategories);
+});
+
 // POST a new listing
 router.post('/', (req, res) => {
   const { title, description, price, condition, image_url, category_id, subcategory_id } = req.body;

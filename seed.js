@@ -4,7 +4,7 @@ const db = require('./DB/database.js');
 
 const listings = [
   { title: 'MacBook Pro 2021', description: 'Great condition, barely used', price: 800, condition: 'Used - Like New', image_url: '/images/macbookpro.jpg', category_id: 1, subcategory_id: 7 },
-  { title: 'iPhone 13', description: 'Cracked screen but works fine', price: 250, condition: 'Used - Good', image_url: '/images/iphone-13.jpg', category_id: 1, subcategory_id: 7 },
+  { title: 'iPhone 13', description: 'Cracked screen but works fine', price: 250, condition: 'Used - Good', image_url: '/images/iphone-13.avif', category_id: 1, subcategory_id: 7 },
   { title: 'Calculus Textbook', description: 'James Stewart 8th edition', price: 20, condition: 'Used - Good', image_url: '/images/calculus-textbook.jpg', category_id: 2, subcategory_id: 11 },
   { title: 'Desk Lamp', description: 'LED, adjustable brightness', price: 15, condition: 'Used - Like New', image_url: '/images/desk-lamp.avif', category_id: 4, subcategory_id: 20 },
   { title: 'PS5 ', description: 'DualSense, white', price: 560, condition: 'Used - Good', image_url: '/images/ps5.webp', category_id: 5, subcategory_id: 24 },
