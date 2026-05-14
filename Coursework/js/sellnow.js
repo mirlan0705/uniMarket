@@ -206,3 +206,19 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
 document.getElementById('cancel-btn').addEventListener('click', () => {
     history.back();
 });
+
+// header search (redirect to results page)
+document.addEventListener("DOMContentLoaded", () => {
+    // header search (redirect to results page)
+    const searchForm = document.querySelector(".searchcontainer form");
+    if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const searchInput = document.getElementById("search");
+            const q = (searchInput.value || "").trim();
+            if (q) {
+                window.location.href = `/html/results.html?q=${encodeURIComponent(q)}`;
+            }
+        });
+    }
+});
