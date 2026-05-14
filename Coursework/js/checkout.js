@@ -27,10 +27,15 @@ function toggleCategory(element) {
 }
 
 // added by Bea
-// load data items from basket page 
-let basketData = JSON.parse(localStorage.getItem("basket")) || [];
+// load data items from basket page
+const isBuyNow = new URLSearchParams(window.location.search).get('buynow') === 'true';
+let basketData = [];
 
 document.addEventListener("DOMContentLoaded", () => {
+    basketData = isBuyNow
+        ? (JSON.parse(localStorage.getItem('buynow')) || [])
+        : (JSON.parse(localStorage.getItem(getBasketKey())) || []);
+        
     loadSavedAddress();
     loadSavedCard();
     renderReviewItems();
@@ -64,12 +69,12 @@ function renderReviewItems() {
 
     container.innerHTML = "";
 
-   if (basketData.length === 0) {
-    setTimeout(() => {
-        window.location.href = "/html/basket.html";
-    }, 300);
-    return;
-}
+    if (basketData.length === 0) {
+        setTimeout(() => {
+            window.location.href = isBuyNow ? "/html/unimarket.html" : "/html/basket.html";
+        }, 300);
+        return;
+    }
 
     basketData.forEach(item => {
         const qty = item.qty || 1;
@@ -155,10 +160,10 @@ function removeItem(id) {
 
     if (index !== -1) {
         basketData.splice(index, 1);
-        localStorage.setItem("basket", JSON.stringify(basketData));
+        localStorage.setItem(getBasketKey(), JSON.stringify(basketData));
 
         // sync with storage
-        basketData = JSON.parse(localStorage.getItem("basket")) || [];
+        basketData = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
         // if empty after removal → redirect
         if (basketData.length === 0) {
@@ -444,8 +449,12 @@ function showToast(message) {
     setTimeout(() => {
         toast.classList.remove("show");
         if (message === "Order confirmed.") {
-            localStorage.removeItem("basket"); 
-            window.location.href = "/html/orderconfirmation.html"; 
+            if (isBuyNow) {
+                localStorage.removeItem("buynow");
+            } else {
+                localStorage.removeItem(getBasketKey());
+            }
+            window.location.href = "/html/orderconfirmation.html";
         }
     }, 2500);
 }

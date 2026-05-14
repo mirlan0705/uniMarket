@@ -27,7 +27,15 @@ function toggleCategory(element) {
 }
 
 // List of items added by bea
-let basketData = JSON.parse(localStorage.getItem("basket")) || [];
+let basketData = [];
+
+function getFirstImage(image_url) {
+    if (!image_url) return '/images/no-image.png';
+    try {
+        const parsed = JSON.parse(image_url);
+        return Array.isArray(parsed) ? parsed[0] : image_url;
+    } catch { return image_url; }
+}
 
 
 function renderBasket() {
@@ -62,7 +70,7 @@ function renderBasket() {
         // html template for every item in the list
         const template = `
             <div class="itemcard" onclick="goToProduct(${item.id})">
-                <div class="itemimage"><img src="${item.image_url}"></div>
+                <div class="itemimage"><img src="${getFirstImage(item.image_url)}"></div>
                 <div class="itemdetails">
                     <h4>${item.title}</h4>
                     <p class="condition">Condition: ${item.condition}</p>
@@ -97,7 +105,7 @@ function updateQty(id, newQty) {
 
         item.qty = (isNaN(val) || val <= 0) ? 1 : val;
 
-        localStorage.setItem("basket", JSON.stringify(basketData));
+        localStorage.setItem(getBasketKey(), JSON.stringify(basketData));
 
         updateBasketSummary();
     }
@@ -125,7 +133,7 @@ function removeItem(id) {
     const index = basketData.findIndex(item => item.id === id);
     if (index !== -1) {
         basketData.splice(index, 1);
-        localStorage.setItem("basket", JSON.stringify(basketData));
+        localStorage.setItem(getBasketKey(), JSON.stringify(basketData));
         renderBasket();
     }
 }
@@ -137,6 +145,7 @@ function goToProduct(id) {
 
 // header search (redirect to results page)
 document.addEventListener("DOMContentLoaded", () => {
+    basketData = JSON.parse(localStorage.getItem(getBasketKey())) || [];
     renderBasket();
     
     const searchForm = document.querySelector(".searchcontainer form");

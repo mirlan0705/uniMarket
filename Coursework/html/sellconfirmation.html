@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <link href="/css/sellconfirmation.css" rel="stylesheet" type="text/css">
     <script src="/js/sellconfirmation.js"></script>
+    <script src="/js/navbar.js" defer></script>
     <title>UniMarket</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
@@ -21,27 +22,20 @@
         <!-- Search bar -->
              <div class="searchcontainer">
                 <form action="/search">
-                   </button>
-                   <input id="search" type="text" placeholder="Search for items.">     
+                   <input id="search" type="text" placeholder="Search for items.">
                    <button class="searchbtn" type="submit">Search</button>
                 </form>
-             </div>  
+             </div>
        <!-- Right Buttons -->
-       <div class="rightbuttons">
+       <div class="rightbuttons" id="right-buttons">
           <a href="loginregister.html">Log in / Register</a>
           <a href="sellnow.html" class="protected-link">Sell Now</a>
        </div>
-
-       <!-- Right Icons -->
-       <div class="iconbuttons">
-          <a href="wishlist.html" class="protected-link">
-            <img src="/images/wishlist.png" alt="Wishlist"></a>
-          <a href="basket.html" class="protected-link">
-            <img src="/images/shoppingcart.png" alt="ShoppingCart"></a> 
-       </div>
      </div>
 
-       <!-- Category Bar -->
+       <div class="navbottom">
+        <div class="nav-spacer"></div>
+        <!-- Category Bar -->
         <nav class="categories">
              <ul>
                 <li class="category">
@@ -110,6 +104,14 @@
                 </li>
             </ul>
         </nav>
+        <!-- Right Icons -->
+        <div class="iconbuttons">
+            <a href="wishlist.html" class="protected-link">
+                <img src="/images/wishlist.png" alt="Wishlist"></a>
+            <a href="basket.html" class="protected-link">
+                <img src="/images/shoppingcart.png" alt="ShoppingCart"></a>
+        </div>
+       </div>
     </header>
 
     <main>
@@ -124,8 +126,8 @@
             <p class="confirm_subtitle">Summary</p>
 
             <div class="confirm-summary">
-                 <div class="confirm-image-wrap">
-                    <div class="confirm-image-placeholder">Product Image</div>
+                <div class="confirm-image-wrap">
+                    <img id="confirm-image" src="/images/placeholder.png" alt="Product Image">
                 </div>
 
                 <div class="confirm-details">
@@ -148,8 +150,8 @@
     </main>
 
     <footer>
-        <p><a href="#">Contact Us</a></p>
-        <p><a href="#">Terms and Conditions</a></p>
+        <p><a href="/html/contact.html">Contact Us</a></p>
+        <p><a href="/html/terms.html">Terms and Conditions</a></p>
     </footer>
     
     </body>

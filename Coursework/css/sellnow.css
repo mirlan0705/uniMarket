@@ -11,7 +11,9 @@
 .topbar{
     display:flex;
     align-items:center;
+    justify-content: space-between;
     gap: 20px;
+    padding: 10px 20px 0 20px; 
 }
 
 .logocontainer {
@@ -37,6 +39,8 @@ a:hover .logo{
 
 /* search container */
 .searchcontainer{
+    min-width: 0;
+    flex: 1;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -85,7 +89,21 @@ a:hover .logo{
     color: white;
 }
 
+.navbottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -8px;
+    padding: 0 20px 8px 20px;
+}
+.nav-spacer{ width: 90px; }
+
 /* right side buttons */
+.rightbuttons{
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 .rightbuttons a{
     font-size: 16px;
     cursor:pointer;
@@ -111,11 +129,18 @@ a:hover .logo{
     opacity: 1;
 }
 
+/* icon buttons */
+.iconbuttons {
+    width: 90px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 18px;
+}
 .iconbuttons a{ 
     color: white;         
     margin: 0 10px;       
     font-weight: normal;
-    align-items: center;
 }
 
 .iconbuttons a img {
@@ -128,6 +153,12 @@ a:hover .logo{
 .iconbuttons a:hover {
     text-decoration: none;            
     opacity: 0.7;
+}
+
+.categories {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .category {
@@ -148,10 +179,11 @@ a:hover .logo{
 .categories ul {
     color: #ffffff;
     display: flex;
-    justify-content: center;
+    align-items: center;
     list-style: none;
     gap: 20px;
     font-size: 18px;
+    margin: 0;
 }
 
 .categorytitle {

@@ -1,4 +1,22 @@
+
+function getBasketKey() {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? `basket_${user.email}` : 'basket';
+}
+function getWishlistKey() {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? `wishlist_${user.email}` : 'wishlist';
+}
+
 let allListings = [];
+
+function getFirstImage(image_url) {
+    if (!image_url) return '/images/no-image.png';
+    try {
+        const parsed = JSON.parse(image_url);
+        return Array.isArray(parsed) ? parsed[0] : image_url;
+    } catch { return image_url; }
+}
 
 // edited by mrln
 window.onload = function () {
@@ -166,8 +184,8 @@ window.onload = function () {
             return;
         }
 
-        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        const basket = JSON.parse(localStorage.getItem('basket')) || [];
+        const wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
+        const basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
         grid.innerHTML = allListings.map(item => {
 
@@ -179,7 +197,7 @@ window.onload = function () {
                 <div class="card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
 
                     <div class="card-image">
-                        <img src="${item.image_url || '/images/no-image.png'}" alt="${item.title}">
+                        <img src="${getFirstImage(item.image_url)}" alt="${item.title}">
                         <button 
                             class="heart-btn ${inWishlist ? 'saved' : ''}"
                             onclick="event.stopPropagation(); toggleWishlist(${item.id})">
@@ -234,7 +252,7 @@ window.onload = function () {
     const item = allListings.find(item => item.id === id);
     if (!item) return;
 
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
 
     const index = wishlist.findIndex(w => w.id === id);
 
@@ -244,13 +262,13 @@ window.onload = function () {
             title: item.title,
             price: item.price,
             condition: item.condition,
-            image_url: item.image_url || '/images/no-image.png'
+            image_url: getFirstImage(item.image_url)
         });
     } else {
         wishlist.splice(index, 1);
     }
 
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    localStorage.setItem(getWishlistKey(), JSON.stringify(wishlist));
 
     renderListings();
 }
@@ -262,23 +280,24 @@ function toggleBasket(id) {
 
     if (!item) return;
 
-    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    let basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
     const index = basket.findIndex(b => b.id === id);
 
     if (index === -1) {
         basket.push({
-            id:         item.id,
-            title:      item.title,
-            price:      item.price,
-            condition:  item.condition,
-            image_url:  item.image_url || '/images/no-image.png',
+            id:            item.id,
+            title:         item.title,
+            price:         item.price,
+            condition:     item.condition,
+            image_url:     getFirstImage(item.image_url),
+            category_name: item.category_name || 'General',
             qty: 1
         });
     } else {
         basket.splice(index, 1);
     }
-    localStorage.setItem('basket', JSON.stringify(basket));
+    localStorage.setItem(getBasketKey(), JSON.stringify(basket));
 
     renderListings();
 }

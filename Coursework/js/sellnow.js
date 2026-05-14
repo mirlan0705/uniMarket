@@ -1,72 +1,51 @@
 
 // added by bea
-// stores all categories and their related subcategories (Items detail section)
-const subcategories = {
-  "Computing & Technology": [
-    "Laptops",
-    "Audio",
-    "Accessories",
-    "Chargers"
-  ],
-  "Study & Course Materials": [
-    "Textbooks",
-    "Stationery",
-    "Lab Equipment"
-  ],
-  "Uni Style & Clothes": [
-    "Everyday Wear",
-    "Outerwear & Jackets",
-    "Formal & Event Wear",
-    "Sports Wear",
-    "Accessories"
-  ],
-  "Home & Halls": [
-    "Kitchen",
-    "Bedroom",
-    "Lighting/Decor",
-    "Bathroom",
-    "Cleaning Supplies"
-  ],
-  "Entertainment & Leisure": [
-    "Games",
-    "Board Games & Puzzles",
-    "Musical Instruments"
-  ]
-};
-
-// added by bea
 // Handles subcategory dropdown based on selected category
 const categorySelect = document.getElementById("item-category");
 const subcategorySelect = document.getElementById("item-sub-category");
 
-categorySelect.addEventListener("change", function () {
+async function loadCategories() {
+    const res = await fetch('/api/listings/categories');
+    const categories = await res.json();
 
- //get the selected category
-  const selectedCategory = this.value;
+    const categorySelect = document.getElementById('item-category');
 
-  // reset subcategory
-  subcategorySelect.innerHTML =
-    '<option value="" disabled selected>Select a subcategory</option>';
+    categories.forEach(category => {
+        const option = document.createElement('option');
 
-  if (subcategories[selectedCategory]) {
+        option.value = category.id;
+        option.textContent = category.name;
 
-     // enable the subcategory dropdown
-    subcategorySelect.disabled = false;
-
-    // loop through each subcategory for the selected category
-    subcategories[selectedCategory].forEach(sub => {
-
-      //create a new option 
-      const option = document.createElement("option");
-      option.value = sub;
-      option.textContent = sub;
-      subcategorySelect.appendChild(option);
-
+        categorySelect.appendChild(option);
     });
-  } else {
-    subcategorySelect.disabled = true;
-  }
+}
+
+document.getElementById('item-category').addEventListener('change', async function () {
+
+    const subcategorySelect = document.getElementById('item-sub-category');
+
+    subcategorySelect.innerHTML =
+        '<option value="" disabled selected>Select a subcategory</option>';
+
+    const res = await fetch(
+        `/api/listings/subcategories?category_id=${this.value}`
+    );
+
+    const subcategories = await res.json();
+
+    subcategories.forEach(sub => {
+        const option = document.createElement('option');
+
+        option.value = sub.id;
+        option.textContent = sub.name;
+
+        subcategorySelect.appendChild(option);
+    });
+
+    subcategorySelect.disabled = false;
 });
+
+loadCategories();
 
 // added by bea
 // expand/collapse a category section and change the arrow icon direction (auto closes category)
@@ -179,24 +158,35 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
     const description    = document.getElementById('item-description').value.trim();
     const category_id    = document.getElementById('item-category').value;
     const subcategory_id = document.getElementById('item-sub-category').value;
-    const image_url      = uploadedFiles.length > 0 ? URL.createObjectURL(uploadedFiles[0]) : null; 
     const condition      = document.getElementById('item-condition').value;
     const price          = document.getElementById('item-price').value;
 
     if (!title)                           return showToast('Please enter a name for your item.');
     if (!description)                     return showToast('Please add a description.');
-    if (!category_id)                    return showToast('Please select a category.');
-    if (!subcategory_id)                 return showToast('Please select a subcategory.');
+    if (!category_id)                     return showToast('Please select a category.');
+    if (!subcategory_id)                  return showToast('Please select a subcategory.');
     if (!condition)                       return showToast('Please select a condition.');
     if (!price || parseFloat(price) <= 0) return showToast('Please enter a valid price.');
 
 
     try {
-        const res = await fetch('/api/listings', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, price: parseFloat(price), description, condition, category_id, subcategory_id, image_url })
-        });
+        const formData = new FormData();
+
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('price', parseFloat(price));
+            formData.append('condition', condition);
+            formData.append('category_id', category_id);
+            formData.append('subcategory_id', subcategory_id);
+
+            uploadedFiles.forEach(file => {
+                formData.append('images', file);
+            });
+
+            const res = await fetch('/api/listings', {
+                method: 'POST',
+                body: formData
+            });
  
         if (!res.ok) throw new Error('Server error');
 
@@ -215,4 +205,20 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
 // Cancel button goes back to the previous page
 document.getElementById('cancel-btn').addEventListener('click', () => {
     history.back();
+});
+
+// header search (redirect to results page)
+document.addEventListener("DOMContentLoaded", () => {
+    // header search (redirect to results page)
+    const searchForm = document.querySelector(".searchcontainer form");
+    if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const searchInput = document.getElementById("search");
+            const q = (searchInput.value || "").trim();
+            if (q) {
+                window.location.href = `/html/results.html?q=${encodeURIComponent(q)}`;
+            }
+        });
+    }
 });

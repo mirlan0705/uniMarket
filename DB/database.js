@@ -35,4 +35,20 @@ db.exec(`
   );
 `);
 
+try {
+
+  db.prepare(`
+    ALTER TABLE users ADD COLUMN resetToken TEXT
+  `).run();
+
+} catch (err) {}
+
+try {
+
+  db.prepare(`
+    ALTER TABLE users ADD COLUMN resetTokenExpiry INTEGER
+  `).run();
+
+} catch (err) {}
+
 module.exports = db;

@@ -86,6 +86,11 @@ a:hover .logo{
 }
 
 /* right side buttons */
+.rightbuttons{
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 .rightbuttons a{
     font-size: 16px;
     cursor:pointer;
@@ -111,9 +116,25 @@ a:hover .logo{
     opacity: 1;
 }
 
-.iconbuttons a{ 
-    color: white;         
-    margin: 0 10px;       
+.navbottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -8px;
+    padding: 0 20px 8px 20px;
+}
+.nav-spacer { width: 90px; }
+
+.iconbuttons {
+    width: 90px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 18px;
+}
+.iconbuttons a{
+    color: white;
+    margin: 0 10px;
     font-weight: normal;
     align-items: center;
 }
@@ -713,7 +734,6 @@ body{
 
 header {
     flex-shrink: 0;
-    border-bottom: 2px solid white;
 }
 
 main{
@@ -728,7 +748,6 @@ main{
 
 footer{
     flex-shrink: 0;
-    border-top: 2px solid white;
     color: white;
     text-align: center; 
     display: flex;   

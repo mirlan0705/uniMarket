@@ -43,8 +43,8 @@ function buildThumbnails() {
 }
 
 // Wishlist helpers 
-function getWishlist() { return JSON.parse(localStorage.getItem('wishlist')) || []; }
-function setWishlist(list) { localStorage.setItem('wishlist', JSON.stringify(list)); }
+function getWishlist() { return JSON.parse(localStorage.getItem(getWishlistKey())) || []; }
+function setWishlist(list) { localStorage.setItem(getWishlistKey(), JSON.stringify(list)); }
 
 function updateWishlistUI(inWishlist) {
     const heartIcon = document.querySelector('#wishlist-btn i');
@@ -61,8 +61,8 @@ function updateWishlistUI(inWishlist) {
 }
 
 // Basket helpers
-function getBasket() { return JSON.parse(localStorage.getItem('basket')) || []; }
-function setBasket(list) { localStorage.setItem('basket', JSON.stringify(list)); }
+function getBasket() { return JSON.parse(localStorage.getItem(getBasketKey())) || []; }
+function setBasket(list) { localStorage.setItem(getBasketKey(), JSON.stringify(list)); }
 
 function updateBasketUI(inBasket) {
     const btn = document.getElementById('basket-btn');
@@ -100,8 +100,13 @@ async function loadProduct() {
         document.getElementById('product-category').textContent  = item.category_name || 'Undefined.';
         document.title = `${item.title} — UniMarket`;
 
-        // Build image gallery (single image for now )
-        images = item.image_url ? [item.image_url] : ['/images/no-image.png'];
+        // Build image gallery
+        try {
+            images = item.image_url ? JSON.parse(item.image_url) : [];
+        } catch {
+            images = item.image_url ? [item.image_url] : [];
+        }
+        if (images.length === 0) images = ['/images/no-image.png'];
         buildThumbnails();
         showImage(0);
 
@@ -129,6 +134,20 @@ async function loadProduct() {
             updateWishlistUI(idx === -1);
         });
 
+        // Buy It Now
+        document.querySelector('.buy-btn').addEventListener('click', () => {
+            const qty = parseInt(document.getElementById('qty-input')?.value) || 1;
+            localStorage.setItem('buynow', JSON.stringify([{
+                id:        item.id,
+                title:     item.title,
+                price:     item.price,
+                condition: item.condition,
+                image_url: images[0] || '/images/no-image.png',
+                qty
+            }]));
+            window.location.href = '/html/checkout.html?buynow=true';
+        });
+
         // Basket toggle
         document.getElementById('basket-btn').addEventListener('click', () => {
             let list = getBasket();
@@ -139,7 +158,7 @@ async function loadProduct() {
                     title:     item.title,
                     price:     item.price,
                     condition: item.condition,
-                    image_url: item.image_url || '/images/no-image.png',
+                    image_url: images[0] || '/images/no-image.png',
                     qty:       1
                 });
             } else {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <link href="/css/wishlist.css" rel="stylesheet" type="text/css">
     <script src="/js/wishlist.js" defer></script>
+    <script src="/js/navbar.js" defer></script>
     <title>UniMarket</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
@@ -26,89 +27,94 @@
                 </form>
              </div>  
        <!-- Right Buttons -->
-       <div class="rightbuttons">
+       <div class="rightbuttons" id="right-buttons">
           <a href="loginregister.html">Log in / Register</a>
           <a href="sellnow.html" class="protected-link">Sell Now</a>
        </div>
 
-       <!-- Right Icons -->
-       <div class="iconbuttons">
-          <a href="wishlist.html" class="protected-link">
-            <img src="/images/wishlist.png" alt="Wishlist"></a>
-          <a href="basket.html" class="protected-link">
-            <img src="/images/shoppingcart.png" alt="ShoppingCart"></a> 
-       </div>
+       
      </div>
 
-       <!-- Category Bar -->
-        <nav class="categories">
-             <ul>
-                <li class="category">
-                  <div class="categorytitle" onclick="toggleCategory(this)">
-                      <span>Computing & Technology</span>
-                      <img class="arrowicon" src="/images/arrowdown.png">
-                  </div>
-                     <ul class="subcategory">
-                        <li><a href="/html/results.html?sub=Laptops/Computing">Laptops/Computing</a></li>
-                        <li><a href="/html/results.html?sub=Audio">Audio</a></li>
-                        <li><a href="/html/results.html?sub=9">Accessories</a></li>
-                        <li><a href="/html/results.html?sub=Chargers">Chargers</a></li>
-                     </ul>
-                </li>
+        <div class="navbottom">
+  
+          <div class="nav-spacer"></div>
+          <!-- Category Bar -->
+          <nav class="categories">
+              <ul>
+                  <li class="category">
+                    <div class="categorytitle" onclick="toggleCategory(this)">
+                        <span>Computing & Technology</span>
+                        <img class="arrowicon" src="/images/arrowdown.png">
+                    </div>
+                      <ul class="subcategory">
+                          <li><a href="/html/results.html?sub=Laptops/Computing">Laptops/Computing</a></li>
+                          <li><a href="/html/results.html?sub=Audio">Audio</a></li>
+                          <li><a href="/html/results.html?sub=9">Accessories</a></li>
+                          <li><a href="/html/results.html?sub=Chargers">Chargers</a></li>
+                      </ul>
+                  </li>
 
-                <li class="category">
-                  <div class="categorytitle" onclick="toggleCategory(this)">
-                      <span>Study & Course Materials</span>
-                      <img class="arrowicon" src="/images/arrowdown.png">
-                  </div>
-                     <ul class="subcategory">
-                       <li><a href="/html/results.html?sub=Textbooks">Textbooks</a></li>
-                       <li><a href="/html/results.html?sub=Stationery">Stationery</a></li>
-                       <li><a href="/html/results.html?sub=Special Equipment">Special Equipment</a></li>
-                     </ul>
-                </li>
+                  <li class="category">
+                    <div class="categorytitle" onclick="toggleCategory(this)">
+                        <span>Study & Course Materials</span>
+                        <img class="arrowicon" src="/images/arrowdown.png">
+                    </div>
+                      <ul class="subcategory">
+                        <li><a href="/html/results.html?sub=Textbooks">Textbooks</a></li>
+                        <li><a href="/html/results.html?sub=Stationery">Stationery</a></li>
+                        <li><a href="/html/results.html?sub=Special Equipment">Special Equipment</a></li>
+                      </ul>
+                  </li>
 
-                <li class="category">
-                  <div class="categorytitle" onclick="toggleCategory(this)">
-                      <span>Uni Style & Clothes</span>
-                      <img class="arrowicon" src="/images/arrowdown.png">
-                  </div>
-                     <ul class="subcategory">
-                         <li><a href="/html/results.html?sub=Everyday Wear">Everyday Wear</a></li>
-                         <li><a href="/html/results.html?sub=Outerwear & Jackets">Outerwear & Jackets</a></li>
-                         <li><a href="/html/results.html?sub=Formal & Event Wear">Formal & Event Wear</a></li>
-                         <li><a href="/html/results.html?sub=Uni Merch & Sports">Uni Merch & Sports</a></li>
-                         <li><a href="/html/results.html?sub=18">Accessories</a></li>
-                     </ul>
-                </li>
+                  <li class="category">
+                    <div class="categorytitle" onclick="toggleCategory(this)">
+                        <span>Uni Style & Clothes</span>
+                        <img class="arrowicon" src="/images/arrowdown.png">
+                    </div>
+                      <ul class="subcategory">
+                          <li><a href="/html/results.html?sub=Everyday Wear">Everyday Wear</a></li>
+                          <li><a href="/html/results.html?sub=Outerwear & Jackets">Outerwear & Jackets</a></li>
+                          <li><a href="/html/results.html?sub=Formal & Event Wear">Formal & Event Wear</a></li>
+                          <li><a href="/html/results.html?sub=Uni Merch & Sports">Uni Merch & Sports</a></li>
+                          <li><a href="/html/results.html?sub=18">Accessories</a></li>
+                      </ul>
+                  </li>
 
-                <li class="category">
-                  <div class="categorytitle" onclick="toggleCategory(this)">
-                      <span>Home & Halls</span>
-                      <img class="arrowicon" src="/images/arrowdown.png">
-                  </div>
-                     <ul class="subcategory">
-                         <li><a href="/html/results.html?sub=Kitchen">Kitchen</a></li>
-                         <li><a href="/html/results.html?sub=Bedroom">Bedroom</a></li>
-                         <li><a href="/html/results.html?sub=Lighting/Decor">Lighting/Decor</a></li>
-                         <li><a href="/html/results.html?sub=Bathroom">Bathroom</a></li>
-                         <li><a href="/html/results.html?sub=Cleaning Supplies">Cleaning Supplies</a></li>
-                     </ul>
-                </li>
+                  <li class="category">
+                    <div class="categorytitle" onclick="toggleCategory(this)">
+                        <span>Home & Halls</span>
+                        <img class="arrowicon" src="/images/arrowdown.png">
+                    </div>
+                      <ul class="subcategory">
+                          <li><a href="/html/results.html?sub=Kitchen">Kitchen</a></li>
+                          <li><a href="/html/results.html?sub=Bedroom">Bedroom</a></li>
+                          <li><a href="/html/results.html?sub=Lighting/Decor">Lighting/Decor</a></li>
+                          <li><a href="/html/results.html?sub=Bathroom">Bathroom</a></li>
+                          <li><a href="/html/results.html?sub=Cleaning Supplies">Cleaning Supplies</a></li>
+                      </ul>
+                  </li>
 
-                <li class="category">
-                  <div class="categorytitle" onclick="toggleCategory(this)">
-                      <span>Entertainment & Leisure</span>
-                      <img class="arrowicon" src="/images/arrowdown.png">
-                  </div>
-                     <ul class="subcategory">
-                         <li><a href="/html/results.html?sub=Gaming">Gaming</a></li>
-                         <li><a href="/html/results.html?sub=Board Games & Puzzles">Board Games & Puzzles</a></li>
-                         <li><a href="/html/results.html?sub=Musical Instruments">Musical Instruments</a></li>
-                     </ul>
-                </li>
-            </ul>
-        </nav>
+                  <li class="category">
+                    <div class="categorytitle" onclick="toggleCategory(this)">
+                        <span>Entertainment & Leisure</span>
+                        <img class="arrowicon" src="/images/arrowdown.png">
+                    </div>
+                      <ul class="subcategory">
+                          <li><a href="/html/results.html?sub=Gaming">Gaming</a></li>
+                          <li><a href="/html/results.html?sub=Board Games & Puzzles">Board Games & Puzzles</a></li>
+                          <li><a href="/html/results.html?sub=Musical Instruments">Musical Instruments</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </nav>
+          <!-- Right Icons -->
+          <div class="iconbuttons">
+              <a href="wishlist.html" class="protected-link">
+                <img src="/images/wishlist.png" alt="Wishlist"></a>
+              <a href="basket.html" class="protected-link">
+                <img src="/images/shoppingcart.png" alt="ShoppingCart"></a> 
+          </div>
+        </div>
     </header>
       
     <!-- Empty Item Section -->
@@ -167,8 +173,8 @@
 
     <!-- Footer -->
     <footer>
-        <p><a href="#">Contact Us</a></p>
-        <p><a href="#">Terms and Conditions</a></p>
+        <p><a href="/html/contact.html">Contact Us</a></p>
+        <p><a href="/html/terms.html">Terms and Conditions</a></p>
     </footer>
     
     </body>

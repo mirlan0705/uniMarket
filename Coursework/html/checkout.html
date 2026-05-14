@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <link href="/css/checkout.css" rel="stylesheet" type="text/css">
     <script src="/js/checkout.js" defer></script>
+    <script src="/js/navbar.js" defer></script>
     <title>UniMarket</title>
     </head>
 
@@ -24,21 +25,16 @@
                 </form>
              </div>  
        <!-- Right Buttons -->
-       <div class="rightbuttons">
+       <div class="rightbuttons" id="right-buttons">
           <a href="loginregister.html">Log in / Register</a>
           <a href="sellnow.html" class="protected-link">Sell Now</a>
        </div>
 
-       <!-- Right Icons -->
-       <div class="iconbuttons">
-          <a href="wishlist.html" class="protected-link">
-            <img src="/images/wishlist.png" alt="Wishlist"></a>
-          <a href="basket.html" class="protected-link">
-            <img src="/images/shoppingcart.png" alt="ShoppingCart"></a> 
-       </div>
      </div>
 
-       <!-- Category Bar -->
+       <div class="navbottom">
+        <div class="nav-spacer"></div>
+        <!-- Category Bar -->
         <nav class="categories">
              <ul>
                 <li class="category">
@@ -107,6 +103,14 @@
                 </li>
             </ul>
         </nav>
+        <!-- Right Icons -->
+        <div class="iconbuttons">
+            <a href="wishlist.html" class="protected-link">
+                <img src="/images/wishlist.png" alt="Wishlist"></a>
+            <a href="basket.html" class="protected-link">
+                <img src="/images/shoppingcart.png" alt="ShoppingCart"></a>
+        </div>
+       </div>
     </header>
 
     <main class="checkoutcontainer">
@@ -236,8 +240,8 @@
         </div>
     </main>
     <footer>
-        <p><a href="#">Contact Us</a></p>
-        <p><a href="#">Terms and Conditions</a></p>
+        <p><a href="/html/contact.html">Contact Us</a></p>
+        <p><a href="/html/terms.html">Terms and Conditions</a></p>
     </footer>
     <div id="toast" class="toast"></div>
 </body>

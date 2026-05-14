@@ -30,6 +30,14 @@ function toggleCategory(element) {
 
 let allListings = [];
 
+function getFirstImage(image_url) {
+    if (!image_url) return '/images/no-image.png';
+    try {
+        const parsed = JSON.parse(image_url);
+        return Array.isArray(parsed) ? parsed[0] : image_url;
+    } catch { return image_url; }
+}
+
 // Fetch all listings once and store in memory, then render results from that without needing to re-fetch.
 async function fetchAndRender() {
     const grid = document.getElementById('results-grid');
@@ -92,8 +100,8 @@ function renderResults(query, sub) {
     }
 
     // Get wishlist and basket from localStorage to determine button states for eaach item. 
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    const basket = JSON.parse(localStorage.getItem('basket')) || [];
+    const wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
+    const basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
     // Render each listing as a card in the results grid. Buttons have event handlers to toggle wishlist/basket status without navigating away from the page. Clicking the card itself navigates to the item details page.
     grid.innerHTML = filtered.map(item => {
@@ -102,7 +110,7 @@ function renderResults(query, sub) {
         return `
             <div class="result-card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
                 <div class="result-card-img">
-                    <img src="${item.image_url || '/images/no-image.png'}" alt="${item.title}">
+                    <img src="${getFirstImage(item.image_url)}" alt="${item.title}">
                     <button class="heart-btn ${inWishlist ? 'saved' : ''}"
                         onclick="event.stopPropagation(); toggleWishlist(${item.id})"
                         title="${inWishlist ? 'Remove from wishlist' : 'Save to wishlist'}">
@@ -128,7 +136,7 @@ function toggleWishlist(id) {
     const item = allListings.find(l => l.id === id);
     if (!item) return;
 
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
     const idx = wishlist.findIndex(w => w.id === id);
 
     if (idx === -1) {
@@ -137,7 +145,7 @@ function toggleWishlist(id) {
         wishlist.splice(idx, 1);
     }
 
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    localStorage.setItem(getWishlistKey(), JSON.stringify(wishlist));
     const params = new URLSearchParams(window.location.search);
 
     renderResults(
@@ -151,7 +159,7 @@ function toggleBasket(id) {
     const item = allListings.find(l => l.id === id);
     if (!item) return;
 
-    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    let basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
     const idx = basket.findIndex(b => b.id === id);
 
     if (idx === -1) {
@@ -160,14 +168,14 @@ function toggleBasket(id) {
             title:     item.title,
             price:     item.price,
             condition: item.condition,
-            image_url: item.image_url || '/images/no-image.png',
+            image_url: getFirstImage(item.image_url),
             qty:       1
         });
     } else {
         basket.splice(idx, 1);
     }
 
-    localStorage.setItem('basket', JSON.stringify(basket));
+    localStorage.setItem(getBasketKey(), JSON.stringify(basket));
     const params = new URLSearchParams(window.location.search);
 
     renderResults(
