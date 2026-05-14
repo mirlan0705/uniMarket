@@ -1,3 +1,13 @@
+
+function getBasketKey() {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? `basket_${user.email}` : 'basket';
+}
+function getWishlistKey() {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? `wishlist_${user.email}` : 'wishlist';
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     const user = JSON.parse(localStorage.getItem('user') || 'null');
     const rightButtons = document.getElementById('right-buttons');

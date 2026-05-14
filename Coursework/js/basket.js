@@ -27,7 +27,7 @@ function toggleCategory(element) {
 }
 
 // List of items added by bea
-let basketData = JSON.parse(localStorage.getItem("basket")) || [];
+let basketData = [];
 
 function getFirstImage(image_url) {
     if (!image_url) return '/images/no-image.png';
@@ -105,7 +105,7 @@ function updateQty(id, newQty) {
 
         item.qty = (isNaN(val) || val <= 0) ? 1 : val;
 
-        localStorage.setItem("basket", JSON.stringify(basketData));
+        localStorage.setItem(getBasketKey(), JSON.stringify(basketData));
 
         updateBasketSummary();
     }
@@ -133,7 +133,7 @@ function removeItem(id) {
     const index = basketData.findIndex(item => item.id === id);
     if (index !== -1) {
         basketData.splice(index, 1);
-        localStorage.setItem("basket", JSON.stringify(basketData));
+        localStorage.setItem(getBasketKey(), JSON.stringify(basketData));
         renderBasket();
     }
 }
@@ -145,6 +145,7 @@ function goToProduct(id) {
 
 // header search (redirect to results page)
 document.addEventListener("DOMContentLoaded", () => {
+    basketData = JSON.parse(localStorage.getItem(getBasketKey())) || [];
     renderBasket();
     
     const searchForm = document.querySelector(".searchcontainer form");

@@ -1,3 +1,13 @@
+
+function getBasketKey() {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? `basket_${user.email}` : 'basket';
+}
+function getWishlistKey() {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+    return user ? `wishlist_${user.email}` : 'wishlist';
+}
+
 let allListings = [];
 
 function getFirstImage(image_url) {
@@ -174,8 +184,8 @@ window.onload = function () {
             return;
         }
 
-        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        const basket = JSON.parse(localStorage.getItem('basket')) || [];
+        const wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
+        const basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
         grid.innerHTML = allListings.map(item => {
 
@@ -242,7 +252,7 @@ window.onload = function () {
     const item = allListings.find(item => item.id === id);
     if (!item) return;
 
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
 
     const index = wishlist.findIndex(w => w.id === id);
 
@@ -258,7 +268,7 @@ window.onload = function () {
         wishlist.splice(index, 1);
     }
 
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    localStorage.setItem(getWishlistKey(), JSON.stringify(wishlist));
 
     renderListings();
 }
@@ -270,7 +280,7 @@ function toggleBasket(id) {
 
     if (!item) return;
 
-    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    let basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
     const index = basket.findIndex(b => b.id === id);
 
@@ -287,7 +297,7 @@ function toggleBasket(id) {
     } else {
         basket.splice(index, 1);
     }
-    localStorage.setItem('basket', JSON.stringify(basket));
+    localStorage.setItem(getBasketKey(), JSON.stringify(basket));
 
     renderListings();
 }

@@ -29,11 +29,13 @@ function toggleCategory(element) {
 // added by Bea
 // load data items from basket page
 const isBuyNow = new URLSearchParams(window.location.search).get('buynow') === 'true';
-let basketData = isBuyNow
-    ? (JSON.parse(localStorage.getItem('buynow')) || [])
-    : (JSON.parse(localStorage.getItem('basket')) || []);
+let basketData = [];
 
 document.addEventListener("DOMContentLoaded", () => {
+    basketData = isBuyNow
+        ? (JSON.parse(localStorage.getItem('buynow')) || [])
+        : (JSON.parse(localStorage.getItem(getBasketKey())) || []);
+        
     loadSavedAddress();
     loadSavedCard();
     renderReviewItems();
@@ -158,10 +160,10 @@ function removeItem(id) {
 
     if (index !== -1) {
         basketData.splice(index, 1);
-        localStorage.setItem("basket", JSON.stringify(basketData));
+        localStorage.setItem(getBasketKey(), JSON.stringify(basketData));
 
         // sync with storage
-        basketData = JSON.parse(localStorage.getItem("basket")) || [];
+        basketData = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
         // if empty after removal → redirect
         if (basketData.length === 0) {
@@ -450,7 +452,7 @@ function showToast(message) {
             if (isBuyNow) {
                 localStorage.removeItem("buynow");
             } else {
-                localStorage.removeItem("basket");
+                localStorage.removeItem(getBasketKey());
             }
             window.location.href = "/html/orderconfirmation.html";
         }

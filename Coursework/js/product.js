@@ -43,8 +43,8 @@ function buildThumbnails() {
 }
 
 // Wishlist helpers 
-function getWishlist() { return JSON.parse(localStorage.getItem('wishlist')) || []; }
-function setWishlist(list) { localStorage.setItem('wishlist', JSON.stringify(list)); }
+function getWishlist() { return JSON.parse(localStorage.getItem(getWishlistKey())) || []; }
+function setWishlist(list) { localStorage.setItem(getWishlistKey(), JSON.stringify(list)); }
 
 function updateWishlistUI(inWishlist) {
     const heartIcon = document.querySelector('#wishlist-btn i');
@@ -61,8 +61,8 @@ function updateWishlistUI(inWishlist) {
 }
 
 // Basket helpers
-function getBasket() { return JSON.parse(localStorage.getItem('basket')) || []; }
-function setBasket(list) { localStorage.setItem('basket', JSON.stringify(list)); }
+function getBasket() { return JSON.parse(localStorage.getItem(getBasketKey())) || []; }
+function setBasket(list) { localStorage.setItem(getBasketKey(), JSON.stringify(list)); }
 
 function updateBasketUI(inBasket) {
     const btn = document.getElementById('basket-btn');

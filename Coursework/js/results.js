@@ -100,8 +100,8 @@ function renderResults(query, sub) {
     }
 
     // Get wishlist and basket from localStorage to determine button states for eaach item. 
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    const basket = JSON.parse(localStorage.getItem('basket')) || [];
+    const wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
+    const basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
     // Render each listing as a card in the results grid. Buttons have event handlers to toggle wishlist/basket status without navigating away from the page. Clicking the card itself navigates to the item details page.
     grid.innerHTML = filtered.map(item => {
@@ -136,7 +136,7 @@ function toggleWishlist(id) {
     const item = allListings.find(l => l.id === id);
     if (!item) return;
 
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
     const idx = wishlist.findIndex(w => w.id === id);
 
     if (idx === -1) {
@@ -145,7 +145,7 @@ function toggleWishlist(id) {
         wishlist.splice(idx, 1);
     }
 
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    localStorage.setItem(getWishlistKey(), JSON.stringify(wishlist));
     const params = new URLSearchParams(window.location.search);
 
     renderResults(
@@ -159,7 +159,7 @@ function toggleBasket(id) {
     const item = allListings.find(l => l.id === id);
     if (!item) return;
 
-    let basket = JSON.parse(localStorage.getItem('basket')) || [];
+    let basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
     const idx = basket.findIndex(b => b.id === id);
 
     if (idx === -1) {
@@ -175,7 +175,7 @@ function toggleBasket(id) {
         basket.splice(idx, 1);
     }
 
-    localStorage.setItem('basket', JSON.stringify(basket));
+    localStorage.setItem(getBasketKey(), JSON.stringify(basket));
     const params = new URLSearchParams(window.location.search);
 
     renderResults(

@@ -27,7 +27,7 @@ function toggleCategory(element) {
 }
 
 // added by Bea
-let wishlistData = JSON.parse(localStorage.getItem("wishlist")) || [];
+let wishlistData = [];
 
 function getFirstImage(image_url) {
     if (!image_url) return '/images/no-image.png';
@@ -103,7 +103,7 @@ function renderWishlist(data) {
 }
 
 function syncBasketButtons() {
-    let basket = JSON.parse(localStorage.getItem("basket")) || [];
+    let basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
     document.querySelectorAll(".productcard").forEach(card => {
 
@@ -175,11 +175,11 @@ document.addEventListener("change", (e) => {
 // function to remove item when heart is toggled off 
 function removeFromWishlist(id) {
 
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    let wishlist = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
 
     wishlist = wishlist.filter(item => item.id !== id);
 
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    localStorage.setItem(getWishlistKey(), JSON.stringify(wishlist));
 
     wishlistData = wishlist; // update memory state too
 
@@ -206,7 +206,7 @@ function addToBasket(button) {
     const item = wishlistData.find(i => i.id === id);
     if (!item) return;
 
-    let basket = JSON.parse(localStorage.getItem("basket")) || [];
+    let basket = JSON.parse(localStorage.getItem(getBasketKey())) || [];
 
     const exists = basket.some(b => b.id === id);
 
@@ -218,7 +218,7 @@ function addToBasket(button) {
         showToast("Removed from Basket", "success");
     }
 
-    localStorage.setItem("basket", JSON.stringify(basket));
+    localStorage.setItem(getBasketKey(), JSON.stringify(basket));
 
     syncBasketButtons();
 }
@@ -253,6 +253,7 @@ function showToast(message, type = "success") {
 
 // header search (redirect to results page)
 document.addEventListener("DOMContentLoaded", () => {
+    wishlistData = JSON.parse(localStorage.getItem(getWishlistKey())) || [];
     applyFilters();
 
     const searchForm = document.querySelector(".searchcontainer form");
