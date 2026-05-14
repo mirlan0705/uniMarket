@@ -52,6 +52,11 @@
 }
 
 /* right side buttons */
+.rightbuttons{
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 .right-buttons a{
     font-size: 16px;
     cursor:pointer;

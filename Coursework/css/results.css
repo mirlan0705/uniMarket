@@ -39,6 +39,7 @@ a:hover .logo{
 
 /* search container */
 .searchcontainer{
+    min-width: 0;
     flex: 1;
     display:flex;
     justify-content:center;
@@ -98,6 +99,11 @@ a:hover .logo{
 }
 
 /* right side buttons */
+.rightbuttons{
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 .rightbuttons a{
     font-size: 16px;
     cursor:pointer;

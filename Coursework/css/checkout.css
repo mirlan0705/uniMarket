@@ -86,6 +86,11 @@ a:hover .logo{
 }
 
 /* right side buttons */
+.rightbuttons{
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 .rightbuttons a{
     font-size: 16px;
     cursor:pointer;
