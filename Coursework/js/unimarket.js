@@ -119,34 +119,10 @@ window.onload = function () {
     if (rightButtons) {
         if (user) {
             rightButtons.innerHTML = `
-                <div class="profile-dropdown">
-                     <button class="profile-btn" id="profile-btn">Hi, ${user.name} ▾</button>
-                 <div class="dropdown-menu" id="dropdown-menu">
-                     <a href="/html/profile.html">Profile</a>
-                     <a href="/html/settings.html">Settings</a>
-                     <a href="#" id="logout-btn">Log Out</a>
-                 </div>
-                 <a href="/html/sellnow.html" class="protected-link sell-btn"> Sell Now</a>
-                 </div>
-               `;
-
-     const profileBtn = document.getElementById('profile-btn');
-     const dropdownMenu = document.getElementById('dropdown-menu');
-
-profileBtn.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('show');
-});
-
-// close dropdown when clicking elsewhere
-document.addEventListener('click', (e) => {
-
-    if (
-        !profileBtn.contains(e.target) &&
-        !dropdownMenu.contains(e.target)
-    ) {
-        dropdownMenu.classList.remove('show');
-    }
-});
+                <span style="color:white; margin: 0 10px;">Hi, ${user.name}</span>
+                <a href="/html/sellnow.html" class="protected-link">Sell Now</a>
+                <a href="#" id="logout-btn">Log Out</a>
+            `;
             document.getElementById('logout-btn').addEventListener('click', (e) => {
                 e.preventDefault();
                 localStorage.removeItem('user');
@@ -300,11 +276,12 @@ function toggleBasket(id) {
 
     if (index === -1) {
         basket.push({
-            id:         item.id,
-            title:      item.title,
-            price:      item.price,
-            condition:  item.condition,
-            image_url:  getFirstImage(item.image_url),
+            id:            item.id,
+            title:         item.title,
+            price:         item.price,
+            condition:     item.condition,
+            image_url:     getFirstImage(item.image_url),
+            category_name: item.category_name || 'General',
             qty: 1
         });
     } else {
