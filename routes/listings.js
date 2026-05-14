@@ -58,9 +58,6 @@ router.get('/subcategories', (req, res) => {
 // POST a new listing
 router.post('/', upload.array('images', 8), (req, res) => {
 
-  console.log(req.body);
-  console.log(req.files);
-
   const { title, description, price, condition, category_id, subcategory_id } = req.body;
 
   const image_url = req.files && req.files.length > 0

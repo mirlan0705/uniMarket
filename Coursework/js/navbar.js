@@ -15,4 +15,14 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    document.querySelectorAll('.protected-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (!localStorage.getItem('user')) {
+                e.preventDefault();
+                window.location.href = '/html/loginregister.html';
+            }
+        });
+    });
+
 });
