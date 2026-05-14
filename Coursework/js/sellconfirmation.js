@@ -43,4 +43,17 @@ document.addEventListener('DOMContentLoaded', async() => {
     document.getElementById('confirm-price').textContent     = listing.price || '—';
     document.getElementById('confirm-category').textContent  = listing.category_name || '—';
     document.getElementById('confirm-image').src = images[0] || '/images/placeholder.png';
+
+    // header search (redirect to results page)
+    const searchForm = document.querySelector(".searchcontainer form");
+    if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const searchInput = document.getElementById("search");
+            const q = (searchInput.value || "").trim();
+            if (q) {
+                window.location.href = `/html/results.html?q=${encodeURIComponent(q)}`;
+            }
+        });
+    }
 });
