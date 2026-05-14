@@ -567,11 +567,14 @@ header {
 }
 
 main{
+    height: 400px;
     flex-grow: 1;
     padding: 20px;
+    overflow-y: auto;
+    min-height: 0;
     background: #1a2148;
     background: linear-gradient(180deg, #3e0e65 0%, #1a2148 100%);
-    background-attachment: fixed;
+    background-attachment: fixed; 
 }
 
 footer{
