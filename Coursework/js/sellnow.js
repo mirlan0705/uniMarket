@@ -158,7 +158,6 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
     const description    = document.getElementById('item-description').value.trim();
     const category_id    = document.getElementById('item-category').value;
     const subcategory_id = document.getElementById('item-sub-category').value;
-    const image_url      = uploadedFiles.length > 0 ? URL.createObjectURL(uploadedFiles[0]) : null; 
     const condition      = document.getElementById('item-condition').value;
     const price          = document.getElementById('item-price').value;
 
@@ -171,11 +170,23 @@ document.getElementById('upload-btn').addEventListener('click', async() => {
 
 
     try {
-        const res = await fetch('/api/listings', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, price: parseFloat(price), description, condition, category_id, subcategory_id, image_url })
-        });
+        const formData = new FormData();
+
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('price', parseFloat(price));
+            formData.append('condition', condition);
+            formData.append('category_id', category_id);
+            formData.append('subcategory_id', subcategory_id);
+
+            uploadedFiles.forEach(file => {
+                formData.append('images', file);
+            });
+
+            const res = await fetch('/api/listings', {
+                method: 'POST',
+                body: formData
+            });
  
         if (!res.ok) throw new Error('Server error');
 

@@ -1,5 +1,13 @@
 let allListings = [];
 
+function getFirstImage(image_url) {
+    if (!image_url) return '/images/no-image.png';
+    try {
+        const parsed = JSON.parse(image_url);
+        return Array.isArray(parsed) ? parsed[0] : image_url;
+    } catch { return image_url; }
+}
+
 // edited by mrln
 window.onload = function () {
 
@@ -179,7 +187,7 @@ window.onload = function () {
                 <div class="card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
 
                     <div class="card-image">
-                        <img src="${item.image_url || '/images/no-image.png'}" alt="${item.title}">
+                        <img src="${getFirstImage(item.image_url)}" alt="${item.title}">
                         <button 
                             class="heart-btn ${inWishlist ? 'saved' : ''}"
                             onclick="event.stopPropagation(); toggleWishlist(${item.id})">
@@ -244,7 +252,7 @@ window.onload = function () {
             title: item.title,
             price: item.price,
             condition: item.condition,
-            image_url: item.image_url || '/images/no-image.png'
+            image_url: getFirstImage(item.image_url)
         });
     } else {
         wishlist.splice(index, 1);
@@ -272,7 +280,7 @@ function toggleBasket(id) {
             title:      item.title,
             price:      item.price,
             condition:  item.condition,
-            image_url:  item.image_url || '/images/no-image.png',
+            image_url:  getFirstImage(item.image_url),
             qty: 1
         });
     } else {

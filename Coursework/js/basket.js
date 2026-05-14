@@ -29,6 +29,14 @@ function toggleCategory(element) {
 // List of items added by bea
 let basketData = JSON.parse(localStorage.getItem("basket")) || [];
 
+function getFirstImage(image_url) {
+    if (!image_url) return '/images/no-image.png';
+    try {
+        const parsed = JSON.parse(image_url);
+        return Array.isArray(parsed) ? parsed[0] : image_url;
+    } catch { return image_url; }
+}
+
 
 function renderBasket() {
     const emptyUI = document.getElementById('emptybasket');
@@ -62,7 +70,7 @@ function renderBasket() {
         // html template for every item in the list
         const template = `
             <div class="itemcard" onclick="goToProduct(${item.id})">
-                <div class="itemimage"><img src="${item.image_url}"></div>
+                <div class="itemimage"><img src="${getFirstImage(item.image_url)}"></div>
                 <div class="itemdetails">
                     <h4>${item.title}</h4>
                     <p class="condition">Condition: ${item.condition}</p>

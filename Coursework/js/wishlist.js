@@ -29,6 +29,14 @@ function toggleCategory(element) {
 // added by Bea
 let wishlistData = JSON.parse(localStorage.getItem("wishlist")) || [];
 
+function getFirstImage(image_url) {
+    if (!image_url) return '/images/no-image.png';
+    try {
+        const parsed = JSON.parse(image_url);
+        return Array.isArray(parsed) ? parsed[0] : image_url;
+    } catch { return image_url; }
+}
+
 let currentSearch = "";
 let currentSort = "Recently Added";
 
@@ -72,7 +80,7 @@ function renderWishlist(data) {
          onclick="goToProduct(${item.id})">
 
         <div class="imagecard">
-            <img src="${item.image_url}" alt="${item.title}">
+            <img src="${getFirstImage(item.image_url)}" alt="${item.title}">
             <i class="fa-solid fa-heart favoriteicon"
                onclick="event.stopPropagation(); removeFromWishlist(${item.id})">
             </i>

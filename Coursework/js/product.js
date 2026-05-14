@@ -100,8 +100,13 @@ async function loadProduct() {
         document.getElementById('product-category').textContent  = item.category_name || 'Undefined.';
         document.title = `${item.title} — UniMarket`;
 
-        // Build image gallery (single image for now )
-        images = item.image_url ? [item.image_url] : ['/images/no-image.png'];
+        // Build image gallery
+        try {
+            images = item.image_url ? JSON.parse(item.image_url) : [];
+        } catch {
+            images = item.image_url ? [item.image_url] : [];
+        }
+        if (images.length === 0) images = ['/images/no-image.png'];
         buildThumbnails();
         showImage(0);
 
@@ -139,7 +144,7 @@ async function loadProduct() {
                     title:     item.title,
                     price:     item.price,
                     condition: item.condition,
-                    image_url: item.image_url || '/images/no-image.png',
+                    image_url: images[0] || '/images/no-image.png',
                     qty:       1
                 });
             } else {

@@ -30,6 +30,14 @@ function toggleCategory(element) {
 
 let allListings = [];
 
+function getFirstImage(image_url) {
+    if (!image_url) return '/images/no-image.png';
+    try {
+        const parsed = JSON.parse(image_url);
+        return Array.isArray(parsed) ? parsed[0] : image_url;
+    } catch { return image_url; }
+}
+
 // Fetch all listings once and store in memory, then render results from that without needing to re-fetch.
 async function fetchAndRender() {
     const grid = document.getElementById('results-grid');
@@ -102,7 +110,7 @@ function renderResults(query, sub) {
         return `
             <div class="result-card" id="item-${item.id}" onclick="window.location.href='/html/product.html?id=${item.id}'">
                 <div class="result-card-img">
-                    <img src="${item.image_url || '/images/no-image.png'}" alt="${item.title}">
+                    <img src="${getFirstImage(item.image_url)}" alt="${item.title}">
                     <button class="heart-btn ${inWishlist ? 'saved' : ''}"
                         onclick="event.stopPropagation(); toggleWishlist(${item.id})"
                         title="${inWishlist ? 'Remove from wishlist' : 'Save to wishlist'}">
@@ -160,7 +168,7 @@ function toggleBasket(id) {
             title:     item.title,
             price:     item.price,
             condition: item.condition,
-            image_url: item.image_url || '/images/no-image.png',
+            image_url: getFirstImage(item.image_url),
             qty:       1
         });
     } else {

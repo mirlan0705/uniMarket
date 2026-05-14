@@ -33,11 +33,14 @@ document.addEventListener('DOMContentLoaded', async() => {
     const res      = await fetch('/api/listings');
     const listings = await res.json();
     const listing  = listings.find(item => item.id === parseInt(id));
-
+   
     if (!listing) return;
- 
+
+    const images = listing.image_url ? JSON.parse(listing.image_url) : [];
+    
     document.getElementById('confirm-title').textContent     = listing.title;
     document.getElementById('confirm-condition').textContent = listing.condition || '—';
     document.getElementById('confirm-price').textContent     = listing.price || '—';
-    document.getElementById('confirm-category').textContent  = listing.category_id || '—';
+    document.getElementById('confirm-category').textContent  = listing.category_name || '—';
+    document.getElementById('confirm-image').src = images[0] || '/images/placeholder.png';
 });
