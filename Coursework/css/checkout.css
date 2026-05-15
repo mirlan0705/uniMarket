@@ -769,3 +769,68 @@ footer a:hover {
 img{
     background-color:transparent;
 }
+
+/* Profile dropdown */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Main profile button */
+.profile-btn {
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    padding: 8px 20px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.profile-btn:hover {
+    background-color: white;
+    color: #1a2148;
+}
+
+/* Dropdown panel */
+.dropdown-menu {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    right: auto;
+    min-width: 100px;
+    background: rgba(20, 20, 40, 0.95);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    padding: 10px;
+    display: none;
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.35);
+    z-index: 999;
+}
+
+/* Show dropdown */
+.dropdown-menu.show {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+    text-decoration: none;
+    color: white;
+    padding: 12px 14px;
+    border-radius: 12px;
+    transition: 0.25s ease;
+    border: none;
+    margin: 0;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(255,255,255,0.12);
+    color: #c7d2ff;
+}
