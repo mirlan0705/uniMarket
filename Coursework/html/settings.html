@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/settings.css" />
+  <script src="/js/navbar.js" defer></script>
+  <script src="/js/profile.js" defer></script>
+  <title>UniMarket</title>
+</head>
+
+<body class="page-container">
+
+  <header>
+    <div class="topbar">
+      <div class="logocontainer">
+        <a href="unimarket.html"><h1 class="logo">UniMarket</h1></a>
+      </div>
+      <!-- Search bar -->
+      <div class="searchcontainer">
+        <form action="/search">
+          <input id="search" type="text" placeholder="Search for items...">
+          <button class="searchbtn" type="submit">Search</button>
+        </form>
+      </div>
+      <!-- Right Buttons -->
+      <div class="rightbuttons" id="right-buttons">
+        <a href="loginregister.html">Log in / Register</a>
+        <a href="sellnow.html" class="protected-link">Sell Now</a>
+      </div>
+    </div>
+
+    <div class="navbottom">
+      <div class="nav-spacer"></div>
+      <!-- Category Bar -->
+      <nav class="categories">
+        <ul>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Computing & Technology</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Laptops/Computing">Laptops/Computing</a></li>
+              <li><a href="/html/results.html?sub=Audio">Audio</a></li>
+              <li><a href="/html/results.html?sub=9">Accessories</a></li>
+              <li><a href="/html/results.html?sub=Chargers">Chargers</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Study & Course Materials</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Textbooks">Textbooks</a></li>
+              <li><a href="/html/results.html?sub=Stationery">Stationery</a></li>
+              <li><a href="/html/results.html?sub=Special Equipment">Special Equipment</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Uni Style & Clothes</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Everyday Wear">Everyday Wear</a></li>
+              <li><a href="/html/results.html?sub=Outerwear & Jackets">Outerwear & Jackets</a></li>
+              <li><a href="/html/results.html?sub=Formal & Event Wear">Formal & Event Wear</a></li>
+              <li><a href="/html/results.html?sub=Uni Merch & Sports">Uni Merch & Sports</a></li>
+              <li><a href="/html/results.html?sub=18">Accessories</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Home & Halls</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Kitchen">Kitchen</a></li>
+              <li><a href="/html/results.html?sub=Bedroom">Bedroom</a></li>
+              <li><a href="/html/results.html?sub=Lighting/Decor">Lighting/Decor</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Entertainment & Leisure</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Gaming">Gaming</a></li>
+              <li><a href="/html/results.html?sub=Board Games & Puzzles">Board Games & Puzzles</a></li>
+              <li><a href="/html/results.html?sub=Musical Instruments">Musical Instruments</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Icons -->
+      <div class="iconbuttons">
+        <a href="wishlist.html" class="protected-link">
+          <img src="/images/wishlist.png" alt="Wishlist"></a>
+        <a href="basket.html" class="protected-link">
+          <img src="/images/shoppingcart.png" alt="ShoppingCart"></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <h2 class="profilepage-title">Settings</h2>
+
+    <div class="settings-layout">
+    <aside class="settings-sidebar">
+      <h2 class="sidebar-heading">Settings</h2>
+      <nav class="settings-nav">
+        <a href="#sec-account" class="snav-link" data-sec="account">
+          &#128737; Account &amp; Security
+        </a>
+        <a href="#sec-notifications" class="snav-link" data-sec="notifications">
+          &#128276; Notifications
+        </a>
+        <a href="#sec-privacy" class="snav-link" data-sec="privacy">
+          &#128274; Privacy
+        </a>
+        <a href="#sec-appearance" class="snav-link" data-sec="appearance">
+          &#127912; Appearance
+        </a>
+        <a href="#sec-payment" class="snav-link" data-sec="payment">
+          &#128179; Payment Methods
+        </a>
+        <a href="#sec-danger" class="snav-link danger-link" data-sec="danger">
+          &#9888;  Danger Zone
+        </a>
+        <a href="/html/profile.html" class="snav-link back-to-profile" >
+          &#8592; Back to Profile
+        </a>
+      </nav>
+      
+    </aside>
+
+    <div class="settings-content">
+
+      <section class="settings-section active" id="sec-account">
+        <div class="sec-header">
+          <h3>&#128737; Account &amp; Security</h3>
+          <p>Manage your login credentials and university verification.</p>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-title">Email Address</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label for="currentEmail">Current Email</label>
+              <input type="email" id="currentEmail" readonly class="readonly-field" />
+            </div>
+            <div class="form-group">
+              <label for="newEmail">New University Email</label>
+              <input type="email" id="newEmail" placeholder="new@university.ac.uk" />
+              <span class="field-hint">&#8505; Must end with a .ac.uk address</span>
+            </div>
+            <button class="btn-primary" id="changeEmailBtn">Update Email</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-title">Change Password</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label for="currentPwd">Current Password</label>
+              <div class="input-password-wrap">
+                <input type="password" id="currentPwd" placeholder="Enter current password" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="newPwd">New Password</label>
+              <div class="input-password-wrap">
+                <input type="password" id="newPwd" placeholder="Min. 8 characters" />
+              </div>
+              <div class="strength-meter">
+                <div class="strength-bar" id="strengthBar"></div>
+              </div>
+              <span class="strength-label" id="strengthLabel"></span>
+            </div>
+            <div class="form-group">
+              <label for="confirmPwd">Confirm New Password</label>
+              <div class="input-password-wrap">
+                <input type="password" id="confirmPwd" placeholder="Repeat new password" />
+              </div>
+            </div>
+            <button class="btn-primary" id="changePwdBtn">Update Password</button>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="settings-section" id="sec-notifications">
+        <div class="sec-header">
+          <h3>&#128276; Notifications</h3>
+          <p>Control how and when UniMarket contacts you.</p>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-body notif-list">
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">New message from buyer/seller</span>
+                <span class="notif-sub">Get notified when someone contacts you about a listing</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="notif-toggle" data-key="notifMessages" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">Listing sold</span>
+                <span class="notif-sub">Alert when one of your listings is purchased</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="notif-toggle" data-key="notifSold" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">Price drop alerts</span>
+                <span class="notif-sub">When a wishlisted item drops in price</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="notif-toggle" data-key="notifPriceDrop" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">New review received</span>
+                <span class="notif-sub">When a buyer leaves you a review</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="notif-toggle" data-key="notifReviews" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">UniMarket newsletter</span>
+                <span class="notif-sub">Weekly tips, deals and community news</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="notif-toggle" data-key="notifNewsletter" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-title">Email Frequency</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label for="emailFreq">Digest emails</label>
+              <select id="emailFreq">
+                <option value="realtime">Real-time (immediately)</option>
+                <option value="daily" selected>Daily digest</option>
+                <option value="weekly">Weekly digest</option>
+                <option value="never">Never</option>
+              </select>
+            </div>
+            <button class="btn-primary" id="saveNotifBtn">&#128190; Save Preferences</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-section" id="sec-privacy">
+        <div class="sec-header">
+          <h3>&#128274; Privacy</h3>
+          <p>Control who can see your profile and activity.</p>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-body notif-list">
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">Show profile to all users</span>
+                <span class="notif-sub">Non-logged-in visitors can see your listings</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="priv-toggle" data-key="privPublicProfile" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">Show online status</span>
+                <span class="notif-sub">Let buyers know when you're active</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="priv-toggle" data-key="privOnlineStatus" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">Show purchase history to others</span>
+                <span class="notif-sub">Other users can see items you've bought</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="priv-toggle" data-key="privPurchases" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="notif-row">
+              <div class="notif-info">
+                <span class="notif-title">Allow direct messages from strangers</span>
+                <span class="notif-sub">Buyers not connected to your items can message you</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" class="priv-toggle" data-key="privDMs" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+          <div class="settings-card-body" style="padding-top:0">
+            <button class="btn-primary" id="savePrivacyBtn">&#128190; Save Privacy Settings</button>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-title">Your Data</div>
+          <div class="settings-card-body">
+            <p class="text-muted mb-1">Download a copy of all the data UniMarket holds about you.</p>
+            <button class="btn-outline" id="exportDataBtn">&#11015; Request Data Export</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-section" id="sec-appearance">
+        <div class="sec-header">
+          <h3>&#127912; Appearance</h3>
+          <p>Personalise how UniMarket looks for you.</p>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-title">Theme</div>
+          <div class="settings-card-body">
+            <div class="theme-choices" id="themeChoices">
+              <button class="theme-btn active" data-theme="light">
+                <span class="theme-preview light-preview"></span><span>Light</span>
+              </button>
+              <button class="theme-btn" data-theme="dark">
+                <span class="theme-preview dark-preview"></span><span>Dark</span>
+              </button>
+              <button class="theme-btn" data-theme="auto">
+                <span class="theme-preview auto-preview"></span><span>System</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-title">Accent Colour</div>
+          <div class="settings-card-body">
+            <div class="accent-swatches" id="accentSwatches">
+              <button class="swatch active" data-colour="#2563eb" style="background:#2563eb" title="Blue"></button>
+              <button class="swatch" data-colour="#7c3aed" style="background:#7c3aed" title="Violet"></button>
+              <button class="swatch" data-colour="#059669" style="background:#059669" title="Emerald"></button>
+              <button class="swatch" data-colour="#dc2626" style="background:#dc2626" title="Red"></button>
+              <button class="swatch" data-colour="#d97706" style="background:#d97706" title="Amber"></button>
+              <button class="swatch" data-colour="#0891b2" style="background:#0891b2" title="Cyan"></button>
+            </div>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-title">Font Size</div>
+          <div class="settings-card-body">
+            <div class="font-size-row">
+              <span class="fs-label small-label">A</span>
+              <input type="range" id="fontSizeRange" min="12" max="20" step="1" value="15" />
+              <span class="fs-label large-label">A</span>
+              <span class="fs-value" id="fontSizeValue">15px</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-section" id="sec-payment">
+        <div class="sec-header">
+          <h3>&#128179; Payment Methods</h3>
+          <p>Manage how you pay and receive money on UniMarket.</p>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-title">Saved Cards</div>
+          <div class="settings-card-body">
+            <div class="cards-list" id="cardsList"></div>
+            <button class="btn-outline" id="addCardBtn">&#43; Add New Card</button>
+          </div>
+        </div>
+        <div class="settings-card hidden" id="addCardForm">
+          <div class="settings-card-title">Add Card</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label for="cardName">Cardholder Name</label>
+              <input type="text" id="cardName" placeholder="As printed on card" />
+            </div>
+            <div class="form-group">
+              <label for="cardNumber">Card Number</label>
+              <input type="text" id="cardNumber" placeholder="•••• •••• •••• ••••" maxlength="19" />
+            </div>
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="cardExpiry">Expiry</label>
+                <input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7" />
+              </div>
+              <div class="form-group">
+                <label for="cardCvc">CVC</label>
+                <input type="password" id="cardCvc" placeholder="•••" maxlength="4" />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn-primary" id="saveCardBtn">&#128190; Save Card</button>
+              <button class="btn-outline" id="cancelCardBtn">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-title">Payout Bank Account</div>
+          <div class="settings-card-body">
+            <div class="form-group">
+              <label for="bankSort">Sort Code</label>
+              <input type="text" id="bankSort" placeholder="00-00-00" maxlength="8" />
+            </div>
+            <div class="form-group">
+              <label for="bankAccount">Account Number</label>
+              <input type="text" id="bankAccount" placeholder="12345678" maxlength="8" />
+            </div>
+            <button class="btn-primary" id="saveBankBtn">&#127963; Save Bank Details</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-section" id="sec-danger">
+        <div class="sec-header">
+          <h3 class="danger-heading">&#9888; Danger Zone</h3>
+          <p>These actions are irreversible. Please be sure before proceeding.</p>
+        </div>
+        <div class="settings-card danger-card">
+          <div class="danger-row">
+            <div>
+              <div class="danger-row-title">Deactivate Account</div>
+              <div class="danger-row-desc">Temporarily disable your profile. Listings hidden until you reactivate.</div>
+            </div>
+            <button class="btn-warning" id="deactivateBtn">Deactivate</button>
+          </div>
+        </div>
+        <div class="settings-card danger-card">
+          <div class="danger-row">
+            <div>
+              <div class="danger-row-title">Delete All Listings</div>
+              <div class="danger-row-desc">Permanently remove all your current listings from UniMarket.</div>
+            </div>
+            <button class="btn-danger-outline" id="deleteListingsBtn">Delete Listings</button>
+          </div>
+        </div>
+        <div class="settings-card danger-card border-red">
+          <div class="danger-row">
+            <div>
+              <div class="danger-row-title">Delete Account</div>
+              <div class="danger-row-desc">Permanently delete your account. All data is removed and unrecoverable.</div>
+            </div>
+            <button class="btn-danger" id="deleteAccountBtn">Delete Account</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+   <!-- Footer -->
+    <footer>
+        <p><a href="/html/contact.html">Contact Us</a></p>
+        <p><a href="/html/terms.html">Terms and Conditions</a></p>
+    </footer>
+</body>
+</html>

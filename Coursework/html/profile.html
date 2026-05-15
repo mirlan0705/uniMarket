@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/profile.css" />
+  <script src="/js/navbar.js" defer></script>
+  <script src="/js/settings.js" defer></script>
+  <title>UniMarket</title>
+</head>
+
+<body class="page-container">
+
+ <header>
+    <div class="topbar">
+      <div class="logocontainer">
+        <a href="unimarket.html"><h1 class="logo">UniMarket</h1></a>
+      </div>
+      <!-- Search bar -->
+      <div class="searchcontainer">
+        <form action="/search">
+          <input id="search" type="text" placeholder="Search for items...">
+          <button class="searchbtn" type="submit">Search</button>
+        </form>
+      </div>
+      <!-- Right Buttons -->
+      <div class="rightbuttons" id="right-buttons">
+        <a href="loginregister.html">Log in / Register</a>
+        <a href="sellnow.html" class="protected-link">Sell Now</a>
+      </div>
+    </div>
+
+    <div class="navbottom">
+      <div class="nav-spacer"></div>
+      <!-- Category Bar -->
+      <nav class="categories">
+        <ul>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Computing & Technology</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Laptops/Computing">Laptops/Computing</a></li>
+              <li><a href="/html/results.html?sub=Audio">Audio</a></li>
+              <li><a href="/html/results.html?sub=9">Accessories</a></li>
+              <li><a href="/html/results.html?sub=Chargers">Chargers</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Study & Course Materials</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Textbooks">Textbooks</a></li>
+              <li><a href="/html/results.html?sub=Stationery">Stationery</a></li>
+              <li><a href="/html/results.html?sub=Special Equipment">Special Equipment</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Uni Style & Clothes</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Everyday Wear">Everyday Wear</a></li>
+              <li><a href="/html/results.html?sub=Outerwear & Jackets">Outerwear & Jackets</a></li>
+              <li><a href="/html/results.html?sub=Formal & Event Wear">Formal & Event Wear</a></li>
+              <li><a href="/html/results.html?sub=Uni Merch & Sports">Uni Merch & Sports</a></li>
+              <li><a href="/html/results.html?sub=18">Accessories</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Home & Halls</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Kitchen">Kitchen</a></li>
+              <li><a href="/html/results.html?sub=Bedroom">Bedroom</a></li>
+              <li><a href="/html/results.html?sub=Lighting/Decor">Lighting/Decor</a></li>
+            </ul>
+          </li>
+          <li class="category">
+            <div class="categorytitle" onclick="toggleCategory(this)">
+              <span>Entertainment & Leisure</span>
+              <img class="arrowicon" src="/images/arrowdown.png">
+            </div>
+            <ul class="subcategory">
+              <li><a href="/html/results.html?sub=Gaming">Gaming</a></li>
+              <li><a href="/html/results.html?sub=Board Games & Puzzles">Board Games & Puzzles</a></li>
+              <li><a href="/html/results.html?sub=Musical Instruments">Musical Instruments</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Icons -->
+      <div class="iconbuttons">
+        <a href="wishlist.html" class="protected-link">
+          <img src="/images/wishlist.png" alt="Wishlist"></a>
+        <a href="basket.html" class="protected-link">
+          <img src="/images/shoppingcart.png" alt="ShoppingCart"></a>
+      </div>
+    </div>
+  </header>
+
+  <main >
+
+      <h2 class="profilepage-title">Profile</h2>
+
+  <div class="profilelayout">
+    <aside class="profile-sidebar">
+      <div class="sidebar-card">
+        <div class="avatar-upload-wrap">
+          <div class="avatar-lg" id="avatarDisplay">JD</div>
+          <label class="avatar-edit-btn" for="avatarInput" title="Change photo">&#9998;</label>
+          <input type="file" id="avatarInput" accept="image/*" hidden />
+        </div>
+        <h2 class="sidebar-name" id="sidebarName">User Name</h2>
+        <p class="sidebar-email" id="sidebarEmail">username@university.ac.uk</p>
+        <span class="verified-badge">&#10003; Verified Student</span>
+
+        <div class="sidebar-stats">
+          <div class="stat-box">
+            <span class="stat-num" id="statListings">0</span>
+            <span class="stat-label">Listings</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num" id="statSold">0</span>
+            <span class="stat-label">Sold</span>
+          </div>
+        </div>
+
+        <div class="sidebar-links">
+          <a href="/html/settings.html" class="sidebar-link">
+           Settings
+          </a>
+          <a href="/html/loginregister.html" class="sidebar-link logout-link" id="logoutBtn">
+           Log Out
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <section class="profile-content">
+
+      <div class="content-card" id="editProfileCard">
+        <div class="card-header">
+          <h3> Edit Profile</h3>
+        </div>
+        <div class="edit-profile-form">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="profileEmail">University Email</label>
+            <input type="email" id="profileEmail" placeholder="j.doe@university.ac.uk" />
+            <span class="field-hint">&#8505; Must be a valid university email</span>
+          </div>
+          <div class="form-group">
+            <label for="profileDept">Department/Course</label>
+            <input type="text" id="profileDept" placeholder="e.g. Computer Science" />
+          </div>
+          <div class="form-group">
+            <label for="profileBio">Bio<span class="optional">(Optional)</span></label>
+            <textarea id="profileBio" rows="3" placeholder="Tell buyers a little about yourself…" maxlength="200"></textarea>
+            <span class="char-count"><span id="bioCount">0</span>/200</span>
+          </div>
+          <div class="form-group">
+            <label for="profilePhone">Contact Number <span class="optional">(optional)</span></label>
+            <input type="tel" id="profilePhone" placeholder="+44 7000 000000" />
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary" id="saveProfileBtn">Save Changes</button>
+            <span class="save-msg" id="saveMsg" hidden>&#10003; Profile updated!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card tab-card">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="listings">My Listings</button>
+          <button class="tab-btn" data-tab="purchases">Purchases</button>
+        </div>
+
+        <div class="tab-pane active" id="tab-listings">
+          <div class="tab-toolbar">
+          </div>
+          <div class="listings-grid" id="listingsGrid"></div>
+          <div class="empty-state" id="listingsEmpty">
+            <p>&#128230; You haven't listed anything yet.</p>
+            <a href="/html/sellnow.html" class="btn-primary">Start Selling</a>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tab-purchases">
+          <div class="purchases-list" id="purchasesList"></div>
+          <div class="empty-state" id="purchasesEmpty">
+            <p>&#128521; No purchases yet.</p>
+            <a href="results.html" class="btn-primary">Browse Listings</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+    <footer>
+        <p><a href="/html/contact.html">Contact Us</a></p>
+        <p><a href="/html/terms.html">Terms and Conditions</a></p>
+    </footer>
+</body>
+</html>
